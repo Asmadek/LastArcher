@@ -22,6 +22,10 @@ class GameScene: SKScene {
     
     override func sceneDidLoad() {
 
+        //TODO: remove archer spawn by coordinates
+        let positionArcher = CGPoint(x:-10, y:-400)
+        Archer.createArcher(scene: self, position: positionArcher)
+        
         self.lastUpdateTime = 0
         
         // Get label node from scene and store it for use later
@@ -53,6 +57,8 @@ class GameScene: SKScene {
         }
         //TODO: remove after debug
         shootVector = CGVector(point: pos)
+        
+        print(pos)
     }
     
     func touchMoved(toPoint pos : CGPoint) {

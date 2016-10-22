@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6DF63D251DBBDC06008A68F2 /* Archer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF63D241DBBDC06008A68F2 /* Archer.swift */; };
 		7132927C1DBBB338003AC6E5 /* BasicArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132927B1DBBB338003AC6E5 /* BasicArrow.swift */; };
 		7132927F1DBBC358003AC6E5 /* CGVector+Awesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132927E1DBBC358003AC6E5 /* CGVector+Awesome.swift */; };
 		C8B7E5EC1DBAD52100FBDFF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B7E5EB1DBAD52100FBDFF5 /* AppDelegate.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6DF63D241DBBDC06008A68F2 /* Archer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Archer.swift; sourceTree = "<group>"; };
 		7132927B1DBBB338003AC6E5 /* BasicArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicArrow.swift; sourceTree = "<group>"; };
 		7132927E1DBBC358003AC6E5 /* CGVector+Awesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Awesome.swift"; sourceTree = "<group>"; };
 		C8B7E5E81DBAD52100FBDFF5 /* LastArcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastArcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,9 +47,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6DF63D231DBBDBEA008A68F2 /* Archer */ = {
+			isa = PBXGroup;
+			children = (
+				6DF63D241DBBDC06008A68F2 /* Archer.swift */,
+			);
+			name = Archer;
+			sourceTree = "<group>";
+		};
 		713292781DBBB2EB003AC6E5 /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				6DF63D231DBBDBEA008A68F2 /* Archer */,
 				7132927A1DBBB311003AC6E5 /* Shells */,
 			);
 			name = Nodes;
@@ -181,6 +192,7 @@
 				7132927C1DBBB338003AC6E5 /* BasicArrow.swift in Sources */,
 				C8B7E5F21DBAD52100FBDFF5 /* GameScene.swift in Sources */,
 				C8B7E5F41DBAD52100FBDFF5 /* GameViewController.swift in Sources */,
+				6DF63D251DBBDC06008A68F2 /* Archer.swift in Sources */,
 				C8B7E5EC1DBAD52100FBDFF5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
