@@ -15,6 +15,7 @@
 		C8B7E5F71DBAD52100FBDFF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8B7E5F51DBAD52100FBDFF5 /* Main.storyboard */; };
 		C8B7E5F91DBAD52100FBDFF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8B7E5F81DBAD52100FBDFF5 /* Assets.xcassets */; };
 		C8B7E5FC1DBAD52100FBDFF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8B7E5FA1DBAD52100FBDFF5 /* LaunchScreen.storyboard */; };
+		C8F7BFCB1DBAE062008C5BE4 /* Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8F7BFCA1DBAE062008C5BE4 /* Level1.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		C8B7E5F81DBAD52100FBDFF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8B7E5FB1DBAD52100FBDFF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C8B7E5FD1DBAD52100FBDFF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8F7BFCA1DBAE062008C5BE4 /* Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,8 +71,17 @@
 				C8B7E5F81DBAD52100FBDFF5 /* Assets.xcassets */,
 				C8B7E5FA1DBAD52100FBDFF5 /* LaunchScreen.storyboard */,
 				C8B7E5FD1DBAD52100FBDFF5 /* Info.plist */,
+				C8F7BFCC1DBAE067008C5BE4 /* Levels */,
 			);
 			path = LastArcher;
+			sourceTree = "<group>";
+		};
+		C8F7BFCC1DBAE067008C5BE4 /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				C8F7BFCA1DBAE062008C5BE4 /* Level1.sks */,
+			);
+			name = Levels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,6 +145,7 @@
 			files = (
 				C8B7E5F71DBAD52100FBDFF5 /* Main.storyboard in Resources */,
 				C8B7E5EE1DBAD52100FBDFF5 /* GameScene.sks in Resources */,
+				C8F7BFCB1DBAE062008C5BE4 /* Level1.sks in Resources */,
 				C8B7E5F91DBAD52100FBDFF5 /* Assets.xcassets in Resources */,
 				C8B7E5FC1DBAD52100FBDFF5 /* LaunchScreen.storyboard in Resources */,
 				C8B7E5F01DBAD52100FBDFF5 /* Actions.sks in Resources */,
@@ -313,6 +325,7 @@
 				C8B7E6021DBAD52100FBDFF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
