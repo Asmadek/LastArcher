@@ -10,6 +10,8 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
+    //TODO: remove after debug
+    var shootVector = CGVector.zero
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
@@ -43,13 +45,14 @@ class GameScene: SKScene {
         }
     }
     
-    
     func touchDown(atPoint pos : CGPoint) {
         if let n = self.spinnyNode?.copy() as! SKShapeNode? {
             n.position = pos
             n.strokeColor = SKColor.green
             self.addChild(n)
         }
+        //TODO: remove after debug
+        shootVector = CGVector(point: pos)
     }
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -66,6 +69,9 @@ class GameScene: SKScene {
             n.strokeColor = SKColor.red
             self.addChild(n)
         }
+        //TODO: remove after debug
+        shootVector = shootVector.difference(vector: CGVector(point: pos))
+        BasicArrow.createArrow(scene: self, position: pos, direction: shootVector)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
