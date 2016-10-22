@@ -9,9 +9,11 @@
 import SpriteKit
 
 class BasicArrow: SKSpriteNode {
-    let SPEED_COEF = CGFloat(50.0)
-    let MIN_MOVE_SPEED = CGFloat(800.0)
-    let MAX_MOVE_SPEED = CGFloat(4000.0)
+    private let LIFE_TIME = TimeInterval(7.0)
+    private let SPEED_COEF = CGFloat(50.0)
+    private let MIN_MOVE_SPEED = CGFloat(800.0)
+    private let MAX_MOVE_SPEED = CGFloat(4000.0)
+    let DAMAGE = 1
     
     init(){
         let texture = SKTexture(imageNamed: "BasicArrow")
@@ -24,6 +26,10 @@ class BasicArrow: SKSpriteNode {
     
     static func createArrow(scene : SKScene, position: CGPoint, direction: CGVector){
         let arrow = BasicArrow()
+        arrow.physicsBody = SKPhysicsBody.init(texture: arrow.texture!, alphaThreshold: 0.5, size: (arrow.texture?.size())!)
+        arrow.physicsBody?.categoryBitMask = PhysicsCategory.Shell
+        arrow.physicsBody?.affectedByGravity = false
+        arrow.physicsBody?.isDynamic = false
         scene.addChild(arrow)
         arrow.shoot(position: position, direction: direction)
     }
@@ -38,7 +44,7 @@ class BasicArrow: SKSpriteNode {
         let move_vector = direction.normalize().multiply(scalar: move_speed)
         self.position = position
         self.zRotation = direction.angleSpriteKit()
-        let moveAction = SKAction.sequence([SKAction.move(by: move_vector, duration: TimeInterval(5.0)),
+        let moveAction = SKAction.sequence([SKAction.move(by: move_vector, duration: LIFE_TIME),
                                             SKAction.run({self.destroy()})])
         self.run(moveAction)
     }
