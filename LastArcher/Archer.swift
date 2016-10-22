@@ -18,11 +18,13 @@ class Archer: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    static func createArcher(scene : SKScene, position: CGPoint){
+    static func createArcher(scene : SKScene, position: CGPoint)->Archer{
         let archer = Archer()
         archer.position = position
         scene.addChild(archer)
+        return archer
     }
+
     
     func didMoveToScene() {
         zPosition = 100
