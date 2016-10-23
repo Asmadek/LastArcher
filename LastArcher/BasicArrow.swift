@@ -37,6 +37,9 @@ class BasicArrow: SKSpriteNode {
     }
     
     func shoot(position : CGPoint,direction : CGVector,chargeTime: TimeInterval){
+        if (direction.length() < 0.1){
+            destroy()
+        }
         let move_vector = direction.normalize().multiply(scalar: configuration.moveSpeed)
         self.position = position
         self.zRotation = direction.angleSpriteKit()

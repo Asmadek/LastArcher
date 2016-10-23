@@ -17,15 +17,17 @@ class GameScene: SKScene {
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     
+    //TODO: remove archer spawn by coordinates
+    let positionArcher = CGPoint(x:-10, y:-400)
+    var archer = Archer()
+    
     private var lastUpdateTime : TimeInterval = 0
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     
     override func sceneDidLoad() {
-
-        //TODO: remove archer spawn by coordinates
-        let positionArcher = CGPoint(x:-10, y:-400)
-        Archer.createArcher(scene: self, position: positionArcher)
+        
+        archer = Archer.createArcher(scene: self, position: positionArcher)
         
         self.lastUpdateTime = 0
         
@@ -53,6 +55,8 @@ class GameScene: SKScene {
     func touchDown(atPoint pos : CGPoint) {
         shootVector = CGVector(point: pos)
         chargeTime = NSDate.timeIntervalSinceReferenceDate
+        
+        print(pos)
     }
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -63,7 +67,7 @@ class GameScene: SKScene {
         shootVector = shootVector.difference(vector: CGVector(point: pos))
         chargeTime = NSDate.timeIntervalSinceReferenceDate - chargeTime
         let arrow = BasicArrow.createArrow(scene: self, configuration: LongBowArrow())
-        arrow.shoot(position: pos, direction: shootVector,chargeTime: chargeTime)
+        arrow.shoot(position: archer.position, direction: shootVector,chargeTime: chargeTime)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
