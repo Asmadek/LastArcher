@@ -11,6 +11,7 @@ import GameplayKit
 
 class GameScene: SKScene {
     //TODO: remove after debug
+    var chargeTime = TimeInterval(0.0)
     var shootVector = CGVector.zero
     
     var entities = [GKEntity]()
@@ -51,8 +52,7 @@ class GameScene: SKScene {
     
     func touchDown(atPoint pos : CGPoint) {
         shootVector = CGVector(point: pos)
-        
-        print(pos)
+        chargeTime = NSDate.timeIntervalSinceReferenceDate
     }
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -61,7 +61,9 @@ class GameScene: SKScene {
     
     func touchUp(atPoint pos : CGPoint) {
         shootVector = shootVector.difference(vector: CGVector(point: pos))
-        BasicArrow.createArrow(scene: self, position: pos, direction: shootVector)
+        chargeTime = NSDate.timeIntervalSinceReferenceDate - chargeTime
+        let arrow = BasicArrow.createArrow(scene: self, configuration: LongBowArrow())
+        arrow.shoot(position: pos, direction: shootVector,chargeTime: chargeTime)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

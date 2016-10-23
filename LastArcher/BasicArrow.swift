@@ -9,38 +9,45 @@
 import SpriteKit
 
 class BasicArrow: SKSpriteNode {
-    let SPEED_COEF = CGFloat(50.0)
-    let MIN_MOVE_SPEED = CGFloat(800.0)
-    let MAX_MOVE_SPEED = CGFloat(4000.0)
+    private var damageMultiplier = 1.0
+    private var configuration: ShellConfiguration
     
-    init(){
+    init(configuration: ShellConfiguration){
         let texture = SKTexture(imageNamed: "BasicArrow")
+        self.configuration = configuration
         super.init(texture: texture, color: UIColor.clear,size: texture.size())
+        self.physicsBody = SKPhysicsBody.init(texture: self.texture!, alphaThreshold: 0.5, size: (self.texture?.size())!)
+        self.physicsBody?.categoryBitMask = PhysicsCategory.Shell
+        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.isDynamic = false
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    static func createArrow(scene : SKScene, position: CGPoint, direction: CGVector){
-        let arrow = BasicArrow()
+    static func createArrow(scene : SKScene, configuration: ShellConfiguration) -> BasicArrow{
+        let arrow = BasicArrow(configuration: configuration)
         scene.addChild(arrow)
-        arrow.shoot(position: position, direction: direction)
+        return arrow
     }
     
     func didMoveToScene() {
         zPosition = 100
     }
     
-    func shoot(position : CGPoint,direction : CGVector){
-        var move_speed = CGFloat.minimum(direction.length() * SPEED_COEF, MAX_MOVE_SPEED)
-        move_speed = CGFloat.maximum(move_speed, MIN_MOVE_SPEED)
-        let move_vector = direction.normalize().multiply(scalar: move_speed)
+    func shoot(position : CGPoint,direction : CGVector,chargeTime: TimeInterval){
+        let move_vector = direction.normalize().multiply(scalar: configuration.moveSpeed)
         self.position = position
         self.zRotation = direction.angleSpriteKit()
-        let moveAction = SKAction.sequence([SKAction.move(by: move_vector, duration: TimeInterval(5.0)),
+        self.damageMultiplier = configuration.minDamageMultiplier + TimeInterval.minimum(chargeTime, configuration.maxChargeDuration)/configuration.maxChargeDuration*(configuration.maxDamageMultiplier-configuration.minDamageMultiplier)
+        let moveAction = SKAction.sequence([SKAction.move(by: move_vector, duration: configuration.lifeTime),
                                             SKAction.run({self.destroy()})])
         self.run(moveAction)
+    }
+    
+    func getDamage()-> Double {
+        return configuration.baseDamage.multiplied(by: damageMultiplier)
     }
     
     func destroy(){

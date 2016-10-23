@@ -10,6 +10,11 @@
 		6DF63D251DBBDC06008A68F2 /* Archer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF63D241DBBDC06008A68F2 /* Archer.swift */; };
 		7132927C1DBBB338003AC6E5 /* BasicArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132927B1DBBB338003AC6E5 /* BasicArrow.swift */; };
 		7132927F1DBBC358003AC6E5 /* CGVector+Awesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132927E1DBBC358003AC6E5 /* CGVector+Awesome.swift */; };
+		713292811DBBD999003AC6E5 /* PhysicsCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713292801DBBD999003AC6E5 /* PhysicsCategories.swift */; };
+		713292831DBBE65F003AC6E5 /* ShortBowArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713292821DBBE65F003AC6E5 /* ShortBowArrow.swift */; };
+		713292851DBBE851003AC6E5 /* ShellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713292841DBBE851003AC6E5 /* ShellConfiguration.swift */; };
+		713292871DBBED1C003AC6E5 /* StandartBowArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713292861DBBED1C003AC6E5 /* StandartBowArrow.swift */; };
+		713292891DBBED2D003AC6E5 /* LongBowArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713292881DBBED2D003AC6E5 /* LongBowArrow.swift */; };
 		C8B7E5EC1DBAD52100FBDFF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B7E5EB1DBAD52100FBDFF5 /* AppDelegate.swift */; };
 		C8B7E5EE1DBAD52100FBDFF5 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8B7E5ED1DBAD52100FBDFF5 /* GameScene.sks */; };
 		C8B7E5F01DBAD52100FBDFF5 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8B7E5EF1DBAD52100FBDFF5 /* Actions.sks */; };
@@ -25,6 +30,11 @@
 		6DF63D241DBBDC06008A68F2 /* Archer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Archer.swift; sourceTree = "<group>"; };
 		7132927B1DBBB338003AC6E5 /* BasicArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicArrow.swift; sourceTree = "<group>"; };
 		7132927E1DBBC358003AC6E5 /* CGVector+Awesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Awesome.swift"; sourceTree = "<group>"; };
+		713292801DBBD999003AC6E5 /* PhysicsCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsCategories.swift; sourceTree = "<group>"; };
+		713292821DBBE65F003AC6E5 /* ShortBowArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortBowArrow.swift; sourceTree = "<group>"; };
+		713292841DBBE851003AC6E5 /* ShellConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShellConfiguration.swift; sourceTree = "<group>"; };
+		713292861DBBED1C003AC6E5 /* StandartBowArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandartBowArrow.swift; sourceTree = "<group>"; };
+		713292881DBBED2D003AC6E5 /* LongBowArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LongBowArrow.swift; sourceTree = "<group>"; };
 		C8B7E5E81DBAD52100FBDFF5 /* LastArcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastArcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B7E5EB1DBAD52100FBDFF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8B7E5ED1DBAD52100FBDFF5 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -69,6 +79,7 @@
 		7132927A1DBBB311003AC6E5 /* Shells */ = {
 			isa = PBXGroup;
 			children = (
+				7132928A1DBBED3B003AC6E5 /* ShellConfigurations */,
 				7132927B1DBBB338003AC6E5 /* BasicArrow.swift */,
 			);
 			name = Shells;
@@ -80,6 +91,17 @@
 				7132927E1DBBC358003AC6E5 /* CGVector+Awesome.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		7132928A1DBBED3B003AC6E5 /* ShellConfigurations */ = {
+			isa = PBXGroup;
+			children = (
+				713292821DBBE65F003AC6E5 /* ShortBowArrow.swift */,
+				713292841DBBE851003AC6E5 /* ShellConfiguration.swift */,
+				713292861DBBED1C003AC6E5 /* StandartBowArrow.swift */,
+				713292881DBBED2D003AC6E5 /* LongBowArrow.swift */,
+			);
+			name = ShellConfigurations;
 			sourceTree = "<group>";
 		};
 		C8B7E5DF1DBAD52100FBDFF5 = {
@@ -112,7 +134,7 @@
 				C8B7E5F81DBAD52100FBDFF5 /* Assets.xcassets */,
 				C8B7E5FA1DBAD52100FBDFF5 /* LaunchScreen.storyboard */,
 				C8B7E5FD1DBAD52100FBDFF5 /* Info.plist */,
-				C8F7BFCC1DBAE067008C5BE4 /* Levels */,
+				713292801DBBD999003AC6E5 /* PhysicsCategories.swift */,
 			);
 			path = LastArcher;
 			sourceTree = "<group>";
@@ -200,12 +222,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				713292891DBBED2D003AC6E5 /* LongBowArrow.swift in Sources */,
 				7132927F1DBBC358003AC6E5 /* CGVector+Awesome.swift in Sources */,
+				713292811DBBD999003AC6E5 /* PhysicsCategories.swift in Sources */,
+				713292871DBBED1C003AC6E5 /* StandartBowArrow.swift in Sources */,
+				713292851DBBE851003AC6E5 /* ShellConfiguration.swift in Sources */,
 				7132927C1DBBB338003AC6E5 /* BasicArrow.swift in Sources */,
 				C8B7E5F21DBAD52100FBDFF5 /* GameScene.swift in Sources */,
 				C8B7E5F41DBAD52100FBDFF5 /* GameViewController.swift in Sources */,
 				6DF63D251DBBDC06008A68F2 /* Archer.swift in Sources */,
 				C8B7E5EC1DBAD52100FBDFF5 /* AppDelegate.swift in Sources */,
+				713292831DBBE65F003AC6E5 /* ShortBowArrow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
