@@ -8,9 +8,9 @@
 
 import SpriteKit
 
-class BasicArrow: SKSpriteNode {
-    private var damageMultiplier = 1.0
-    private var configuration: ShellConfiguration
+class BasicArrow: SKSpriteNode, ShellType {
+    internal var damageMultiplier = 1.0
+    internal var configuration: ShellConfiguration
     
     init(configuration: ShellConfiguration){
         let texture = SKTexture(imageNamed: "BasicArrow")
@@ -26,9 +26,9 @@ class BasicArrow: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    static func createArrow(scene : SKScene, configuration: ShellConfiguration) -> BasicArrow{
+    static func createArrow(configuration: ShellConfiguration) -> BasicArrow{
         let arrow = BasicArrow(configuration: configuration)
-        scene.addChild(arrow)
+        GameScene.mainScene?.addChild(arrow)
         return arrow
     }
     

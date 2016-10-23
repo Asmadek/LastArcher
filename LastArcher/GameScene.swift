@@ -10,6 +10,8 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
+    static var mainScene: SKScene? = nil
+    
     //TODO: remove after debug
     var chargeTime = TimeInterval(0.0)
     var shootVector = CGVector.zero
@@ -50,6 +52,8 @@ class GameScene: SKScene {
                                               SKAction.fadeOut(withDuration: 0.5),
                                               SKAction.removeFromParent()]))
         }
+        
+        GameScene.mainScene = self
     }
     
     func touchDown(atPoint pos : CGPoint) {
@@ -66,8 +70,7 @@ class GameScene: SKScene {
     func touchUp(atPoint pos : CGPoint) {
         shootVector = shootVector.difference(vector: CGVector(point: pos))
         chargeTime = NSDate.timeIntervalSinceReferenceDate - chargeTime
-        let arrow = BasicArrow.createArrow(scene: self, configuration: LongBowArrow())
-        arrow.shoot(position: archer.position, direction: shootVector,chargeTime: chargeTime)
+        archer.shoot(chargeTime: chargeTime)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
