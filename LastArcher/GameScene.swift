@@ -13,6 +13,7 @@ class GameScene: SKScene {
     //TODO: remove after debug
     var chargeTime = TimeInterval(0.0)
     var shootVector = CGVector.zero
+    var currentVector = CGVector.zero
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
@@ -25,6 +26,11 @@ class GameScene: SKScene {
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     
+    let setJoystickStickImageBtn = SKLabelNode(), setJoystickSubstrateImageBtn = SKLabelNode()
+    
+    let moveAnalogStick =  🕹(diameter: 110)
+    let shootAnalogStick = AnalogJoystick(diameter: 90)
+
     override func sceneDidLoad() {
         
         archer = Archer.createArcher(scene: self, position: positionArcher)
@@ -50,7 +56,38 @@ class GameScene: SKScene {
                                               SKAction.fadeOut(withDuration: 0.5),
                                               SKAction.removeFromParent()]))
         }
+        
+        moveAnalogStick.position = CGPoint(x: moveAnalogStick.radius + 15, y: moveAnalogStick.radius + 15)
+        addChild(moveAnalogStick)
+        
+        shootAnalogStick.position = CGPoint(x: self.frame.maxX - shootAnalogStick.radius - 15, y:shootAnalogStick.radius + 15)
+        addChild(shootAnalogStick)
+        
+        moveAnalogStick.stick.color = .gray
+        shootAnalogStick.stick.color = .gray
+        
+        func shootStartHandler() {
+            self.chargeTime = NSDate.timeIntervalSinceReferenceDate
+        }
+        
+        func shootTrackingHandler(data: AnalogJoystickData) {
+            self.currentVector = CGVector(dx: sin(data.angular), dy: -1 * cos(data.angular))
+        }
+        
+        func shootStopHandler() {
+            self.chargeTime = NSDate.timeIntervalSinceReferenceDate - self.chargeTime
+            let arrow = BasicArrow.createArrow(scene: self, configuration: LongBowArrow())
+            arrow.shoot(position: self.archer.position, direction: self.currentVector, chargeTime: self.chargeTime)
+        }
+        
+        shootAnalogStick.startHandler = shootStartHandler
+        shootAnalogStick.trackingHandler = shootTrackingHandler
+        shootAnalogStick.stopHandler = shootStopHandler
+
+
     }
+    
+
     
     func touchDown(atPoint pos : CGPoint) {
         shootVector = CGVector(point: pos)

@@ -15,6 +15,8 @@
 		713292851DBBE851003AC6E5 /* ShellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713292841DBBE851003AC6E5 /* ShellConfiguration.swift */; };
 		713292871DBBED1C003AC6E5 /* StandartBowArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713292861DBBED1C003AC6E5 /* StandartBowArrow.swift */; };
 		713292891DBBED2D003AC6E5 /* LongBowArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713292881DBBED2D003AC6E5 /* LongBowArrow.swift */; };
+		C8027CAD1DBCEB3900322A0E /* Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8027CAC1DBCEB3900322A0E /* Level1.sks */; };
+		C8027CB01DBCECEA00322A0E /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8027CAF1DBCECEA00322A0E /* AnalogJoystick.swift */; };
 		C8B7E5EC1DBAD52100FBDFF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B7E5EB1DBAD52100FBDFF5 /* AppDelegate.swift */; };
 		C8B7E5EE1DBAD52100FBDFF5 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8B7E5ED1DBAD52100FBDFF5 /* GameScene.sks */; };
 		C8B7E5F01DBAD52100FBDFF5 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8B7E5EF1DBAD52100FBDFF5 /* Actions.sks */; };
@@ -23,7 +25,6 @@
 		C8B7E5F71DBAD52100FBDFF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8B7E5F51DBAD52100FBDFF5 /* Main.storyboard */; };
 		C8B7E5F91DBAD52100FBDFF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8B7E5F81DBAD52100FBDFF5 /* Assets.xcassets */; };
 		C8B7E5FC1DBAD52100FBDFF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8B7E5FA1DBAD52100FBDFF5 /* LaunchScreen.storyboard */; };
-		C8F7BFCB1DBAE062008C5BE4 /* Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8F7BFCA1DBAE062008C5BE4 /* Level1.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		713292841DBBE851003AC6E5 /* ShellConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShellConfiguration.swift; sourceTree = "<group>"; };
 		713292861DBBED1C003AC6E5 /* StandartBowArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandartBowArrow.swift; sourceTree = "<group>"; };
 		713292881DBBED2D003AC6E5 /* LongBowArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LongBowArrow.swift; sourceTree = "<group>"; };
+		C8027CAC1DBCEB3900322A0E /* Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1.sks; sourceTree = "<group>"; };
+		C8027CAF1DBCECEA00322A0E /* AnalogJoystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
 		C8B7E5E81DBAD52100FBDFF5 /* LastArcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastArcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B7E5EB1DBAD52100FBDFF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8B7E5ED1DBAD52100FBDFF5 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -45,7 +48,6 @@
 		C8B7E5F81DBAD52100FBDFF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8B7E5FB1DBAD52100FBDFF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C8B7E5FD1DBAD52100FBDFF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C8F7BFCA1DBAE062008C5BE4 /* Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				7132927E1DBBC358003AC6E5 /* CGVector+Awesome.swift */,
+				C8027CAF1DBCECEA00322A0E /* AnalogJoystick.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -102,6 +105,14 @@
 				713292881DBBED2D003AC6E5 /* LongBowArrow.swift */,
 			);
 			name = ShellConfigurations;
+			sourceTree = "<group>";
+		};
+		C8027CAE1DBCEB4200322A0E /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				C8027CAC1DBCEB3900322A0E /* Level1.sks */,
+			);
+			name = Levels;
 			sourceTree = "<group>";
 		};
 		C8B7E5DF1DBAD52100FBDFF5 = {
@@ -135,16 +146,9 @@
 				C8B7E5FA1DBAD52100FBDFF5 /* LaunchScreen.storyboard */,
 				C8B7E5FD1DBAD52100FBDFF5 /* Info.plist */,
 				713292801DBBD999003AC6E5 /* PhysicsCategories.swift */,
+				C8027CAE1DBCEB4200322A0E /* Levels */,
 			);
 			path = LastArcher;
-			sourceTree = "<group>";
-		};
-		C8F7BFCC1DBAE067008C5BE4 /* Levels */ = {
-			isa = PBXGroup;
-			children = (
-				C8F7BFCA1DBAE062008C5BE4 /* Level1.sks */,
-			);
-			name = Levels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,9 +210,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8027CAD1DBCEB3900322A0E /* Level1.sks in Resources */,
 				C8B7E5F71DBAD52100FBDFF5 /* Main.storyboard in Resources */,
 				C8B7E5EE1DBAD52100FBDFF5 /* GameScene.sks in Resources */,
-				C8F7BFCB1DBAE062008C5BE4 /* Level1.sks in Resources */,
 				C8B7E5F91DBAD52100FBDFF5 /* Assets.xcassets in Resources */,
 				C8B7E5FC1DBAD52100FBDFF5 /* LaunchScreen.storyboard in Resources */,
 				C8B7E5F01DBAD52100FBDFF5 /* Actions.sks in Resources */,
@@ -227,6 +231,7 @@
 				713292811DBBD999003AC6E5 /* PhysicsCategories.swift in Sources */,
 				713292871DBBED1C003AC6E5 /* StandartBowArrow.swift in Sources */,
 				713292851DBBE851003AC6E5 /* ShellConfiguration.swift in Sources */,
+				C8027CB01DBCECEA00322A0E /* AnalogJoystick.swift in Sources */,
 				7132927C1DBBB338003AC6E5 /* BasicArrow.swift in Sources */,
 				C8B7E5F21DBAD52100FBDFF5 /* GameScene.swift in Sources */,
 				C8B7E5F41DBAD52100FBDFF5 /* GameViewController.swift in Sources */,
