@@ -22,16 +22,20 @@ class GameScene: SKScene {
     let positionArcher = CGPoint(x:-10, y:-400)
     var archer = Archer()
     
+    let cameraNode = SKCameraNode()
+    
     private var lastUpdateTime : TimeInterval = 0
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     
     let setJoystickStickImageBtn = SKLabelNode(), setJoystickSubstrateImageBtn = SKLabelNode()
     
-    let moveAnalogStick =  🕹(diameter: 110)
-    let shootAnalogStick = AnalogJoystick(diameter: 90)
+    let moveAnalogStick =  🕹(diameter: 150)
+    let shootAnalogStick = AnalogJoystick(diameter: 150)
 
     override func sceneDidLoad() {
+        
+        
         
         archer = Archer.createArcher(scene: self, position: positionArcher)
         
@@ -57,10 +61,11 @@ class GameScene: SKScene {
                                               SKAction.removeFromParent()]))
         }
         
-        moveAnalogStick.position = CGPoint(x: moveAnalogStick.radius + 15, y: moveAnalogStick.radius + 15)
-        addChild(moveAnalogStick)
+        moveAnalogStick.position = CGPoint(x: archer.position.x - ((self.frame.maxX - self.frame.minX) / 2) + moveAnalogStick.radius + 50, y: archer.position.y - ((self.frame.maxY - self.frame.minY) / 2) + moveAnalogStick.radius + 50)
         
-        shootAnalogStick.position = CGPoint(x: self.frame.maxX - shootAnalogStick.radius - 15, y:shootAnalogStick.radius + 15)
+        shootAnalogStick.position = CGPoint(x: archer.position.x + ((self.frame.maxX - self.frame.minX) / 2) - moveAnalogStick.radius - 50, y: archer.position.y - ((self.frame.maxY - self.frame.minY) / 2) + moveAnalogStick.radius + 50)
+        
+        addChild(moveAnalogStick)
         addChild(shootAnalogStick)
         
         moveAnalogStick.stick.color = .gray
@@ -83,6 +88,23 @@ class GameScene: SKScene {
         shootAnalogStick.startHandler = shootStartHandler
         shootAnalogStick.trackingHandler = shootTrackingHandler
         shootAnalogStick.stopHandler = shootStopHandler
+        
+        func moveTrackingHandler(data: AnalogJoystickData) {
+            
+            self.archer.position = CGPoint(x: self.archer.position.x + (data.velocity.x * 0.3), y: self.archer.position.y + (data.velocity.y * 0.3))
+            
+            self.cameraNode.position = self.archer.position
+            
+            moveAnalogStick.position = CGPoint(x: archer.position.x - ((self.frame.maxX - self.frame.minX) / 2) + moveAnalogStick.radius + 50, y: archer.position.y - ((self.frame.maxY - self.frame.minY) / 2) + moveAnalogStick.radius + 50)
+            
+            shootAnalogStick.position = CGPoint(x: archer.position.x + ((self.frame.maxX - self.frame.minX) / 2) - moveAnalogStick.radius - 50, y: archer.position.y - ((self.frame.maxY - self.frame.minY) / 2) + moveAnalogStick.radius + 50)
+        }
+        
+        moveAnalogStick.trackingHandler = moveTrackingHandler
+
+        addChild(self.cameraNode)
+        self.cameraNode.position = self.archer.position
+        self.camera = self.cameraNode
 
 
     }
@@ -90,10 +112,7 @@ class GameScene: SKScene {
 
     
     func touchDown(atPoint pos : CGPoint) {
-        shootVector = CGVector(point: pos)
-        chargeTime = NSDate.timeIntervalSinceReferenceDate
-        
-        print(pos)
+
     }
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -101,10 +120,7 @@ class GameScene: SKScene {
     }
     
     func touchUp(atPoint pos : CGPoint) {
-        shootVector = shootVector.difference(vector: CGVector(point: pos))
-        chargeTime = NSDate.timeIntervalSinceReferenceDate - chargeTime
-        let arrow = BasicArrow.createArrow(scene: self, configuration: LongBowArrow())
-        arrow.shoot(position: archer.position, direction: shootVector,chargeTime: chargeTime)
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
