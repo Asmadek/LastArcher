@@ -44,6 +44,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     override func sceneDidLoad() {
+        
+//        //Zoom function
+//        let zoomInAction = SKAction.scale(to: 2, duration: 0)
+//        cameraNode.run(zoomInAction)
+        
         archer = Archer.createArcher(scene: self, position: positionArcher)
         
         self.lastUpdateTime = 0
