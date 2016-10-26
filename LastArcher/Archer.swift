@@ -12,7 +12,7 @@ class Archer: SKSpriteNode {
     var weapon: Weapon
     
     init(){
-        let texture = SKTexture(imageNamed: "ArcherRAW")
+        let texture = SKTexture(imageNamed: "ArcherBeta")
         weapon = BasicBow.createWeapon(configuration: ShortBow())
         super.init(texture: texture, color: UIColor.clear,size: texture.size())
         self.name = "player"
