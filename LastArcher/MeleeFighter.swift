@@ -18,13 +18,18 @@ class MeleeFighter: SKSpriteNode {
     let MOVE_DURATION:TimeInterval = TimeInterval(0.2)
     var isMove:Bool = true
     
-    
     init(target:SKSpriteNode, position: CGPoint){
         let texture = SKTexture(imageNamed: "monster")
         self.target = target
         self.meleePosition = position
         super.init(texture: texture, color: UIColor.clear,size: texture.size())
         self.name = "monster"
+        self.physicsBody = SKPhysicsBody.init(texture: self.texture!, alphaThreshold: 0.5, size: (self.texture?.size())!)
+        self.physicsBody?.categoryBitMask = PhysicsCategory.Monster
+        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.isDynamic = true
+        self.physicsBody?.collisionBitMask = PhysicsCategory.Shell
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Shell
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,7 +40,7 @@ class MeleeFighter: SKSpriteNode {
         let melee = MeleeFighter(target:target, position:position)
         scene.addChild(melee)
         melee.position = position
-        
+        melee.physicsBody?.contactTestBitMask = PhysicsCategory.Shell
         return melee
     }
     

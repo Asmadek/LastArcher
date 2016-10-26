@@ -8,5 +8,7 @@
 
 struct PhysicsCategory {
     static let None:  UInt32 = 0
-    static let Shell:   UInt32 = 0b1 // 1
+    static let Shell:   UInt32 = 0x1 << 1
+    static let Monster: UInt32 = 0x1 << 2
+    static let Player: UInt32 = 0x1 << 3
 }

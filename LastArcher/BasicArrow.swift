@@ -19,7 +19,9 @@ class BasicArrow: SKSpriteNode {
         self.physicsBody = SKPhysicsBody.init(texture: self.texture!, alphaThreshold: 0.5, size: (self.texture?.size())!)
         self.physicsBody?.categoryBitMask = PhysicsCategory.Shell
         self.physicsBody?.affectedByGravity = false
-        self.physicsBody?.isDynamic = false
+        self.physicsBody?.isDynamic = true
+        self.physicsBody?.collisionBitMask = PhysicsCategory.Monster
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Monster
     }
     
     required init?(coder aDecoder: NSCoder) {

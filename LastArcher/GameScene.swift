@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     //TODO: remove after debug
     var chargeTime = TimeInterval(0.0)
     var shootVector = CGVector.zero
@@ -42,9 +42,6 @@ class GameScene: SKScene {
     }
 
     override func sceneDidLoad() {
-        
-        
-        
         archer = Archer.createArcher(scene: self, position: positionArcher)
         
         self.lastUpdateTime = 0
@@ -128,7 +125,6 @@ class GameScene: SKScene {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
     
-    
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         
@@ -151,7 +147,17 @@ class GameScene: SKScene {
         }
         
         self.lastUpdateTime = currentTime
-        
+    }
+    
+    override func didMove(to view: SKView) {
+        self.physicsWorld.contactDelegate = self
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        let nodeOne = contact.bodyA.node
+        let nodeTwo = contact.bodyB.node
+        nodeOne?.removeFromParent()
+        nodeTwo?.removeFromParent()
     }
     
     class func level(levelNum: Int) -> GameScene? {
