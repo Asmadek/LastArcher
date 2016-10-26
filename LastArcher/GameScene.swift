@@ -10,6 +10,8 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    static var mainScene: SKScene? = nil
+
     //TODO: remove after debug
     var chargeTime = TimeInterval(0.0)
     var shootVector = CGVector.zero
@@ -66,7 +68,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         func shootStopHandler() {
             self.chargeTime = NSDate.timeIntervalSinceReferenceDate - self.chargeTime
-            let arrow = BasicArrow.createArrow(scene: self, configuration: LongBowArrow())
+            let arrow = BasicArrow.createArrow(configuration: LongBowArrow())
             arrow.shoot(position: self.archer.position, direction: self.currentVector, chargeTime: self.chargeTime)
         }
         
@@ -94,6 +96,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         run(SKAction.repeatForever(
             SKAction.sequence([SKAction.run({MeleeFighter.createMeleeFighter(scene: self, position: self.randomPosition(), target:self.archer)}),
                                SKAction.wait(forDuration: 2.0)])))
+        GameScene.mainScene = self
     }
 
     
@@ -106,7 +109,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func touchUp(atPoint pos : CGPoint) {
-
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

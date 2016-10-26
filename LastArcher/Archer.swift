@@ -8,9 +8,12 @@
 
 import SpriteKit
 
-class Archer: SKSpriteNode {    
+class Archer: SKSpriteNode {
+    var weapon: Weapon
+    
     init(){
         let texture = SKTexture(imageNamed: "ArcherRAW")
+        weapon = BasicBow.createWeapon(configuration: ShortBow())
         super.init(texture: texture, color: UIColor.clear,size: texture.size())
         self.name = "player"
         self.physicsBody = SKPhysicsBody.init(texture: self.texture!, alphaThreshold: 0.5, size: (self.texture?.size())!)
@@ -30,6 +33,10 @@ class Archer: SKSpriteNode {
         return archer
     }
 
+    func shoot(chargeTime: TimeInterval) {
+        let direction = CGVector.init(dx: 1 * cos(self.zRotation), dy: 1 * sin(self.zRotation))
+        weapon.shoot(position: self.position, direction: direction, chargeTime: chargeTime)
+    }
     
     func didMoveToScene() {
         zPosition = 100
