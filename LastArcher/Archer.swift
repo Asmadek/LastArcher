@@ -38,6 +38,12 @@ class Archer: SKSpriteNode {
         weapon.shoot(position: self.position, direction: direction, chargeTime: chargeTime)
     }
     
+    func move(direction: CGPoint) {
+          self.position = CGPoint(x: self.position.x + (direction.x * 0.3),
+                                  y: self.position.y + (direction.y * 0.3))
+    }
+    
+    
     func didMoveToScene() {
         zPosition = 100
     }

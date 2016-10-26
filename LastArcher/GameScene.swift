@@ -85,7 +85,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         func moveTrackingHandler(data: AnalogJoystickData) {
             
-            self.archer.position = CGPoint(x: self.archer.position.x + (data.velocity.x * 0.3), y: self.archer.position.y + (data.velocity.y * 0.3))
+            archer.move(direction: data.velocity)
+            
             
             self.cameraNode.position = self.archer.position
             
