@@ -51,7 +51,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     override func sceneDidLoad() {
-        
+        let weightScene = self.frame.maxX - self.frame.minX
+        let heightScene = self.frame.maxY - self.frame.minY
 //        //Zoom function
 //        let zoomInAction = SKAction.scale(to: 2, duration: 0)
 //        cameraNode.run(zoomInAction)
@@ -60,9 +61,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.lastUpdateTime = 0
        
-        moveAnalogStick.position = CGPoint(x: archer.position.x - ((self.frame.maxX - self.frame.minX) / 2) + moveAnalogStick.radius + 50, y: archer.position.y - ((self.frame.maxY - self.frame.minY) / 2) + moveAnalogStick.radius + 50)
+        moveAnalogStick.position = CGPoint(
+            x: archer.position.x - (weightScene / 2) + moveAnalogStick.radius + weightScene * 0.15,
+            y: archer.position.y - (heightScene / 2) + moveAnalogStick.radius + heightScene * 0.15)
         
-        shootAnalogStick.position = CGPoint(x: archer.position.x + ((self.frame.maxX - self.frame.minX) / 2) - moveAnalogStick.radius - 50, y: archer.position.y - ((self.frame.maxY - self.frame.minY) / 2) + moveAnalogStick.radius + 50)
+        shootAnalogStick.position = CGPoint(
+            x: archer.position.x + (weightScene / 2) - moveAnalogStick.radius - weightScene * 0.15,
+            y: archer.position.y - (heightScene / 2) + moveAnalogStick.radius + heightScene * 0.15)
         
         addChild(moveAnalogStick)
         addChild(shootAnalogStick)
@@ -77,13 +82,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         func shootTrackingHandler(data: AnalogJoystickData) {
-            archer.turn(direction: data.velocity.multiply(scalar: -1))
+            if (data.velocity.length() < 0.2){
+                self.isBowstring = false
+            }
+            else{
+                self.isBowstring = true
+                archer.turn(direction: data.velocity.multiply(scalar: -1))
+            }
             
         }
         
         func shootStopHandler() {
-            self.chargeTime = NSDate.timeIntervalSinceReferenceDate - self.chargeTime
-            archer.shoot(chargeTime: self.chargeTime)
+            if(self.isBowstring){
+                self.chargeTime = NSDate.timeIntervalSinceReferenceDate - self.chargeTime
+                archer.shoot(chargeTime: self.chargeTime)
+            }
             self.isBowstring = false
         }
         
@@ -93,7 +106,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         func moveTrackingHandler(data: AnalogJoystickData) {
             
-            archer.move(direction: data.velocity)
+            archer.move(direction: data.velocity.normalize())
             
             if (!self.isBowstring) {
                 archer.turn(direction: data.velocity)
@@ -101,9 +114,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             self.cameraNode.position = self.archer.position
             
-            moveAnalogStick.position = CGPoint(x: archer.position.x - ((self.frame.maxX - self.frame.minX) / 2) + moveAnalogStick.radius + 50, y: archer.position.y - ((self.frame.maxY - self.frame.minY) / 2) + moveAnalogStick.radius + 50)
+            moveAnalogStick.position = CGPoint(
+                x: archer.position.x - (weightScene / 2) + moveAnalogStick.radius + weightScene * 0.15,
+                y: archer.position.y - (heightScene / 2) + moveAnalogStick.radius + heightScene * 0.15)
             
-            shootAnalogStick.position = CGPoint(x: archer.position.x + ((self.frame.maxX - self.frame.minX) / 2) - moveAnalogStick.radius - 50, y: archer.position.y - ((self.frame.maxY - self.frame.minY) / 2) + moveAnalogStick.radius + 50)
+            shootAnalogStick.position = CGPoint(
+                x: archer.position.x + (weightScene / 2) - moveAnalogStick.radius - weightScene * 0.15,
+                y: archer.position.y - (heightScene / 2) + moveAnalogStick.radius + heightScene * 0.15)
         }
         
         moveAnalogStick.trackingHandler = moveTrackingHandler
@@ -114,7 +131,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         run(SKAction.repeatForever(
             SKAction.sequence([SKAction.run({MeleeFighter.createMeleeFighter(scene: self, position: self.randomPosition(), target:self.archer)}),
-                               SKAction.wait(forDuration: 2.0)])))
+                               SKAction.wait(forDuration: 4.0)])))
         GameScene.mainScene = self
     }
 

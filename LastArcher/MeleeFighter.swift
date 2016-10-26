@@ -12,8 +12,7 @@ class MeleeFighter: SKSpriteNode, Monster {
     
     var target:SKSpriteNode
     var meleePosition: CGPoint
-    let meleeMovePointsPerSec:CGFloat = 480.0
-    let ATTACK_RANGE:CGFloat = 40.0
+    let ATTACK_RANGE:CGFloat = 100.0
     let MOVE_SPEED:CGFloat = 4.0
     let MOVE_DURATION:TimeInterval = TimeInterval(0.2)
     var isMove:Bool = true
@@ -28,7 +27,7 @@ class MeleeFighter: SKSpriteNode, Monster {
         self.physicsBody?.categoryBitMask = PhysicsCategory.Monster
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = true
-        self.physicsBody?.collisionBitMask = PhysicsCategory.Shell
+        self.physicsBody?.collisionBitMask = PhysicsCategory.Shell | PhysicsCategory.Monster
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Shell
     }
     
@@ -64,7 +63,7 @@ class MeleeFighter: SKSpriteNode, Monster {
     }
     
     func hit(){
-        removeFromParent()
+        // removeFromParent()
         isMove = false
         
     }
