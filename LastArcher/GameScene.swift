@@ -21,9 +21,20 @@ class GameScene: SKScene {
     let positionArcher = CGPoint(x:-10, y:-400)
     var archer = Archer()
     
+    
+    //var melee = MeleeFighter(target:Archer(), position:CGPoint(x:-10, y:-600))
+    
     private var lastUpdateTime : TimeInterval = 0
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
+    
+    func randomPosition () -> CGPoint
+    {
+        let minPosition = self.size.width * 0.1
+        let maxPosition = self.size.width * 0.9
+        let actualX = CGFloat(Float(arc4random()) / 0xFFFFFFFF) * (maxPosition - minPosition) + minPosition
+        return CGPoint(x: actualX, y: self.size.height )
+    }
     
     override func sceneDidLoad() {
         
@@ -50,7 +61,13 @@ class GameScene: SKScene {
                                               SKAction.fadeOut(withDuration: 0.5),
                                               SKAction.removeFromParent()]))
         }
+
+        
+        run(SKAction.repeatForever(
+            SKAction.sequence([SKAction.run({MeleeFighter.createMeleeFighter(scene: self, position: self.randomPosition(), target:self.archer)}),
+                               SKAction.wait(forDuration: 2.0)])))
     }
+    
     
     func touchDown(atPoint pos : CGPoint) {
         shootVector = CGVector(point: pos)
@@ -103,7 +120,13 @@ class GameScene: SKScene {
             entity.update(deltaTime: dt)
         }
         
+        enumerateChildNodes(withName: "monster"){node,_ in
+            let monster = node as! MeleeFighter
+            monster.attack()
+        }
+        
         self.lastUpdateTime = currentTime
+        
     }
     
     class func level(levelNum: Int) -> GameScene? {
