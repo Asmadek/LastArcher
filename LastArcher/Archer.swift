@@ -10,6 +10,7 @@ import SpriteKit
 
 class Archer: SKSpriteNode {
     var weapon: Weapon
+    var currentScene: GameScene?
     
     init(){
         let texture = SKTexture(imageNamed: "ArcherBeta")
@@ -30,7 +31,7 @@ class Archer: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    static func createArcher(scene : SKScene, position: CGPoint)->Archer{
+    static func createArcher(scene : GameScene, position: CGPoint)->Archer{
         let archer = Archer()
         archer.position = position
         scene.addChild(archer)
@@ -40,6 +41,13 @@ class Archer: SKSpriteNode {
     func shoot(chargeTime: TimeInterval) {
         let direction = CGVector.init(dx: 1 * cos(self.zRotation), dy: 1 * sin(self.zRotation))
         weapon.shoot(position: self.position, direction: direction, chargeTime: chargeTime)
+        
+        let currentShoots = Int((GameScene.mainScene?.shootsLabel?.text)!)! + 1
+        GameScene.mainScene?.shootsLabel?.text = String(currentShoots)
+        
+        let currentScore = Int((GameScene.mainScene?.scoreLabel?.text)!)!
+        GameScene.mainScene?.accuracyLabel?.text = String(lroundf(Float(currentScore * 100) / Float(currentShoots) ))
+
     }
     
     func move(direction: CGVector) {

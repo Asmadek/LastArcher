@@ -12,6 +12,10 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
+    @IBOutlet weak var scores: UILabel!
+    @IBOutlet weak var accuracy: UILabel!
+    @IBOutlet weak var shoots: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +34,12 @@ class GameViewController: UIViewController {
             /* Set the scale mode to scale to fit the window */
             scene.scaleMode = .aspectFill
             
+            scene.scoreLabel = scores
+            scene.shootsLabel = shoots
+            scene.accuracyLabel = accuracy
+            
             skView.presentScene(scene)
+            
         }
     }
 

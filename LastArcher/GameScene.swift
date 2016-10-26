@@ -10,7 +10,7 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
-    static var mainScene: SKScene? = nil
+    static var mainScene: GameScene? = nil
 
     //TODO: remove after debug
     var chargeTime = TimeInterval(0.0)
@@ -23,7 +23,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //TODO: remove archer spawn by coordinates
     let positionArcher = CGPoint(x:-10, y:-400)
-    var archer = Archer()
+    var archer: Archer = Archer()
 
     let cameraNode = SKCameraNode()
     
@@ -37,6 +37,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let moveAnalogStick =  🕹(diameter: 150)
     let shootAnalogStick = AnalogJoystick(diameter: 150)
+    
+    var scoreLabel: UILabel? = nil
+    var shootsLabel: UILabel? = nil
+    var accuracyLabel: UILabel? = nil
 
     func randomPosition () -> CGPoint
     {

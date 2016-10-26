@@ -36,8 +36,8 @@ class MeleeFighter: SKSpriteNode, Monster {
         fatalError("init(coder:) has not been implemented")
     }
     
-    static func createMeleeFighter(scene : SKScene, position: CGPoint, target:SKSpriteNode) -> MeleeFighter{
-        let melee = MeleeFighter(target:target, position:position)
+    static func createMeleeFighter(scene : GameScene, position: CGPoint, target:SKSpriteNode) -> MeleeFighter{
+        let melee = MeleeFighter(target:target, position:position, currentScene: scene)
         scene.addChild(melee)
         melee.position = position
         melee.physicsBody?.contactTestBitMask = PhysicsCategory.Shell
@@ -66,6 +66,7 @@ class MeleeFighter: SKSpriteNode, Monster {
     func hit(){
         removeFromParent()
         isMove = false
+        
     }
 
     func move(direction: CGVector){
@@ -76,6 +77,16 @@ class MeleeFighter: SKSpriteNode, Monster {
     
     func recieveDamage(damage: Double){
         removeFromParent()
+        
+        let currentScore = Int((GameScene.mainScene?.scoreLabel?.text)!)! + 1
+        GameScene.mainScene?.scoreLabel?.text = String(currentScore)
+        
+        let currentShoots = Int((GameScene.mainScene?.shootsLabel?.text)!)!
+        
+        GameScene.mainScene?.accuracyLabel?.text = String(lroundf(Float(currentScore * 100) / Float(currentShoots) ))
     }
 
+    func updateScores() {
+
+    }
 }
