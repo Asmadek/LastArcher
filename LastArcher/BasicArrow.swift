@@ -16,6 +16,7 @@ class BasicArrow: SKSpriteNode, ShellType {
         let texture = SKTexture(imageNamed: "ArrowBeta")
         self.configuration = configuration
         super.init(texture: texture, color: UIColor.clear,size: texture.size())
+        self.name = "shell"
         self.physicsBody = SKPhysicsBody.init(texture: self.texture!, alphaThreshold: 0.5, size: (self.texture?.size())!)
         self.physicsBody?.categoryBitMask = PhysicsCategory.Shell
         self.physicsBody?.affectedByGravity = false

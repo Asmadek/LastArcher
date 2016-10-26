@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class MeleeFighter: SKSpriteNode {
+class MeleeFighter: SKSpriteNode,Monster {
     
     var target:SKSpriteNode
     var meleePosition: CGPoint
@@ -73,4 +73,9 @@ class MeleeFighter: SKSpriteNode {
         self.run(moveAction)
         isMove = true
     }
+    
+    func recieveDamage(damage: Double){
+        removeFromParent()
+    }
+
 }
