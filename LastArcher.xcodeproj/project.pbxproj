@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30A4160C1DBFF10B003557E6 /* Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30A4160B1DBFF10B003557E6 /* Level1.sks */; };
+		30A4160F1DBFF362003557E6 /* MeleeFighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A4160E1DBFF362003557E6 /* MeleeFighter.swift */; };
+		30EBB4341DC051ED00544875 /* ExplosionCreature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EBB4331DC051ED00544875 /* ExplosionCreature.swift */; };
 		6DF63D251DBBDC06008A68F2 /* Archer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF63D241DBBDC06008A68F2 /* Archer.swift */; };
 		7132927C1DBBB338003AC6E5 /* BasicArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132927B1DBBB338003AC6E5 /* BasicArrow.swift */; };
 		7132927F1DBBC358003AC6E5 /* CGVector+Awesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132927E1DBBC358003AC6E5 /* CGVector+Awesome.swift */; };
@@ -23,10 +26,12 @@
 		C8B7E5F71DBAD52100FBDFF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8B7E5F51DBAD52100FBDFF5 /* Main.storyboard */; };
 		C8B7E5F91DBAD52100FBDFF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8B7E5F81DBAD52100FBDFF5 /* Assets.xcassets */; };
 		C8B7E5FC1DBAD52100FBDFF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8B7E5FA1DBAD52100FBDFF5 /* LaunchScreen.storyboard */; };
-		C8F7BFCB1DBAE062008C5BE4 /* Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8F7BFCA1DBAE062008C5BE4 /* Level1.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30A4160B1DBFF10B003557E6 /* Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1.sks; sourceTree = "<group>"; };
+		30A4160E1DBFF362003557E6 /* MeleeFighter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeleeFighter.swift; sourceTree = "<group>"; };
+		30EBB4331DC051ED00544875 /* ExplosionCreature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplosionCreature.swift; sourceTree = "<group>"; };
 		6DF63D241DBBDC06008A68F2 /* Archer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Archer.swift; sourceTree = "<group>"; };
 		7132927B1DBBB338003AC6E5 /* BasicArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicArrow.swift; sourceTree = "<group>"; };
 		7132927E1DBBC358003AC6E5 /* CGVector+Awesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Awesome.swift"; sourceTree = "<group>"; };
@@ -45,7 +50,6 @@
 		C8B7E5F81DBAD52100FBDFF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8B7E5FB1DBAD52100FBDFF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C8B7E5FD1DBAD52100FBDFF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C8F7BFCA1DBAE062008C5BE4 /* Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30A4160D1DBFF32E003557E6 /* Creatures */ = {
+			isa = PBXGroup;
+			children = (
+				30A4160E1DBFF362003557E6 /* MeleeFighter.swift */,
+				30EBB4331DC051ED00544875 /* ExplosionCreature.swift */,
+			);
+			name = Creatures;
+			sourceTree = "<group>";
+		};
 		6DF63D231DBBDBEA008A68F2 /* Archer */ = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +83,7 @@
 		713292781DBBB2EB003AC6E5 /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				30A4160D1DBFF32E003557E6 /* Creatures */,
 				6DF63D231DBBDBEA008A68F2 /* Archer */,
 				7132927A1DBBB311003AC6E5 /* Shells */,
 			);
@@ -135,16 +149,9 @@
 				C8B7E5FA1DBAD52100FBDFF5 /* LaunchScreen.storyboard */,
 				C8B7E5FD1DBAD52100FBDFF5 /* Info.plist */,
 				713292801DBBD999003AC6E5 /* PhysicsCategories.swift */,
+				30A4160B1DBFF10B003557E6 /* Level1.sks */,
 			);
 			path = LastArcher;
-			sourceTree = "<group>";
-		};
-		C8F7BFCC1DBAE067008C5BE4 /* Levels */ = {
-			isa = PBXGroup;
-			children = (
-				C8F7BFCA1DBAE062008C5BE4 /* Level1.sks */,
-			);
-			name = Levels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,8 +215,8 @@
 			files = (
 				C8B7E5F71DBAD52100FBDFF5 /* Main.storyboard in Resources */,
 				C8B7E5EE1DBAD52100FBDFF5 /* GameScene.sks in Resources */,
-				C8F7BFCB1DBAE062008C5BE4 /* Level1.sks in Resources */,
 				C8B7E5F91DBAD52100FBDFF5 /* Assets.xcassets in Resources */,
+				30A4160C1DBFF10B003557E6 /* Level1.sks in Resources */,
 				C8B7E5FC1DBAD52100FBDFF5 /* LaunchScreen.storyboard in Resources */,
 				C8B7E5F01DBAD52100FBDFF5 /* Actions.sks in Resources */,
 			);
@@ -224,6 +231,8 @@
 			files = (
 				713292891DBBED2D003AC6E5 /* LongBowArrow.swift in Sources */,
 				7132927F1DBBC358003AC6E5 /* CGVector+Awesome.swift in Sources */,
+				30EBB4341DC051ED00544875 /* ExplosionCreature.swift in Sources */,
+				30A4160F1DBFF362003557E6 /* MeleeFighter.swift in Sources */,
 				713292811DBBD999003AC6E5 /* PhysicsCategories.swift in Sources */,
 				713292871DBBED1C003AC6E5 /* StandartBowArrow.swift in Sources */,
 				713292851DBBE851003AC6E5 /* ShellConfiguration.swift in Sources */,
