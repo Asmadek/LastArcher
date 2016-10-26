@@ -26,6 +26,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     let cameraNode = SKCameraNode()
     
+    let collisionHandler = GeneralCollisionHandler()
+    
     private var lastUpdateTime : TimeInterval = 0
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
@@ -158,8 +160,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         let nodeOne = contact.bodyA.node
         let nodeTwo = contact.bodyB.node
-        nodeOne?.removeFromParent()
-        nodeTwo?.removeFromParent()
+        if(nodeOne == nil || nodeTwo == nil){
+            return
+        }
+        if(collisionHandler.canHandle(nodeOne: nodeOne!, nodeTwo: nodeTwo!)){
+            collisionHandler.handle(nodeOne: nodeOne!, nodeTwo: nodeTwo!)
+        }
     }
     
     class func level(levelNum: Int) -> GameScene? {
