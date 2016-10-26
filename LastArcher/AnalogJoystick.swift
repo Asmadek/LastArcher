@@ -10,11 +10,11 @@ import SpriteKit
 //MARK: AnalogJoystickData
 public struct AnalogJoystickData: CustomStringConvertible {
     
-    var velocity = CGPoint.zero,
+    var velocity = CGVector.zero,
     angular = CGFloat(0)
     
     mutating func reset() {
-        velocity = CGPoint.zero
+        velocity = CGVector.zero
         angular = 0
     }
     
@@ -196,12 +196,13 @@ open class AnalogJoystick: SKNode {
             guard tracking else {
                 return
             }
-            
+ 
             let maxDistantion = substrate.radius,
             realDistantion = sqrt(pow(location.x, 2) + pow(location.y, 2)),
-            needPosition = realDistantion <= maxDistantion ? CGPoint(x: location.x, y: location.y) : CGPoint(x: location.x / realDistantion * maxDistantion, y: location.y / realDistantion * maxDistantion)
-            stick.position = needPosition
-            data = AnalogJoystickData(velocity: needPosition, angular: -atan2(needPosition.x, needPosition.y))
+            needPosition = realDistantion <= maxDistantion ? CGVector(dx: location.x, dy: location.y) : CGVector(dx: location.x / realDistantion * maxDistantion, dy: location.y / realDistantion * maxDistantion)
+            stick.position.x = needPosition.dx
+            stick.position.y = needPosition.dy
+            data = AnalogJoystickData(velocity: needPosition, angular: -atan2(needPosition.dx, needPosition.dy))
         }
     }
     
