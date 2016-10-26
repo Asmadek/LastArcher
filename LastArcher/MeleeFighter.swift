@@ -36,7 +36,7 @@ class MeleeFighter: SKSpriteNode, Monster {
     }
     
     static func createMeleeFighter(scene : GameScene, position: CGPoint, target:SKSpriteNode) -> MeleeFighter{
-        let melee = MeleeFighter(target:target, position:position, currentScene: scene)
+        let melee = MeleeFighter(target:target, position:position)
         scene.addChild(melee)
         melee.position = position
         melee.physicsBody?.contactTestBitMask = PhysicsCategory.Shell
