@@ -27,8 +27,11 @@
 		714F5C411DBCDE0000BFB3BB /* StandartBow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714F5C401DBCDE0000BFB3BB /* StandartBow.swift */; };
 		714F5C431DBCE11500BFB3BB /* LongBow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714F5C421DBCE11500BFB3BB /* LongBow.swift */; };
 		714F5C451DBCE13B00BFB3BB /* ShortBow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714F5C441DBCE13B00BFB3BB /* ShortBow.swift */; };
+		C86E56BD1DC119FA008EEDC8 /* CollisionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86E56B91DC119FA008EEDC8 /* CollisionHandler.swift */; };
+		C86E56BE1DC119FA008EEDC8 /* GeneralCollisionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86E56BA1DC119FA008EEDC8 /* GeneralCollisionHandler.swift */; };
+		C86E56BF1DC119FA008EEDC8 /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86E56BB1DC119FA008EEDC8 /* Monster.swift */; };
+		C86E56C01DC119FA008EEDC8 /* MonsterShellHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86E56BC1DC119FA008EEDC8 /* MonsterShellHandler.swift */; };
 		C8B7E5EC1DBAD52100FBDFF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B7E5EB1DBAD52100FBDFF5 /* AppDelegate.swift */; };
-		C8B7E5EE1DBAD52100FBDFF5 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8B7E5ED1DBAD52100FBDFF5 /* GameScene.sks */; };
 		C8B7E5F01DBAD52100FBDFF5 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8B7E5EF1DBAD52100FBDFF5 /* Actions.sks */; };
 		C8B7E5F21DBAD52100FBDFF5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B7E5F11DBAD52100FBDFF5 /* GameScene.swift */; };
 		C8B7E5F41DBAD52100FBDFF5 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B7E5F31DBAD52100FBDFF5 /* GameViewController.swift */; };
@@ -58,9 +61,12 @@
 		714F5C401DBCDE0000BFB3BB /* StandartBow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandartBow.swift; sourceTree = "<group>"; };
 		714F5C421DBCE11500BFB3BB /* LongBow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LongBow.swift; sourceTree = "<group>"; };
 		714F5C441DBCE13B00BFB3BB /* ShortBow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortBow.swift; sourceTree = "<group>"; };
+		C86E56B91DC119FA008EEDC8 /* CollisionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionHandler.swift; sourceTree = "<group>"; };
+		C86E56BA1DC119FA008EEDC8 /* GeneralCollisionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralCollisionHandler.swift; sourceTree = "<group>"; };
+		C86E56BB1DC119FA008EEDC8 /* Monster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
+		C86E56BC1DC119FA008EEDC8 /* MonsterShellHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterShellHandler.swift; sourceTree = "<group>"; };
 		C8B7E5E81DBAD52100FBDFF5 /* LastArcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastArcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B7E5EB1DBAD52100FBDFF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C8B7E5ED1DBAD52100FBDFF5 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		C8B7E5EF1DBAD52100FBDFF5 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		C8B7E5F11DBAD52100FBDFF5 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		C8B7E5F31DBAD52100FBDFF5 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +166,17 @@
 			name = WeaponConfigurations;
 			sourceTree = "<group>";
 		};
+		C86E56C11DC11A28008EEDC8 /* CollisionHandler */ = {
+			isa = PBXGroup;
+			children = (
+				C86E56B91DC119FA008EEDC8 /* CollisionHandler.swift */,
+				C86E56BA1DC119FA008EEDC8 /* GeneralCollisionHandler.swift */,
+				C86E56BB1DC119FA008EEDC8 /* Monster.swift */,
+				C86E56BC1DC119FA008EEDC8 /* MonsterShellHandler.swift */,
+			);
+			name = CollisionHandler;
+			sourceTree = "<group>";
+		};
 		C8B7E5DF1DBAD52100FBDFF5 = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +196,7 @@
 		C8B7E5EA1DBAD52100FBDFF5 /* LastArcher */ = {
 			isa = PBXGroup;
 			children = (
+				C86E56C11DC11A28008EEDC8 /* CollisionHandler */,
 				7132927D1DBBC33B003AC6E5 /* Extensions */,
 				713292781DBBB2EB003AC6E5 /* Nodes */,
 				C8B7E5EB1DBAD52100FBDFF5 /* AppDelegate.swift */,
@@ -256,7 +274,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8B7E5F71DBAD52100FBDFF5 /* Main.storyboard in Resources */,
-				C8B7E5EE1DBAD52100FBDFF5 /* GameScene.sks in Resources */,
 				714F5C351DBCBFA600BFB3BB /* Level1.sks in Resources */,
 				C8B7E5F91DBAD52100FBDFF5 /* Assets.xcassets in Resources */,
 				C8B7E5FC1DBAD52100FBDFF5 /* LaunchScreen.storyboard in Resources */,
@@ -271,6 +288,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C86E56BF1DC119FA008EEDC8 /* Monster.swift in Sources */,
+				C86E56BE1DC119FA008EEDC8 /* GeneralCollisionHandler.swift in Sources */,
 				713292891DBBED2D003AC6E5 /* LongBowArrow.swift in Sources */,
 				714F5C3B1DBCC78100BFB3BB /* BasicBow.swift in Sources */,
 				7119C5801DBFF17E00E779B4 /* ExplosionCreature.swift in Sources */,
@@ -287,9 +306,11 @@
 				714F5C3D1DBCCF5A00BFB3BB /* ShellType.swift in Sources */,
 				C8B7E5F21DBAD52100FBDFF5 /* GameScene.swift in Sources */,
 				7119C5831DBFF17E00E779B4 /* MenuViewController.swift in Sources */,
+				C86E56C01DC119FA008EEDC8 /* MonsterShellHandler.swift in Sources */,
 				C8B7E5F41DBAD52100FBDFF5 /* GameViewController.swift in Sources */,
 				714F5C431DBCE11500BFB3BB /* LongBow.swift in Sources */,
 				6DF63D251DBBDC06008A68F2 /* Archer.swift in Sources */,
+				C86E56BD1DC119FA008EEDC8 /* CollisionHandler.swift in Sources */,
 				C8B7E5EC1DBAD52100FBDFF5 /* AppDelegate.swift in Sources */,
 				713292831DBBE65F003AC6E5 /* ShortBowArrow.swift in Sources */,
 				7119C5881DC1003600E779B4 /* AnalogJoystick.swift in Sources */,

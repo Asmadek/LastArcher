@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class MeleeFighter: SKSpriteNode,Monster {
+class MeleeFighter: SKSpriteNode, Monster {
     
     var target:SKSpriteNode
     var meleePosition: CGPoint

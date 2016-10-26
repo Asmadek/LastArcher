@@ -13,7 +13,7 @@ class BasicArrow: SKSpriteNode, ShellType {
     internal var configuration: ShellConfiguration
     
     init(configuration: ShellConfiguration){
-        let texture = SKTexture(imageNamed: "BasicArrow")
+        let texture = SKTexture(imageNamed: "ArrowBeta")
         self.configuration = configuration
         super.init(texture: texture, color: UIColor.clear,size: texture.size())
         self.name = "shell"

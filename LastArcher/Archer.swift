@@ -12,14 +12,16 @@ class Archer: SKSpriteNode {
     var weapon: Weapon
     
     init(){
-        let texture = SKTexture(imageNamed: "ArcherRAW")
+        let texture = SKTexture(imageNamed: "ArcherBeta")
         weapon = BasicBow.createWeapon(configuration: ShortBow())
         super.init(texture: texture, color: UIColor.clear,size: texture.size())
         self.name = "player"
-        self.physicsBody = SKPhysicsBody.init(texture: self.texture!, alphaThreshold: 0.5, size: (self.texture?.size())!)
+        //self.physicsBody = SKPhysicsBody.init(texture: self.texture!, alphaThreshold: 0.5, size: (self.texture?.size())!)
+        self.physicsBody = SKPhysicsBody.init(texture: texture, size: texture.size())
         self.physicsBody?.categoryBitMask = PhysicsCategory.Player
         self.physicsBody?.affectedByGravity = false
-        self.physicsBody?.isDynamic = false
+        self.physicsBody?.isDynamic = true
+        self.physicsBody?.allowsRotation = false
     }
     
     required init?(coder aDecoder: NSCoder) {
