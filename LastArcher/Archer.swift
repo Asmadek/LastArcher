@@ -22,6 +22,8 @@ class Archer: SKSpriteNode {
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = true
         self.physicsBody?.allowsRotation = false
+        self.physicsBody?.collisionBitMask = PhysicsCategory.Misc | PhysicsCategory.Monster
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Misc | PhysicsCategory.Monster
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,9 +42,13 @@ class Archer: SKSpriteNode {
         weapon.shoot(position: self.position, direction: direction, chargeTime: chargeTime)
     }
     
-    func move(direction: CGPoint) {
-          self.position = CGPoint(x: self.position.x + (direction.x * 0.3),
-                                  y: self.position.y + (direction.y * 0.3))
+    func move(direction: CGVector) {
+          self.position = CGPoint(x: self.position.x + (direction.dx * 0.3),
+                                  y: self.position.y + (direction.dy * 0.3))
+    }
+    
+    func turn(direction: CGVector) {
+        self.zRotation = direction.angleSpriteKit()
     }
     
     

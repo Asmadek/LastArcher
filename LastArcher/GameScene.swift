@@ -16,6 +16,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var chargeTime = TimeInterval(0.0)
     var shootVector = CGVector.zero
     var currentVector = CGVector.zero
+    var isBowstring = false
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
@@ -67,16 +68,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         func shootStartHandler() {
             self.chargeTime = NSDate.timeIntervalSinceReferenceDate
+            self.isBowstring = true
+            
         }
         
         func shootTrackingHandler(data: AnalogJoystickData) {
-            self.currentVector = CGVector(dx: sin(data.angular), dy: -1 * cos(data.angular))
+            archer.turn(direction: data.velocity.multiply(scalar: -1))
+            
         }
         
         func shootStopHandler() {
             self.chargeTime = NSDate.timeIntervalSinceReferenceDate - self.chargeTime
-            let arrow = BasicArrow.createArrow(configuration: LongBowArrow())
-            arrow.shoot(position: self.archer.position, direction: self.currentVector, chargeTime: self.chargeTime)
+            archer.shoot(chargeTime: self.chargeTime)
+            self.isBowstring = false
         }
         
         shootAnalogStick.startHandler = shootStartHandler
@@ -87,6 +91,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             archer.move(direction: data.velocity)
             
+            if (!self.isBowstring) {
+                archer.turn(direction: data.velocity)
+            }
             
             self.cameraNode.position = self.archer.position
             

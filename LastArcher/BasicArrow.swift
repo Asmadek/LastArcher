@@ -17,6 +17,7 @@ class BasicArrow: SKSpriteNode, ShellType {
         self.configuration = configuration
         super.init(texture: texture, color: UIColor.clear,size: texture.size())
         self.name = "shell"
+        self.zPosition = -1
         self.physicsBody = SKPhysicsBody.init(texture: self.texture!, alphaThreshold: 0.5, size: (self.texture?.size())!)
         self.physicsBody?.categoryBitMask = PhysicsCategory.Shell
         self.physicsBody?.affectedByGravity = false
@@ -36,7 +37,7 @@ class BasicArrow: SKSpriteNode, ShellType {
     }
     
     func didMoveToScene() {
-        zPosition = 100
+    
     }
     
     func shoot(position : CGPoint,direction : CGVector,chargeTime: TimeInterval){
