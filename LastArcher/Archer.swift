@@ -10,6 +10,7 @@ import SpriteKit
 
 class Archer: SKSpriteNode {
     var weapon: Weapon
+    let ARCHER_SPEED = CGFloat(4.5)
     
     init(){
         let texture = SKTexture(imageNamed: "ArcherBeta")
@@ -38,13 +39,13 @@ class Archer: SKSpriteNode {
     }
 
     func shoot(chargeTime: TimeInterval) {
-        let direction = CGVector.init(dx: 1 * cos(self.zRotation), dy: 1 * sin(self.zRotation))
+        let direction = CGVector.init(dx: cos(self.zRotation), dy: sin(self.zRotation))
         weapon.shoot(position: self.position, direction: direction, chargeTime: chargeTime)
     }
     
     func move(direction: CGVector) {
-          self.position = CGPoint(x: self.position.x + (direction.dx * 0.3),
-                                  y: self.position.y + (direction.dy * 0.3))
+          self.position = CGPoint(x: self.position.x + (direction.dx * ARCHER_SPEED),
+                                  y: self.position.y + (direction.dy * ARCHER_SPEED))
     }
     
     func turn(direction: CGVector) {
