@@ -16,6 +16,7 @@ class MeleeFighter: SKSpriteNode, Monster {
     let MOVE_SPEED:CGFloat = 4.0
     let MOVE_DURATION:TimeInterval = TimeInterval(0.2)
     var isMove:Bool = true
+    var isDead:Bool = false
     
     init(target:SKSpriteNode, position: CGPoint){
         let texture = SKTexture(imageNamed: "monster")
@@ -75,14 +76,15 @@ class MeleeFighter: SKSpriteNode, Monster {
     }
     
     func recieveDamage(damage: Double){
-        removeFromParent()
-        
-        let currentScore = Int((GameScene.mainScene?.scoreLabel?.text)!)! + 1
-        GameScene.mainScene?.scoreLabel?.text = String(currentScore)
-        
-        let currentShoots = Int((GameScene.mainScene?.shootsLabel?.text)!)!
-        
-        GameScene.mainScene?.accuracyLabel?.text = String(lroundf(Float(currentScore * 100) / Float(currentShoots) ))
+        if(!isDead){
+            destroy()
+        }
+    }
+    
+    func destroy(){
+        isDead = true
+        NotificationCenter.default.post(CustomNotifications.MonsterDied)
+        removeFromParent() 
     }
 
     func updateScores() {

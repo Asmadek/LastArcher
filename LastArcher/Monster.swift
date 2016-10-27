@@ -17,6 +17,7 @@
 import SpriteKit
 
 protocol Monster{
+    var isDead:Bool {get}
     func attack()
     func recieveDamage(damage: Double)
 }
