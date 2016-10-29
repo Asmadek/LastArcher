@@ -10,7 +10,10 @@ import SpriteKit
 
 class Archer: SKSpriteNode {
     var weapon: Weapon
-    let ARCHER_SPEED = CGFloat(4.5)
+    var isBowstring: Bool = false
+    var chargeTime:TimeInterval = 0.0
+    let ARCHER_SPEED:CGFloat = 4.5
+    let MIN_PULL_FORCE:CGFloat = 0.2
     
     init(){
         let texture = SKTexture(imageNamed: "ArcherBeta")
@@ -37,10 +40,26 @@ class Archer: SKSpriteNode {
         scene.addChild(archer)
         return archer
     }
-
-    func shoot(chargeTime: TimeInterval) {
+    
+    func pullBowstring(){
+        self.isBowstring = true
+        self.chargeTime = NSDate.timeIntervalSinceReferenceDate
+    }
+    
+    func releaseBowstring(pullForce: CGFloat){
+        if(!self.isBowstring){
+            return
+        }
+        self.isBowstring = false
+        self.chargeTime = NSDate.timeIntervalSinceReferenceDate - self.chargeTime
+        if(pullForce > MIN_PULL_FORCE){
+            shoot()
+        }
+    }
+    
+    private func shoot(){
         let direction = CGVector.init(dx: cos(self.zRotation), dy: sin(self.zRotation))
-        weapon.shoot(position: self.position, direction: direction, chargeTime: chargeTime)
+        weapon.shoot(position: self.position, direction: direction, chargeTime: self.chargeTime)
         NotificationCenter.default.post(CustomNotifications.ArcherShot)
     }
     

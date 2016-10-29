@@ -11,12 +11,6 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     static var mainScene: GameScene? = nil
-
-    //TODO: remove after debug
-    var chargeTime = TimeInterval(0.0)
-    var shootVector = CGVector.zero
-    var currentVector = CGVector.zero
-    var isBowstring = false
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
@@ -29,14 +23,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let statistics = Statistics()
     
+    var joystick: Joystick? = nil
+    
     private var lastUpdateTime : TimeInterval = 0
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
-    
-    let setJoystickStickImageBtn = SKLabelNode(), setJoystickSubstrateImageBtn = SKLabelNode()
-    
-    var moveAnalogStick =  🕹(diameter: 150)
-    var shootAnalogStick = AnalogJoystick(diameter: 150)
     
     var scoreLabel: UILabel? = nil
     var shootsLabel: UILabel? = nil
@@ -58,84 +49,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let playerConstraint = SKConstraint.distance(SKRange(constantValue: 0), to: archer)
         self.camera!.constraints = [playerConstraint]
     }
+    
+    func initilizeControlComponents(){
+        self.joystick = Joystick()
+    }
 
     override func sceneDidLoad() {
-        var weightScene = self.frame.maxX - self.frame.minX
-        var heightScene = self.frame.maxY - self.frame.minY
-        //Zoom function
-        let zoomInAction = SKAction.scale(to: 1.5, duration: 0.5)
-        let zoomOutAction = SKAction.scale(to: 1, duration: 0.5)
-     
-   
+        GameScene.mainScene = self
         archer = Archer.createArcher(scene: self, position: positionArcher)
         
         initilizeCamera()
+        initilizeControlComponents()
         
         self.lastUpdateTime = 0
         
-        moveAnalogStick.position = CGPoint(
-            x: self.frame.minX * 0.65,
-            y: self.frame.minY * 0.5)
-        
-        shootAnalogStick.position = CGPoint(
-            x: self.frame.maxX * 0.65,
-            y: self.frame.minY * 0.5)
-        
-        self.camera!.addChild(moveAnalogStick)
-        self.camera!.addChild(shootAnalogStick)
-        
-        moveAnalogStick.stick.color = .gray
-        shootAnalogStick.stick.color = .gray
-
-        
-        func shootStartHandler() {
-            self.chargeTime = NSDate.timeIntervalSinceReferenceDate
-            self.isBowstring = true
-            self.camera!.run(zoomInAction)
-            
-        }
-        
-        func shootTrackingHandler(data: AnalogJoystickData) {
-            
-            if (data.velocity.length() < 0.2){
-                self.isBowstring = false
-            }
-            else{
-                self.isBowstring = true
-                archer.turn(direction: data.velocity.multiply(scalar: -1))
-            }
-            
-        }
-        
-        func shootStopHandler() {
-            if(self.isBowstring){
-                self.chargeTime = NSDate.timeIntervalSinceReferenceDate - self.chargeTime
-                archer.shoot(chargeTime: self.chargeTime)
-            }
-            self.isBowstring = false
-            self.camera!.run(zoomOutAction)
-        }
-        
-        shootAnalogStick.startHandler = shootStartHandler
-        shootAnalogStick.trackingHandler = shootTrackingHandler
-        shootAnalogStick.stopHandler = shootStopHandler
-        
-        func moveTrackingHandler(data: AnalogJoystickData) {
-            
-            archer.move(direction: data.velocity.normalize())
-            
-            if (!self.isBowstring) {
-                archer.turn(direction: data.velocity)
-            }
-        }
-        
-        moveAnalogStick.trackingHandler = moveTrackingHandler
-        
         run(SKAction.repeatForever(
-            SKAction.sequence([SKAction.run({MeleeFighter.createMeleeFighter(scene: self, position: self.randomPosition(), target:self.archer)}),
-                               SKAction.wait(forDuration: 4.0)])))
+            SKAction.sequence([SKAction.run({MeleeFighter.createMeleeFighter(scene: self, position: self.randomPosition(), target:self.archer)}), SKAction.wait(forDuration: 4.0)])))
         
-        GameScene.mainScene = self
         
         NotificationCenter.default.addObserver(forName: CustomNotifications.StatisticsRefreshed.name, object: nil, queue: nil, using: refreshStatistics)
     }
