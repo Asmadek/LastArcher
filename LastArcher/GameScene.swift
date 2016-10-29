@@ -35,8 +35,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let setJoystickStickImageBtn = SKLabelNode(), setJoystickSubstrateImageBtn = SKLabelNode()
     
-    let moveAnalogStick =  🕹(diameter: 150)
-    let shootAnalogStick = AnalogJoystick(diameter: 150)
+    var moveAnalogStick =  🕹(diameter: 150)
+    var shootAnalogStick = AnalogJoystick(diameter: 150)
     
     var scoreLabel: UILabel? = nil
     var shootsLabel: UILabel? = nil
@@ -51,16 +51,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     override func sceneDidLoad() {
-        let weightScene = self.frame.maxX - self.frame.minX
-        let heightScene = self.frame.maxY - self.frame.minY
-//        //Zoom function
-//        let zoomInAction = SKAction.scale(to: 2, duration: 0)
-//        cameraNode.run(zoomInAction)
-        
+        var weightScene = self.frame.maxX - self.frame.minX
+        var heightScene = self.frame.maxY - self.frame.minY
+//        var weightScene = cameraNode.frame.maxX - cameraNode.frame.minX
+//        var heightScene = cameraNode.frame.maxY - cameraNode.frame.maxY
+        //Zoom function
+        let zoomInAction = SKAction.scale(to: 1.5, duration: 0.5)
+        let zoomOutAction = SKAction.scale(to: 1, duration: 0.5)
+     
+   
         archer = Archer.createArcher(scene: self, position: positionArcher)
         
         self.lastUpdateTime = 0
-       
+        
         moveAnalogStick.position = CGPoint(
             x: archer.position.x - (weightScene / 2) + moveAnalogStick.radius + weightScene * 0.15,
             y: archer.position.y - (heightScene / 2) + moveAnalogStick.radius + heightScene * 0.15)
@@ -78,10 +81,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         func shootStartHandler() {
             self.chargeTime = NSDate.timeIntervalSinceReferenceDate
             self.isBowstring = true
+            cameraNode.run(zoomInAction)
             
         }
         
         func shootTrackingHandler(data: AnalogJoystickData) {
+            
             if (data.velocity.length() < 0.2){
                 self.isBowstring = false
             }
@@ -98,6 +103,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 archer.shoot(chargeTime: self.chargeTime)
             }
             self.isBowstring = false
+               cameraNode.run(zoomOutAction)
         }
         
         shootAnalogStick.startHandler = shootStartHandler
