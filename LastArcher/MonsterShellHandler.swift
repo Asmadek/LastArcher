@@ -33,7 +33,7 @@ class MonsterShellHandler: CollisionHandler{
         else{
             monster = nodeTwo as! Monster
         }
-        monster.recieveDamage(damage: shell.getDamage())
         shell.destroy()
+        monster.recieveDamage(damage: shell.getDamage())
     }
 }

@@ -41,13 +41,7 @@ class Archer: SKSpriteNode {
     func shoot(chargeTime: TimeInterval) {
         let direction = CGVector.init(dx: cos(self.zRotation), dy: sin(self.zRotation))
         weapon.shoot(position: self.position, direction: direction, chargeTime: chargeTime)
-        
-        let currentShoots = Int((GameScene.mainScene?.shootsLabel?.text)!)! + 1
-        GameScene.mainScene?.shootsLabel?.text = String(currentShoots)
-        
-        let currentScore = Int((GameScene.mainScene?.scoreLabel?.text)!)!
-        GameScene.mainScene?.accuracyLabel?.text = String(lroundf(Float(currentScore * 100) / Float(currentShoots) ))
-
+        NotificationCenter.default.post(CustomNotifications.ArcherShot)
     }
     
     func move(direction: CGVector) {

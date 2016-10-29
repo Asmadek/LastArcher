@@ -29,6 +29,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let collisionHandler = GeneralCollisionHandler()
     
+    let statistics = Statistics()
+    
     private var lastUpdateTime : TimeInterval = 0
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
@@ -138,7 +140,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         run(SKAction.repeatForever(
             SKAction.sequence([SKAction.run({MeleeFighter.createMeleeFighter(scene: self, position: self.randomPosition(), target:self.archer)}),
                                SKAction.wait(forDuration: 4.0)])))
+        
         GameScene.mainScene = self
+        
+        NotificationCenter.default.addObserver(forName: CustomNotifications.StatisticsRefreshed.name, object: nil, queue: nil, using: refreshStatistics)
+    }
+    
+    func refreshStatistics(notification: Notification){
+        scoreLabel?.text? = String(statistics.currentScore)
+        shootsLabel?.text? = String(statistics.currentShoots)
+        accuracyLabel?.text? = String(statistics.accuracy)
     }
 
     
