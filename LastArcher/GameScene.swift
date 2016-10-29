@@ -24,8 +24,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //TODO: remove archer spawn by coordinates
     let positionArcher = CGPoint(x:-10, y:-400)
     var archer: Archer = Archer()
-
-    let cameraNode = SKCameraNode()
     
     let collisionHandler = GeneralCollisionHandler()
     
@@ -43,7 +41,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var scoreLabel: UILabel? = nil
     var shootsLabel: UILabel? = nil
     var accuracyLabel: UILabel? = nil
-
+    
     func randomPosition () -> CGPoint
     {
         let minPosition = self.size.width * 0.1
@@ -51,12 +49,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let actualX = CGFloat(Float(arc4random()) / 0xFFFFFFFF) * (maxPosition - minPosition) + minPosition
         return CGPoint(x: actualX, y: self.size.height )
     }
+    
+    func initilizeCamera(){
+        let cameraNode = SKCameraNode()
+        addChild(cameraNode)
+        self.camera = cameraNode
+        
+        let playerConstraint = SKConstraint.distance(SKRange(constantValue: 0), to: archer)
+        self.camera!.constraints = [playerConstraint]
+    }
 
     override func sceneDidLoad() {
         var weightScene = self.frame.maxX - self.frame.minX
         var heightScene = self.frame.maxY - self.frame.minY
-//        var weightScene = cameraNode.frame.maxX - cameraNode.frame.minX
-//        var heightScene = cameraNode.frame.maxY - cameraNode.frame.maxY
         //Zoom function
         let zoomInAction = SKAction.scale(to: 1.5, duration: 0.5)
         let zoomOutAction = SKAction.scale(to: 1, duration: 0.5)
@@ -64,26 +69,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
    
         archer = Archer.createArcher(scene: self, position: positionArcher)
         
+        initilizeCamera()
+        
         self.lastUpdateTime = 0
         
         moveAnalogStick.position = CGPoint(
-            x: archer.position.x - (weightScene / 2) + moveAnalogStick.radius + weightScene * 0.15,
-            y: archer.position.y - (heightScene / 2) + moveAnalogStick.radius + heightScene * 0.15)
+            x: self.frame.minX * 0.65,
+            y: self.frame.minY * 0.5)
         
         shootAnalogStick.position = CGPoint(
-            x: archer.position.x + (weightScene / 2) - moveAnalogStick.radius - weightScene * 0.15,
-            y: archer.position.y - (heightScene / 2) + moveAnalogStick.radius + heightScene * 0.15)
+            x: self.frame.maxX * 0.65,
+            y: self.frame.minY * 0.5)
         
-        addChild(moveAnalogStick)
-        addChild(shootAnalogStick)
+        self.camera!.addChild(moveAnalogStick)
+        self.camera!.addChild(shootAnalogStick)
         
         moveAnalogStick.stick.color = .gray
         shootAnalogStick.stick.color = .gray
+
         
         func shootStartHandler() {
             self.chargeTime = NSDate.timeIntervalSinceReferenceDate
             self.isBowstring = true
-            cameraNode.run(zoomInAction)
+            self.camera!.run(zoomInAction)
             
         }
         
@@ -105,7 +113,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 archer.shoot(chargeTime: self.chargeTime)
             }
             self.isBowstring = false
-               cameraNode.run(zoomOutAction)
+            self.camera!.run(zoomOutAction)
         }
         
         shootAnalogStick.startHandler = shootStartHandler
@@ -119,23 +127,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if (!self.isBowstring) {
                 archer.turn(direction: data.velocity)
             }
-            
-            self.cameraNode.position = self.archer.position
-            
-            moveAnalogStick.position = CGPoint(
-                x: archer.position.x - (weightScene / 2) + moveAnalogStick.radius + weightScene * 0.15,
-                y: archer.position.y - (heightScene / 2) + moveAnalogStick.radius + heightScene * 0.15)
-            
-            shootAnalogStick.position = CGPoint(
-                x: archer.position.x + (weightScene / 2) - moveAnalogStick.radius - weightScene * 0.15,
-                y: archer.position.y - (heightScene / 2) + moveAnalogStick.radius + heightScene * 0.15)
         }
         
         moveAnalogStick.trackingHandler = moveTrackingHandler
-
-        addChild(self.cameraNode)
-        self.cameraNode.position = self.archer.position
-        self.camera = self.cameraNode
         
         run(SKAction.repeatForever(
             SKAction.sequence([SKAction.run({MeleeFighter.createMeleeFighter(scene: self, position: self.randomPosition(), target:self.archer)}),
