@@ -13,44 +13,45 @@ class Bar: SKSpriteNode {
     var barHeight: CGFloat = 4
     var barSize: CGSize
     var progress: CGFloat
+    var max: CGFloat
     
-    init(barWidth: CGFloat, barHeight: CGFloat, color: UIColor, progress: CGFloat) {
+    init(barWidth: CGFloat, barHeight: CGFloat, color: UIColor, max: CGFloat, progress: CGFloat) {
         self.barSize = CGSize(width: barWidth, height: barHeight)
         self.progress = progress
+        self.max = max
         
-        super.init(texture: nil, color: color, size: size)
-        
-        let fillColor = UIColor(red: 113.0/255, green: 202.0/255, blue: 53.0/255, alpha:1)
-        let borderColor = UIColor(red: 35.0/255, green: 28.0/255, blue: 40.0/255, alpha:1)
-//        
-//        // create drawing context
-//        UIGraphicsBeginImageContextWithOptions(barSize, false, 0)
-//        let context = UIGraphicsGetCurrentContext()
-//        
-//        // draw the outline for the health bar
-//         borderColor.setStroke()
-//        let borderRect = CGRect(origin: CGPointZero, size: barSize)
-//        CGContextStrokeRectWithWidth(context, borderRect, 1)
-//        
-//        // draw the health bar with a colored rectangle
-//        fillColor.setFill()
+        super.init(texture: nil, color: color, size: self.barSize)
+        self.updateBar(progress: progress)
     }
     
     func updateBar(progress: CGFloat) {
+        let fillColor = self.color
+        let borderColor = UIColor(red: 35.0/255, green: 28.0/255, blue: 40.0/255, alpha:1)
         
-//
-//        let barWidth = (barSize.width - 1) * CGFloat(hp) / CGFloat(MaxHealth)
-//        let barRect = CGRect(x: 0.5, y: 0.5, width: barWidth, height: barSize.height - 1)
-//        CGContextFillRect(context, barRect)
-//        
-//        // extract image
-//        let spriteImage = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-//        
-//        // set sprite texture and size
-//        node.texture = SKTexture(image: spriteImage)
-//        node.size = barSize
+        // create drawing context
+        UIGraphicsBeginImageContextWithOptions(barSize, false, 0)
+        let context = UIGraphicsGetCurrentContext()
+        
+        // draw the outline for the health bar
+        borderColor.setStroke()
+        let borderRect = CGRect(origin: CGPoint.zero, size: self.barSize)
+        context!.stroke(borderRect, width: 1)
+        
+        // draw the health bar with a colored rectangle
+        fillColor.setFill()
+        let barWidth = (self.barSize.width - 1) * CGFloat(progress) / CGFloat(self.max)
+        let barRect = CGRect(x: 0.5, y: 0.5, width: barWidth, height: self.barSize.height - 1)
+        context!.fill(barRect)
+        
+        // extract image
+        let spriteImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        // set sprite texture and size
+        self.texture = SKTexture(image: spriteImage!)
+        self.size = self.barSize
     }
+
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
