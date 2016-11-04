@@ -51,6 +51,10 @@ class Bar: SKSpriteNode {
         self.texture = SKTexture(image: spriteImage!)
         self.size = self.barSize
     }
+    
+    func updateBarPercent(progress: CGFloat) {
+        self.updateBar(progress: progress * max)
+    }
 
     
     required init?(coder aDecoder: NSCoder) {
