@@ -9,8 +9,12 @@
 import SpriteKit
 
 protocol WeaponConfiguration {
+    // time between shooting
     var reloadTime:TimeInterval {get}
+    // sprite animations
     var moveAnimation:SKAction {get}
+    // sprite animations
     var shootAnimation:SKAction {get}
+    // weapon stats
     var shellConfiguration: ShellConfiguration {get}
 }
