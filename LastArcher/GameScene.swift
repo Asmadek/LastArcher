@@ -19,6 +19,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let positionArcher = CGPoint(x:-10, y:-400)
     var archer: Archer = Archer()
     
+    let chargeBar: Bar = Bar(barWidth: 100,
+                             barHeight: 10,
+                             color: UIColor(red: 130/255, green: 177/255, blue: 255/255, alpha:1),
+                             max: 100,
+                             progress: 0)
+    
     let collisionHandler = GeneralCollisionHandler()
     
     let statistics = Statistics()
@@ -48,6 +54,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let playerConstraint = SKConstraint.distance(SKRange(constantValue: 0), to: archer)
         self.camera!.constraints = [playerConstraint]
+    
+
     }
     
     func initilizeControlComponents(){
@@ -57,9 +65,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func sceneDidLoad() {
         GameScene.mainScene = self
         archer = Archer.createArcher(scene: self, position: positionArcher)
+
         
         initilizeCamera()
         initilizeControlComponents()
+
+        chargeBar.zPosition = -10
+        self.addChild(chargeBar)
+        
         
         self.lastUpdateTime = 0
         
@@ -119,7 +132,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for entity in self.entities {
             entity.update(deltaTime: dt)
         }
-        
+        chargeBar.position = CGPoint(
+            x: archer.position.x,
+            y: archer.position.y + 100
+        )
         enumerateChildNodes(withName: "monster"){node,_ in
             let monster = node as! MeleeFighter
             monster.attack()

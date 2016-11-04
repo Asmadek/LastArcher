@@ -22,12 +22,17 @@ class Joystick{
     var pullForce:CGFloat
     var cameraTriggered:Bool
     
+    var chargeBar:Bar
+    var pupsik:CGFloat = 10
+    
+    
     init(){
         self.mainScene = GameScene.mainScene!
         self.archer = mainScene.archer
         self.camera = mainScene.camera!
         self.pullForce = 0.0
         self.cameraTriggered = false
+        self.chargeBar = mainScene.chargeBar
         
         moveAnalogStick.position = CGPoint(
             x: mainScene.frame.minX * 0.65,
@@ -60,6 +65,9 @@ class Joystick{
         camera.run(cameraZoomInAction)
         print(archer.chargeTime)
         cameraTriggered = false
+        
+        chargeBar.zPosition = -10
+        pupsik = 0
     }
     
     func moveTrackingHandler(data: AnalogJoystickData) {
@@ -67,9 +75,11 @@ class Joystick{
         if (!archer.isBowstring) {
             archer.turn(direction: data.velocity)
         }
+
     }
     
     func shootTrackingHandler(data: AnalogJoystickData) {
+
         pullForce = data.velocity.length()
         if (pullForce > archer.MIN_PULL_FORCE){
             archer.turn(direction: data.velocity.multiply(scalar: -1))
@@ -79,5 +89,8 @@ class Joystick{
             camera.run(cameraZoomOutAction)
             cameraTriggered = true
         }
+        pupsik = pupsik + 10
+        chargeBar.updateBar(progress: pupsik)
+        chargeBar.zPosition = 111
     }
 }

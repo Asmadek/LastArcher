@@ -35,7 +35,7 @@ class Bar: SKSpriteNode {
         // draw the outline for the health bar
         borderColor.setStroke()
         let borderRect = CGRect(origin: CGPoint.zero, size: self.barSize)
-        context!.stroke(borderRect, width: 1)
+        context!.stroke(borderRect, width: 2)
         
         // draw the health bar with a colored rectangle
         fillColor.setFill()
