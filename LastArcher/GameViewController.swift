@@ -16,6 +16,9 @@ class GameViewController: UIViewController {
     @IBOutlet weak var accuracy: UILabel!
     @IBOutlet weak var shoots: UILabel!
     
+    var skin: Int!
+    var weapon: Int!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
