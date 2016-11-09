@@ -15,6 +15,10 @@ protocol WeaponConfiguration {
     var moveAnimation:SKAction {get}
     // sprite animations
     var shootAnimation:SKAction {get}
+    // standart texture
+    var standartTexture:SKTexture {get}
+    // sprite
+    var sprite: SKNode {get}
     // weapon stats
     var shellConfiguration: ShellConfiguration {get}
 }

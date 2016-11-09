@@ -56,21 +56,23 @@ class Joystick{
     }
     
     func shootStartHandler() {
-        archer.pullBowstring()
-        print(archer.chargeTime)
-        chargeBar.zPosition = 111
-        self.startChargeTime = NSDate.timeIntervalSinceReferenceDate
+        if (archer.weapon.isReadyForShoot){
+            archer.pullBowstring()
+            chargeBar.zPosition = 111
+            self.startChargeTime = NSDate.timeIntervalSinceReferenceDate
+        }
     }
     
     func shootStopHandler() {
-        archer.releaseBowstring(pullForce: self.pullForce)
-        camera.run(cameraZoomInAction)
-        print(archer.chargeTime)
-        cameraTriggered = false
-        
-        chargeBar.zPosition = -10
-        pupsik = 0.0
-        chargeBar.updateBarPercent(progress: pupsik)
+        if (archer.isBowstring){
+            archer.releaseBowstring(pullForce: self.pullForce)
+            camera.run(cameraZoomInAction)
+            cameraTriggered = false
+            
+            chargeBar.zPosition = -10
+            pupsik = 0.0
+            chargeBar.updateBarPercent(progress: pupsik)
+        }
     }
     
     func moveTrackingHandler(data: AnalogJoystickData) {
@@ -82,21 +84,22 @@ class Joystick{
     }
     
     func shootTrackingHandler(data: AnalogJoystickData) {
-
-        pullForce = data.velocity.length()
-        if (pullForce > archer.MIN_PULL_FORCE){
-            archer.turn(direction: data.velocity.multiply(scalar: -1))
-
+        if (archer.isBowstring){
+            pullForce = data.velocity.length()
+            if (pullForce > archer.MIN_PULL_FORCE){
+                archer.turn(direction: data.velocity.multiply(scalar: -1))
+                
+            }
+            if (((NSDate.timeIntervalSinceReferenceDate - archer.weapon.chargeTime) > 0.7) && (cameraTriggered == false)){
+                camera.run(cameraZoomOutAction)
+                cameraTriggered = true
+            }
+            pupsik = (CGFloat((NSDate.timeIntervalSinceReferenceDate - self.startChargeTime) / archer.weapon.configuration.shellConfiguration.maxChargeDuration))
+            
+            print(NSDate.timeIntervalSinceReferenceDate - self.startChargeTime)
+            print(archer.weapon.configuration.shellConfiguration.maxChargeDuration)
+            print(pupsik)
+            chargeBar.updateBarPercent(progress: pupsik)
         }
-        if (((NSDate.timeIntervalSinceReferenceDate - archer.chargeTime) > 0.7) && (cameraTriggered == false)){
-            camera.run(cameraZoomOutAction)
-            cameraTriggered = true
-        }
-        pupsik = (CGFloat((NSDate.timeIntervalSinceReferenceDate - self.startChargeTime) / archer.weapon.configuration.shellConfiguration.maxChargeDuration))
-        
-        print(NSDate.timeIntervalSinceReferenceDate - self.startChargeTime)
-        print(archer.weapon.configuration.shellConfiguration.maxChargeDuration)
-        print(pupsik)
-        chargeBar.updateBarPercent(progress: pupsik)
     }
 }

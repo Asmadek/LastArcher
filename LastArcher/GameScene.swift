@@ -77,7 +77,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.lastUpdateTime = 0
         
         run(SKAction.repeatForever(
-            SKAction.sequence([SKAction.run({MeleeFighter.createMeleeFighter(scene: self, position: self.randomPosition(), target:self.archer)}), SKAction.wait(forDuration: 4.0)])))
+            SKAction.sequence([SKAction.run({MeleeFighter.createMeleeFighter(scene: self, position: self.randomPosition(), target:self.archer)}), SKAction.wait(forDuration: 10.0)])))
         
         
         NotificationCenter.default.addObserver(forName: CustomNotifications.StatisticsRefreshed.name, object: nil, queue: nil, using: refreshStatistics)

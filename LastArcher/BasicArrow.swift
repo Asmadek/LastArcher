@@ -17,13 +17,7 @@ class BasicArrow: SKSpriteNode, ShellType {
         self.configuration = configuration
         super.init(texture: texture, color: UIColor.clear,size: texture.size())
         self.name = "shell"
-        self.zPosition = -1
-        self.physicsBody = SKPhysicsBody.init(texture: self.texture!, alphaThreshold: 0.5, size: (self.texture?.size())!)
-        self.physicsBody?.categoryBitMask = PhysicsCategory.Shell
-        self.physicsBody?.affectedByGravity = false
-        self.physicsBody?.isDynamic = true
-        self.physicsBody?.collisionBitMask = PhysicsCategory.Monster
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.Monster
+        self.zPosition = -2
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,7 +26,6 @@ class BasicArrow: SKSpriteNode, ShellType {
     
     static func createArrow(configuration: ShellConfiguration) -> BasicArrow{
         let arrow = BasicArrow(configuration: configuration)
-        GameScene.mainScene?.addChild(arrow)
         return arrow
     }
     
@@ -40,13 +33,38 @@ class BasicArrow: SKSpriteNode, ShellType {
     
     }
     
-    func shoot(position : CGPoint,direction : CGVector,chargeTime: TimeInterval){
+    private func initPhysicsBody(){
+        self.physicsBody = SKPhysicsBody.init(texture: self.texture!, alphaThreshold: 0.5, size: (self.texture?.size())!)
+        self.physicsBody?.categoryBitMask = PhysicsCategory.Shell
+        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.isDynamic = true
+        self.physicsBody?.collisionBitMask = PhysicsCategory.Monster
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Monster
+    }
+    
+    /*func shoot(position : CGPoint,direction : CGVector,chargeTime: TimeInterval){
         if (direction.length() < 0.1){
             destroy()
         }
+        self.initPhysicsBody()
+        self.move(toParent: GameScene.mainScene!)
+
         let move_vector = direction.normalize().multiply(scalar: configuration.moveSpeed)
         self.position = position
         self.zRotation = direction.angleSpriteKit()
+        self.damageMultiplier = configuration.minDamageMultiplier + TimeInterval.minimum(chargeTime, configuration.maxChargeDuration)/configuration.maxChargeDuration*(configuration.maxDamageMultiplier-configuration.minDamageMultiplier)
+        let moveAction = SKAction.sequence([SKAction.move(by: move_vector, duration: configuration.lifeTime),
+                                            SKAction.run({self.destroy()})])
+        self.run(moveAction)
+    }*/
+    
+   func shoot(direction : CGVector, chargeTime: TimeInterval){
+        self.initPhysicsBody()
+        self.move(toParent: GameScene.mainScene!)
+    
+        let move_vector = direction.normalize().multiply(scalar: configuration.moveSpeed)
+        self.zRotation = move_vector.angleSpriteKit()
+        
         self.damageMultiplier = configuration.minDamageMultiplier + TimeInterval.minimum(chargeTime, configuration.maxChargeDuration)/configuration.maxChargeDuration*(configuration.maxDamageMultiplier-configuration.minDamageMultiplier)
         let moveAction = SKAction.sequence([SKAction.move(by: move_vector, duration: configuration.lifeTime),
                                             SKAction.run({self.destroy()})])
@@ -59,5 +77,9 @@ class BasicArrow: SKSpriteNode, ShellType {
     
     func destroy(){
         removeFromParent()
+    }
+    
+    func getNode()-> SKSpriteNode{
+        return self as SKSpriteNode
     }
 }

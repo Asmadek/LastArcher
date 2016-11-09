@@ -12,7 +12,8 @@ protocol ShellType {
     var damageMultiplier:Double {get}
     var configuration:ShellConfiguration {get}
     
-    func shoot(position : CGPoint,direction : CGVector,chargeTime: TimeInterval)
+    func getNode() -> SKSpriteNode
+    func shoot(direction : CGVector,chargeTime: TimeInterval)
     func getDamage()-> Double
     func destroy()
 }

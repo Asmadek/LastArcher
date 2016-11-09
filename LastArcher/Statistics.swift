@@ -32,7 +32,9 @@ class Statistics{
     }
     
     func refreshAccuracy(){
-        self.accuracy = (currentScore*100)/currentShoots
+        if(currentShoots>0){
+            self.accuracy = (currentScore*100)/currentShoots
+        }
         NotificationCenter.default.post(CustomNotifications.StatisticsRefreshed)
     }
 }

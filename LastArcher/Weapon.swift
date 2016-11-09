@@ -10,5 +10,9 @@ import SpriteKit
 
 protocol Weapon {
     var configuration: WeaponConfiguration {get}
-    func shoot(position : CGPoint,direction : CGVector,chargeTime: TimeInterval)
+    var chargeTime:TimeInterval {get}
+    var isReadyForShoot:Bool {get}
+    
+    func pullBowstring()
+    func releaseBowstring(pullForce: CGFloat)
 }

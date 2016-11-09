@@ -11,16 +11,19 @@ import SpriteKit
 class Archer: SKSpriteNode {
     var weapon: Weapon
     var isBowstring: Bool = false
-    var chargeTime:TimeInterval = 0.0
     let ARCHER_SPEED:CGFloat = 4.5
     let MIN_PULL_FORCE:CGFloat = 0.2
     
     init(){
         let texture = SKTexture(imageNamed: "ArcherBeta")
+        let emptyTexture = SKTexture(imageNamed: "archer_empty")
         weapon = BasicBow.createWeapon(configuration: ShortBow())
-        super.init(texture: texture, color: UIColor.clear,size: texture.size())
+        super.init(texture: emptyTexture, color: UIColor.clear,size: texture.size())
         self.name = "player"
-        //self.physicsBody = SKPhysicsBody.init(texture: self.texture!, alphaThreshold: 0.5, size: (self.texture?.size())!)
+        self.setWeapon(weapon: BasicBow.createWeapon(configuration: StandartBow()))
+        let node = SKSpriteNode(fileNamed: "Archer.sks")!.childNode(withName: "archer_body")!
+        node.move(toParent: self)
+        
         self.physicsBody = SKPhysicsBody.init(texture: texture, size: texture.size())
         self.physicsBody?.categoryBitMask = PhysicsCategory.Player
         self.physicsBody?.affectedByGravity = false
@@ -37,13 +40,19 @@ class Archer: SKSpriteNode {
     static func createArcher(scene : GameScene, position: CGPoint)->Archer{
         let archer = Archer()
         archer.position = position
+        
         scene.addChild(archer)
         return archer
     }
     
+    func setWeapon(weapon: Weapon){
+        self.weapon = weapon
+        weapon.configuration.sprite.move(toParent: self)
+    }
+    
     func pullBowstring(){
         self.isBowstring = true
-        self.chargeTime = NSDate.timeIntervalSinceReferenceDate
+        weapon.pullBowstring()
     }
     
     func releaseBowstring(pullForce: CGFloat){
@@ -51,18 +60,13 @@ class Archer: SKSpriteNode {
             return
         }
         self.isBowstring = false
-        self.chargeTime = NSDate.timeIntervalSinceReferenceDate - self.chargeTime
         if(pullForce > MIN_PULL_FORCE){
-            shoot()
+            weapon.releaseBowstring(pullForce: pullForce)
+            NotificationCenter.default.post(CustomNotifications.ArcherShot)
         }
+        
     }
-    
-    private func shoot(){
-        let direction = CGVector.init(dx: cos(self.zRotation), dy: sin(self.zRotation))
-        weapon.shoot(position: self.position, direction: direction, chargeTime: self.chargeTime)
-        NotificationCenter.default.post(CustomNotifications.ArcherShot)
-    }
-    
+        
     func move(direction: CGVector) {
           self.position = CGPoint(x: self.position.x + (direction.dx * ARCHER_SPEED),
                                   y: self.position.y + (direction.dy * ARCHER_SPEED))

@@ -10,30 +10,60 @@ import SpriteKit
 
 class BasicBow: Weapon {
     var isReadyForShoot = true
-    var reloadTimer: Timer
     var configuration: WeaponConfiguration
+    var shell: ShellType
+    var chargeTime:TimeInterval = 0.0
     
     init(configuration: WeaponConfiguration){
         self.configuration = configuration
-        self.reloadTimer = Timer()
+        self.shell = BasicArrow.createArrow(configuration: configuration.shellConfiguration)
+        configuration.sprite.addChild(self.shell.getNode())
+        
+        self.shell.getNode().setScale(2.0)
+        self.shell.getNode().position = CGPoint(x: 100, y: 10)
+        isReadyForShoot = true
     }
     
     static func createWeapon(configuration: WeaponConfiguration) -> BasicBow{
         let weapon = BasicBow(configuration: configuration)
+        weapon.configuration.sprite.run(weapon.configuration.moveAnimation)
         return weapon
     }
     
-    func shoot(position : CGPoint,direction : CGVector,chargeTime: TimeInterval){
+    func reload(){
+        self.shell = BasicArrow.createArrow(configuration: configuration.shellConfiguration)
+        configuration.sprite.addChild(self.shell.getNode())
+        
+        self.shell.getNode().setScale(2.0)
+        self.shell.getNode().position = CGPoint(x: 100, y: 10)
+        isReadyForShoot = true
+    }
+    
+    func pullBowstring(){
         if(isReadyForShoot){
-            let arrow = BasicArrow.createArrow(configuration: configuration.shellConfiguration)
-            arrow.shoot(position: position, direction: direction,chargeTime: chargeTime)
-            isReadyForShoot = false
-            reloadTimer = Timer.scheduledTimer(timeInterval: configuration.reloadTime,target: self, selector: #selector(self.reload), userInfo: nil,repeats: false)
+            self.chargeTime = NSDate.timeIntervalSinceReferenceDate
+            configuration.sprite.removeAllActions()
+            configuration.sprite.run(configuration.shootAnimation)
+            self.shell.getNode().run(SKAction.sequence([
+                SKAction.move(by: CGVector(dx: -20, dy: 0), duration: 0.1),
+                SKAction.wait(forDuration: self.shell.configuration.maxChargeDuration/2),
+                SKAction.move(by: CGVector(dx: -20, dy: 0), duration: 0.1),
+                SKAction.wait(forDuration: self.shell.configuration.maxChargeDuration/2)]))
         }
     }
     
-    @objc func reload(){
-        isReadyForShoot = true
-        reloadTimer.invalidate()
+    func releaseBowstring(pullForce: CGFloat){
+        self.chargeTime = NSDate.timeIntervalSinceReferenceDate - self.chargeTime
+        self.shell.getNode().setScale(1.0)
+        let direction = CGVector.init(dx: cos(self.configuration.sprite.parent!.zRotation), dy: sin(self.configuration.sprite.parent!.zRotation))
+        self.shell.shoot(direction : direction,chargeTime: chargeTime)
+        isReadyForShoot = false
+        configuration.sprite.run(
+            SKAction.sequence([
+                SKAction.wait(forDuration: self.configuration.reloadTime),
+                SKAction.run {self.reload()},
+                SKAction.setTexture(configuration.standartTexture),
+                configuration.moveAnimation])
+        )
     }
 }
