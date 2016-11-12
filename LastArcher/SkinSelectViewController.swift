@@ -18,14 +18,12 @@ class SkinSelectViewController: UIViewController {
     
     var skin = -1;
     var weapon = -1;
+    var level = "Story1";
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
         confirm.addTarget(self, action: #selector(SkinSelectViewController.confirmClicked), for: .touchUpInside)
-        
-        
-        
     }
     
     func confirmClicked() {
@@ -58,6 +56,7 @@ class SkinSelectViewController: UIViewController {
             
             svc.skin = skin
             svc.weapon = weapon
+            svc.level = level
         }
     }
     

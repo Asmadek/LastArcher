@@ -18,13 +18,19 @@ class GameViewController: UIViewController {
     
     var skin: Int!
     var weapon: Int!
+    var level: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
         // including entities and graphs.
-        if let scene = GameScene.level(levelNum: 1) {
+        
+        if self.level == nil {
+            self.level = "Level1"
+        }
+        
+        if let scene = GameScene.level(levelName: level) {
             // Configure the view.
             let skView = self.view as! SKView
             skView.showsFPS = true

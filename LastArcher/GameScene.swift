@@ -159,8 +159,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    class func level(levelNum: Int) -> GameScene? {
-        let scene = GameScene(fileNamed: "Level\(levelNum)")!
+    class func level(levelName: String) -> GameScene? {
+        let scene = GameScene(fileNamed: levelName)!
         scene.scaleMode = .aspectFill
         return scene
     }
