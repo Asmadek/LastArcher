@@ -18,15 +18,15 @@ class ShortBow: WeaponConfiguration {
     var standartTexture:SKTexture
     
     init(){
-        sprite = SKSpriteNode(fileNamed: "StandartBow.sks")!.childNode(withName: "weapon")!
-        standartTexture = SKTexture(imageNamed: "basic_bow_standart")
+        sprite = SKSpriteNode(fileNamed: "ShortBow.sks")!.childNode(withName: "weapon")!
+        standartTexture = SKTexture(imageNamed: "short_bow_standart")
         moveAnimation = SKAction.sequence([SKAction.rotate(toAngle: 0, duration: 0),
                                            SKAction.repeatForever(SKAction.sequence([
                                             SKAction.rotate(byAngle: -0.2, duration: 0.8),
                                             SKAction.rotate(byAngle: 0.2, duration: 0.8)]))])
         
         
-        shootAnimation = SKAction.animate(with: [SKTexture(imageNamed: "basic_bow_attack_1"),
-                                                 SKTexture(imageNamed: "basic_bow_attack_2")], timePerFrame: shellConfiguration.maxChargeDuration/2)
+        shootAnimation = SKAction.animate(with: [SKTexture(imageNamed: "short_bow_attack_1"),
+                                                 SKTexture(imageNamed: "short_bow_attack_2")], timePerFrame: shellConfiguration.maxChargeDuration/2)
     }
 }

@@ -19,8 +19,8 @@ class BasicBow: Weapon {
         self.shell = BasicArrow.createArrow(configuration: configuration.shellConfiguration)
         configuration.sprite.addChild(self.shell.getNode())
         
-        self.shell.getNode().setScale(2.0)
-        self.shell.getNode().position = CGPoint(x: 100, y: 10)
+        self.shell.getNode().setScale(5.0)
+        self.shell.getNode().position = CGPoint(x: 350, y: 10)
         isReadyForShoot = true
     }
     
@@ -34,8 +34,8 @@ class BasicBow: Weapon {
         self.shell = BasicArrow.createArrow(configuration: configuration.shellConfiguration)
         configuration.sprite.addChild(self.shell.getNode())
         
-        self.shell.getNode().setScale(2.0)
-        self.shell.getNode().position = CGPoint(x: 100, y: 10)
+        self.shell.getNode().setScale(5.0)
+        self.shell.getNode().position = CGPoint(x: 350, y: 10)
         isReadyForShoot = true
     }
     
@@ -45,9 +45,9 @@ class BasicBow: Weapon {
             configuration.sprite.removeAllActions()
             configuration.sprite.run(configuration.shootAnimation)
             self.shell.getNode().run(SKAction.sequence([
-                SKAction.move(by: CGVector(dx: -20, dy: 0), duration: 0.1),
+                SKAction.move(by: CGVector(dx: -30, dy: 0), duration: 0.1),
                 SKAction.wait(forDuration: self.shell.configuration.maxChargeDuration/2),
-                SKAction.move(by: CGVector(dx: -20, dy: 0), duration: 0.1),
+                SKAction.move(by: CGVector(dx: -30, dy: 0), duration: 0.1),
                 SKAction.wait(forDuration: self.shell.configuration.maxChargeDuration/2)]))
         }
     }
