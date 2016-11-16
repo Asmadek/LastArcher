@@ -27,9 +27,8 @@ class SkinSelectViewController: UIViewController {
     }
     
     func confirmClicked() {
-        if let resultController = storyboard!.instantiateViewController(withIdentifier: "gameViewController") as? GameViewController {
-            present(resultController, animated: true, completion: nil)
-        }
+
+        
     }
 
     
@@ -51,7 +50,7 @@ class SkinSelectViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "segueTest") {
+        if (segue.identifier == "startGame") {
             let svc = segue.destination as! GameViewController;
             
             svc.skin = skin
