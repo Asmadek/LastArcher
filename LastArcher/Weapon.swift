@@ -15,4 +15,5 @@ protocol Weapon {
     
     func pullBowstring()
     func releaseBowstring(pullForce: CGFloat)
+    func remove()
 }
