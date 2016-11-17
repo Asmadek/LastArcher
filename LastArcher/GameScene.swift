@@ -39,6 +39,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var shootsLabel: UILabel? = nil
     var accuracyLabel: UILabel? = nil
     
+    var skinId: Int = 0
+    var weaponId: Int = 0
+
+    
     func randomPosition () -> CGPoint
     {
         let minPosition = self.size.width * 0.1
@@ -65,8 +69,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func sceneDidLoad() {
         GameScene.mainScene = self
         archer = Archer.createArcher(scene: self, position: positionArcher)
-
+        var weaponConfiguration: WeaponConfiguration;
         
+        switch weaponId {
+        case 1:
+            weaponConfiguration = LongBow()
+        case 2:
+            weaponConfiguration = ShortBow()
+        default:
+            weaponConfiguration = StandartBow()
+        }
+        let weapon = BasicBow.createWeapon(configuration: weaponConfiguration);
+        archer.setWeapon(weapon: weapon)
         initilizeCamera()
         initilizeControlComponents()
 
