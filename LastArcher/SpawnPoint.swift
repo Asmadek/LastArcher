@@ -11,13 +11,20 @@ import SpriteKit
 
 class SpawnPoint: SKSpriteNode {
     private var spawnCreatures: SKAction? = nil
+    var creaturesCount: Int = 0
+    
+    static func createSpawnPoint(at: CGPoint) {
+       SpawnPoint(position: at)
+    }
     
     init (position: CGPoint) {
         let texture = SKTexture.init(imageNamed: "archer_empty")
         super.init(texture: texture, color: UIColor.clear, size: CGSize.zero)
         GameScene.mainScene!.addChild(self)
         self.position = position
-        spawnCreatures = SKAction(self.createMelee(maxCountEnemies: 5))
+        spawnCreatures = SKAction.run {
+                self.createMelee(maxCountEnemies: 5)
+            }
         run(SKAction.repeatForever(SKAction.sequence([spawnCreatures!, SKAction.wait(forDuration: 10.0)])))
     }
     
@@ -26,12 +33,17 @@ class SpawnPoint: SKSpriteNode {
     }
     
     func createMelee (maxCountEnemies: Int){
-        if(self.children.count <= maxCountEnemies){
+        if(creaturesCount < maxCountEnemies){
             let monster = self.addMelee()
-            self.addChild(monster)
-            monster.position = CGPoint.zero
-            monster.move(toParent: GameScene.mainScene!)
+            GameScene.mainScene!.addChild(monster)
+            monster.position = self.position
+            monster.setSpawnPoint(spawnPoint: self)
+            creaturesCount += 1
         }
+    }
+    
+    func decreaseCreatureCount(){
+        creaturesCount -= 1
     }
     
     private func addMelee()-> MeleeFighter{

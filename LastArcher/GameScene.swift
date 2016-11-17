@@ -66,6 +66,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.healthIndicator = HealthIndicator()
         self.healthIndicator!.refreshIndicator(currentHealth: archer.health)
     }
+    
+    func initilizeSpawners(){
+        SpawnPoint.createSpawnPoint(at: archer.position)
+    }
 
     override func sceneDidLoad() {
         GameScene.mainScene = self
@@ -84,17 +88,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         archer.setWeapon(weapon: weapon)
         initilizeCamera()
         initilizeControlComponents()
+        initilizeSpawners()
 
         chargeBar.zPosition = -10
         self.addChild(chargeBar)
         
         
         self.lastUpdateTime = 0
-        
-        run(SKAction.repeatForever(
-            SKAction.sequence([SKAction.run({MeleeFighter.createMeleeFighter(scene: self, position: self.randomPosition(), target:self.archer)}), SKAction.wait(forDuration: 10.0)])))
-        
-        
+     
         NotificationCenter.default.addObserver(forName: CustomNotifications.StatisticsRefreshed.name, object: nil, queue: nil, using: refreshStatistics)
     }
     

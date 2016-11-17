@@ -19,6 +19,7 @@ class MeleeFighter: SKSpriteNode, Monster {
     
     var moveAnimation: SKAction? = nil
     var attackAnimation: SKAction? = nil
+    var spawnPoint: SpawnPoint? = nil
     var isMove:Bool = true
     var isDead:Bool = false
     
@@ -134,5 +135,16 @@ class MeleeFighter: SKSpriteNode, Monster {
 
     func updateScores() {
 
+    }
+    
+    func setSpawnPoint(spawnPoint: SpawnPoint){
+        self.spawnPoint = spawnPoint
+    }
+    
+    override func removeFromParent() {
+        if let sp = spawnPoint {
+            sp.decreaseCreatureCount()
+        }
+        super.removeFromParent()
     }
 }
