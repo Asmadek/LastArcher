@@ -44,8 +44,9 @@ class MeleeFighter: SKSpriteNode, Monster {
                         SKTexture(imageNamed: "earth_elemental_attack_2"),
                         SKTexture(imageNamed: "earth_elemental_attack_3")
                     ],timePerFrame: 0.1),
+                 SKAction.run {self.hit()},
                  SKAction.wait(forDuration: TimeInterval(0.7)),
-                 SKAction.run {self.hit()}
+                 SKAction.run {self.target.removeAllInfluence()}
                 ])
         )
         
@@ -75,7 +76,6 @@ class MeleeFighter: SKSpriteNode, Monster {
     private func getDirection() -> CGVector{
         let myPosition = CGVector(point: self.position)
         let targetPosition = CGVector(point: target.position)
-        let distance = myPosition.distance(vector: targetPosition)
         let direction = targetPosition.difference(vector: myPosition).normalize()
         return direction
     }

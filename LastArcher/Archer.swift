@@ -32,7 +32,6 @@ class Archer: SKSpriteNode {
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.collisionBitMask = PhysicsCategory.Misc | PhysicsCategory.Monster
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Misc | PhysicsCategory.Monster
-        self.physicsBody!.friction = 200.0
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -45,6 +44,10 @@ class Archer: SKSpriteNode {
         
         scene.addChild(archer)
         return archer
+    }
+    
+    func removeAllInfluence(){
+        self.physicsBody!.velocity = CGVector.zero
     }
     
     func setWeapon(weapon: Weapon){
@@ -72,7 +75,7 @@ class Archer: SKSpriteNode {
     }
         
     func move(direction: CGVector) {
-          self.position = CGPoint(x: self.position.x + (direction.dx * ARCHER_SPEED),
+        self.position = CGPoint(x: self.position.x + (direction.dx * ARCHER_SPEED),
                                   y: self.position.y + (direction.dy * ARCHER_SPEED))
     }
     
