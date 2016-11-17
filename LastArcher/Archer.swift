@@ -9,18 +9,19 @@
 import SpriteKit
 
 class Archer: SKSpriteNode {
-    var weapon: Weapon
+    var weapon: Weapon? = nil
     var isBowstring: Bool = false
+    var health: Double = 6.0
+    var maxHealth: Int = 6
     let ARCHER_SPEED:CGFloat = 4.5
     let MIN_PULL_FORCE:CGFloat = 0.2
     
     init(){
         let texture = SKTexture(imageNamed: "ArcherBeta")
         let emptyTexture = SKTexture(imageNamed: "archer_empty")
-        weapon = BasicBow.createWeapon(configuration: ShortBow())
         super.init(texture: emptyTexture, color: UIColor.clear,size: texture.size())
         self.name = "player"
-        self.setWeapon(weapon: BasicBow.createWeapon(configuration: StandartBow()))
+        self.setWeapon(weapon: BasicBow.createWeapon(configuration: LongBow()))
         let node = SKSpriteNode(fileNamed: "Archer.sks")!.childNode(withName: "archer_body")!
         node.move(toParent: self)
         
@@ -31,6 +32,7 @@ class Archer: SKSpriteNode {
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.collisionBitMask = PhysicsCategory.Misc | PhysicsCategory.Monster
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Misc | PhysicsCategory.Monster
+        self.physicsBody!.friction = 200.0
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,13 +48,14 @@ class Archer: SKSpriteNode {
     }
     
     func setWeapon(weapon: Weapon){
+        self.weapon?.remove()
         self.weapon = weapon
         weapon.configuration.sprite.move(toParent: self)
     }
     
     func pullBowstring(){
         self.isBowstring = true
-        weapon.pullBowstring()
+        weapon!.pullBowstring()
     }
     
     func releaseBowstring(pullForce: CGFloat){
@@ -61,7 +64,7 @@ class Archer: SKSpriteNode {
         }
         self.isBowstring = false
         if(pullForce > MIN_PULL_FORCE){
-            weapon.releaseBowstring(pullForce: pullForce)
+            weapon!.releaseBowstring(pullForce: pullForce)
             NotificationCenter.default.post(CustomNotifications.ArcherShot)
         }
         
@@ -76,9 +79,21 @@ class Archer: SKSpriteNode {
         self.zRotation = direction.angleSpriteKit()
     }
     
-    
     func didMoveToScene() {
         zPosition = 100
+    }
+    
+    func recieveDamage(damage: Double){
+        self.health = max(0.0,self.health - damage)
+        GameScene.mainScene!.healthIndicator!.refreshIndicator(currentHealth: health)
+        if (health < 0.001){
+            self.destroy()
+        }
+    }
+    
+    func heal(heal: Double){
+        self.health = max(Double(maxHealth),self.health + heal)
+        GameScene.mainScene!.healthIndicator!.refreshIndicator(currentHealth: health)
     }
     
     func destroy(){

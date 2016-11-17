@@ -30,6 +30,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let statistics = Statistics()
     
     var joystick: Joystick? = nil
+    var healthIndicator:HealthIndicator? = nil
     
     private var lastUpdateTime : TimeInterval = 0
     private var label : SKLabelNode?
@@ -54,12 +55,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let playerConstraint = SKConstraint.distance(SKRange(constantValue: 0), to: archer)
         self.camera!.constraints = [playerConstraint]
-    
-
     }
     
     func initilizeControlComponents(){
         self.joystick = Joystick()
+        self.healthIndicator = HealthIndicator()
+        self.healthIndicator!.refreshIndicator(currentHealth: archer.health)
     }
 
     override func sceneDidLoad() {

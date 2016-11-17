@@ -56,7 +56,7 @@ class Joystick{
     }
     
     func shootStartHandler() {
-        if (archer.weapon.isReadyForShoot){
+        if (archer.weapon!.isReadyForShoot){
             archer.pullBowstring()
             chargeBar.zPosition = 111
             self.startChargeTime = NSDate.timeIntervalSinceReferenceDate
@@ -90,14 +90,14 @@ class Joystick{
                 archer.turn(direction: data.velocity.multiply(scalar: -1))
                 
             }
-            if (((NSDate.timeIntervalSinceReferenceDate - archer.weapon.chargeTime) > 0.7) && (cameraTriggered == false)){
+            if (((NSDate.timeIntervalSinceReferenceDate - archer.weapon!.chargeTime) > 0.7) && (cameraTriggered == false)){
                 camera.run(cameraZoomOutAction)
                 cameraTriggered = true
             }
-            pupsik = (CGFloat((NSDate.timeIntervalSinceReferenceDate - self.startChargeTime) / archer.weapon.configuration.shellConfiguration.maxChargeDuration))
+            pupsik = (CGFloat((NSDate.timeIntervalSinceReferenceDate - self.startChargeTime) / archer.weapon!.configuration.shellConfiguration.maxChargeDuration))
             
             print(NSDate.timeIntervalSinceReferenceDate - self.startChargeTime)
-            print(archer.weapon.configuration.shellConfiguration.maxChargeDuration)
+            print(archer.weapon!.configuration.shellConfiguration.maxChargeDuration)
             print(pupsik)
             chargeBar.updateBarPercent(progress: pupsik)
         }
