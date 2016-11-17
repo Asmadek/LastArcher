@@ -12,7 +12,7 @@ class LongBowArrow: ShellConfiguration {
     var lifeTime = TimeInterval(7.0)
     var maxChargeDuration = TimeInterval(2.0)
     var moveSpeed = CGFloat(3700.0)
-    var baseDamage = 1.0
+    var baseDamage = 0.5
     var minDamageMultiplier = 0.30
     var maxDamageMultiplier = 2.00
 }

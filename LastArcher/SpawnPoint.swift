@@ -23,7 +23,7 @@ class SpawnPoint: SKSpriteNode {
         GameScene.mainScene!.addChild(self)
         self.position = position
         spawnCreatures = SKAction.run {
-                self.createMelee(maxCountEnemies: 5)
+                self.createMelee(maxCountEnemies: 1)
             }
         run(SKAction.repeatForever(SKAction.sequence([spawnCreatures!, SKAction.wait(forDuration: 10.0)])))
     }

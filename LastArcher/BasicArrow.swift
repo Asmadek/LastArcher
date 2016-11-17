@@ -76,6 +76,7 @@ class BasicArrow: SKSpriteNode, ShellType {
     }
     
     func destroy(){
+        self.physicsBody = nil
         removeFromParent()
     }
     

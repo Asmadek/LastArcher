@@ -68,7 +68,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func initilizeSpawners(){
-        SpawnPoint.createSpawnPoint(at: archer.position)
+        SpawnPoint.createSpawnPoint(at: CGPoint(x:200,y:200))
     }
 
     override func sceneDidLoad() {
