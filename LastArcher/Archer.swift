@@ -21,7 +21,7 @@ class Archer: SKSpriteNode {
         let emptyTexture = SKTexture(imageNamed: "archer_empty")
         super.init(texture: emptyTexture, color: UIColor.clear,size: texture.size())
         self.name = "player"
-        self.setWeapon(weapon: BasicBow.createWeapon(configuration: LongBow()))
+        self.setWeapon(weapon: BasicBow.createWeapon(configuration: ShortBow()))
         let node = SKSpriteNode(fileNamed: "Archer.sks")!.childNode(withName: "archer_body")!
         node.move(toParent: self)
         
@@ -51,6 +51,7 @@ class Archer: SKSpriteNode {
         self.weapon?.remove()
         self.weapon = weapon
         weapon.configuration.sprite.move(toParent: self)
+        weapon.configuration.sprite.position = CGPoint.zero
     }
     
     func pullBowstring(){
