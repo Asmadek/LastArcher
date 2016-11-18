@@ -70,7 +70,7 @@ class MeleeFighter: SKSpriteNode, Monster {
         self.physicsBody?.categoryBitMask = PhysicsCategory.Monster
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = true
-        self.physicsBody?.collisionBitMask = PhysicsCategory.Shell | PhysicsCategory.Monster
+        self.physicsBody?.collisionBitMask = PhysicsCategory.Shell | PhysicsCategory.Monster | PhysicsCategory.Misc
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Shell
         self.run(moveAnimation!)
     }
@@ -88,7 +88,7 @@ class MeleeFighter: SKSpriteNode, Monster {
         self.physicsBody?.categoryBitMask = PhysicsCategory.Monster
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = true
-        self.physicsBody?.collisionBitMask = PhysicsCategory.Shell | PhysicsCategory.Monster
+        self.physicsBody?.collisionBitMask = PhysicsCategory.Shell | PhysicsCategory.Monster | PhysicsCategory.Misc
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Shell
     }
     

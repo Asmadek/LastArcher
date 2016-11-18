@@ -41,15 +41,15 @@ class SkinSelectViewController: UIViewController {
 
         shortBowBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SkinSelectViewController.shortBowBtnClicked)))
         shortBowBtn.isUserInteractionEnabled = true
-
-        greenSkinBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SkinSelectViewController.greenSkinBtnClicked)))
-        greenSkinBtn.isUserInteractionEnabled = true
-
-        blueSkinBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SkinSelectViewController.blueSkinBtnClicked)))
-        blueSkinBtn.isUserInteractionEnabled = true
-
-        redSkinBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SkinSelectViewController.redSkinBtnClicked)))
-        redSkinBtn.isUserInteractionEnabled = true
+//
+//        greenSkinBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SkinSelectViewController.greenSkinBtnClicked)))
+//        greenSkinBtn.isUserInteractionEnabled = true
+//
+//        blueSkinBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SkinSelectViewController.blueSkinBtnClicked)))
+//        blueSkinBtn.isUserInteractionEnabled = true
+//
+//        redSkinBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SkinSelectViewController.redSkinBtnClicked)))
+//        redSkinBtn.isUserInteractionEnabled = true
 
     }
     
@@ -82,29 +82,29 @@ class SkinSelectViewController: UIViewController {
     }
     
     
-    func greenSkinBtnClicked() {
-        self.skin = 0;
-        setSkinBorders()
-    }
-    
-    func blueSkinBtnClicked() {
-        self.skin = 1;
-        setSkinBorders()
-    }
-    
-    func redSkinBtnClicked() {
-        self.skin = 2;
-        setSkinBorders()
-    }
-    
-    func setSkinBorders() {
-        self.greenSkinBtn.layer.borderWidth = (self.skin == 0) ? 2 : 0
-        self.greenSkinBtn.layer.borderColor = UIColor(red:0/255.0, green:0/255.0, blue:255/255.0, alpha: 1.0).cgColor
-        self.blueSkinBtn.layer.borderWidth = (self.skin == 1) ? 2 : 0
-        self.blueSkinBtn.layer.borderColor = UIColor(red:0/255.0, green:0/255.0, blue:255/255.0, alpha: 1.0).cgColor
-        self.redSkinBtn.layer.borderWidth = (self.skin == 2) ? 2 : 0
-        self.redSkinBtn.layer.borderColor = UIColor(red:0/255.0, green:0/255.0, blue:255/255.0, alpha: 1.0).cgColor
-    }
+//    func greenSkinBtnClicked() {
+//        self.skin = 0;
+//        setSkinBorders()
+//    }
+//    
+//    func blueSkinBtnClicked() {
+//        self.skin = 1;
+//        setSkinBorders()
+//    }
+//    
+//    func redSkinBtnClicked() {
+//        self.skin = 2;
+//        setSkinBorders()
+//    }
+//    
+//    func setSkinBorders() {
+//        self.greenSkinBtn.layer.borderWidth = (self.skin == 0) ? 2 : 0
+//        self.greenSkinBtn.layer.borderColor = UIColor(red:0/255.0, green:0/255.0, blue:255/255.0, alpha: 1.0).cgColor
+//        self.blueSkinBtn.layer.borderWidth = (self.skin == 1) ? 2 : 0
+//        self.blueSkinBtn.layer.borderColor = UIColor(red:0/255.0, green:0/255.0, blue:255/255.0, alpha: 1.0).cgColor
+//        self.redSkinBtn.layer.borderWidth = (self.skin == 2) ? 2 : 0
+//        self.redSkinBtn.layer.borderColor = UIColor(red:0/255.0, green:0/255.0, blue:255/255.0, alpha: 1.0).cgColor
+//    }
     
     override var shouldAutorotate: Bool {
         return true
