@@ -7,6 +7,54 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30D358621DDF03BD0038648F /* CollisionHandler.swift in Resources */ = {isa = PBXBuildFile; fileRef = C86E56B91DC119FA008EEDC8 /* CollisionHandler.swift */; };
+		30D358631DDF03BD0038648F /* GeneralCollisionHandler.swift in Resources */ = {isa = PBXBuildFile; fileRef = C86E56BA1DC119FA008EEDC8 /* GeneralCollisionHandler.swift */; };
+		30D358641DDF03BD0038648F /* Monster.swift in Resources */ = {isa = PBXBuildFile; fileRef = C86E56BB1DC119FA008EEDC8 /* Monster.swift */; };
+		30D358651DDF03BD0038648F /* MonsterShellHandler.swift in Resources */ = {isa = PBXBuildFile; fileRef = C86E56BC1DC119FA008EEDC8 /* MonsterShellHandler.swift */; };
+		30D358661DDF03BD0038648F /* Joystick.swift in Resources */ = {isa = PBXBuildFile; fileRef = C82991251DCBA8AB00EBCBC2 /* Joystick.swift */; };
+		30D358671DDF03BD0038648F /* CustomNotifications.swift in Resources */ = {isa = PBXBuildFile; fileRef = C82991261DCBA8AB00EBCBC2 /* CustomNotifications.swift */; };
+		30D358681DDF03BD0038648F /* Statistics.swift in Resources */ = {isa = PBXBuildFile; fileRef = C82991271DCBA8AB00EBCBC2 /* Statistics.swift */; };
+		30D358691DDF03BD0038648F /* AnalogJoystick.swift in Resources */ = {isa = PBXBuildFile; fileRef = 7119C5871DC1003600E779B4 /* AnalogJoystick.swift */; };
+		30D3586A1DDF03BD0038648F /* CGVector+Awesome.swift in Resources */ = {isa = PBXBuildFile; fileRef = 7132927E1DBBC358003AC6E5 /* CGVector+Awesome.swift */; };
+		30D3586B1DDF03BD0038648F /* WeaponConfiguration.swift in Resources */ = {isa = PBXBuildFile; fileRef = 714F5C381DBCC3B200BFB3BB /* WeaponConfiguration.swift */; };
+		30D3586C1DDF03BD0038648F /* StandartBow.swift in Resources */ = {isa = PBXBuildFile; fileRef = 714F5C401DBCDE0000BFB3BB /* StandartBow.swift */; };
+		30D3586D1DDF03BD0038648F /* LongBow.swift in Resources */ = {isa = PBXBuildFile; fileRef = 714F5C421DBCE11500BFB3BB /* LongBow.swift */; };
+		30D3586E1DDF03BD0038648F /* ShortBow.swift in Resources */ = {isa = PBXBuildFile; fileRef = 714F5C441DBCE13B00BFB3BB /* ShortBow.swift */; };
+		30D3586F1DDF03BD0038648F /* BasicBow.swift in Resources */ = {isa = PBXBuildFile; fileRef = 714F5C3A1DBCC78100BFB3BB /* BasicBow.swift */; };
+		30D358701DDF03BD0038648F /* Weapon.swift in Resources */ = {isa = PBXBuildFile; fileRef = 714F5C3E1DBCDCEF00BFB3BB /* Weapon.swift */; };
+		30D358711DDF03BD0038648F /* ExplosionCreature.swift in Resources */ = {isa = PBXBuildFile; fileRef = 7119C57B1DBFF17E00E779B4 /* ExplosionCreature.swift */; };
+		30D358721DDF03BD0038648F /* MeleeFighter.swift in Resources */ = {isa = PBXBuildFile; fileRef = 7119C57D1DBFF17E00E779B4 /* MeleeFighter.swift */; };
+		30D358731DDF03BD0038648F /* Archer.swift in Resources */ = {isa = PBXBuildFile; fileRef = 6DF63D241DBBDC06008A68F2 /* Archer.swift */; };
+		30D358741DDF03BD0038648F /* ShortBowArrow.swift in Resources */ = {isa = PBXBuildFile; fileRef = 713292821DBBE65F003AC6E5 /* ShortBowArrow.swift */; };
+		30D358751DDF03BD0038648F /* ShellConfiguration.swift in Resources */ = {isa = PBXBuildFile; fileRef = 713292841DBBE851003AC6E5 /* ShellConfiguration.swift */; };
+		30D358761DDF03BD0038648F /* StandartBowArrow.swift in Resources */ = {isa = PBXBuildFile; fileRef = 713292861DBBED1C003AC6E5 /* StandartBowArrow.swift */; };
+		30D358771DDF03BD0038648F /* LongBowArrow.swift in Resources */ = {isa = PBXBuildFile; fileRef = 713292881DBBED2D003AC6E5 /* LongBowArrow.swift */; };
+		30D358781DDF03BD0038648F /* BasicArrow.swift in Resources */ = {isa = PBXBuildFile; fileRef = 7132927B1DBBB338003AC6E5 /* BasicArrow.swift */; };
+		30D358791DDF03BD0038648F /* ShellType.swift in Resources */ = {isa = PBXBuildFile; fileRef = 714F5C3C1DBCCF5A00BFB3BB /* ShellType.swift */; };
+		30D3587A1DDF03BD0038648F /* AppDelegate.swift in Resources */ = {isa = PBXBuildFile; fileRef = C8B7E5EB1DBAD52100FBDFF5 /* AppDelegate.swift */; };
+		30D3587B1DDF03BD0038648F /* GameScene.swift in Resources */ = {isa = PBXBuildFile; fileRef = C8B7E5F11DBAD52100FBDFF5 /* GameScene.swift */; };
+		30D3587C1DDF03BD0038648F /* GameViewController.swift in Resources */ = {isa = PBXBuildFile; fileRef = C8B7E5F31DBAD52100FBDFF5 /* GameViewController.swift */; };
+		30D3587D1DDF03BD0038648F /* MenuViewController.swift in Resources */ = {isa = PBXBuildFile; fileRef = 7119C57E1DBFF17E00E779B4 /* MenuViewController.swift */; };
+		30D3587E1DDF03BD0038648F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C8B7E5FD1DBAD52100FBDFF5 /* Info.plist */; };
+		30D3587F1DDF03BD0038648F /* PhysicsCategories.swift in Resources */ = {isa = PBXBuildFile; fileRef = 713292801DBBD999003AC6E5 /* PhysicsCategories.swift */; };
+		30D358801DDF03BD0038648F /* SkinSelectViewController.swift in Resources */ = {isa = PBXBuildFile; fileRef = C829912B1DCBAACC00EBCBC2 /* SkinSelectViewController.swift */; };
+		30D3588C1DDF03C60038648F /* Archer.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30D358811DDF03C60038648F /* Archer.sks */; };
+		30D3588D1DDF03C60038648F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30D358821DDF03C60038648F /* Assets.xcassets */; };
+		30D3588E1DDF03C60038648F /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D358831DDF03C60038648F /* Bar.swift */; };
+		30D3588F1DDF03C60038648F /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 30D358841DDF03C60038648F /* Base.lproj */; };
+		30D358901DDF03C60038648F /* HealthIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D358851DDF03C60038648F /* HealthIndicator.swift */; };
+		30D358911DDF03C60038648F /* LongBow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30D358861DDF03C60038648F /* LongBow.sks */; };
+		30D358921DDF03C60038648F /* ShortBow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30D358871DDF03C60038648F /* ShortBow.sks */; };
+		30D358931DDF03C60038648F /* SpawnPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D358881DDF03C60038648F /* SpawnPoint.swift */; };
+		30D358941DDF03C60038648F /* StandartBow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30D358891DDF03C60038648F /* StandartBow.sks */; };
+		30D358951DDF03C60038648F /* Story1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30D3588A1DDF03C60038648F /* Story1.sks */; };
+		30D358961DDF03C60038648F /* Tiles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30D3588B1DDF03C60038648F /* Tiles.sks */; };
+		30D358971DDF03D20038648F /* Bar.swift in Resources */ = {isa = PBXBuildFile; fileRef = 30D358831DDF03C60038648F /* Bar.swift */; };
+		30D358981DDF03D20038648F /* HealthIndicator.swift in Resources */ = {isa = PBXBuildFile; fileRef = 30D358851DDF03C60038648F /* HealthIndicator.swift */; };
+		30D358991DDF03D20038648F /* SpawnPoint.swift in Resources */ = {isa = PBXBuildFile; fileRef = 30D358881DDF03C60038648F /* SpawnPoint.swift */; };
+		30D3589C1DDF03DD0038648F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30D3589A1DDF03DD0038648F /* Assets.xcassets */; };
+		30D3589D1DDF03DD0038648F /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 30D3589B1DDF03DD0038648F /* Base.lproj */; };
+		30D3589F1DDF04250038648F /* Story2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30D3589E1DDF04250038648F /* Story2.sks */; };
 		6DF63D251DBBDC06008A68F2 /* Archer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF63D241DBBDC06008A68F2 /* Archer.swift */; };
 		7119C5801DBFF17E00E779B4 /* ExplosionCreature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7119C57B1DBFF17E00E779B4 /* ExplosionCreature.swift */; };
 		7119C5821DBFF17E00E779B4 /* MeleeFighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7119C57D1DBFF17E00E779B4 /* MeleeFighter.swift */; };
@@ -45,6 +93,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30D358811DDF03C60038648F /* Archer.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Archer.sks; path = LastArcher/Archer.sks; sourceTree = "<group>"; };
+		30D358821DDF03C60038648F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = LastArcher/Assets.xcassets; sourceTree = "<group>"; };
+		30D358831DDF03C60038648F /* Bar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bar.swift; path = LastArcher/Bar.swift; sourceTree = "<group>"; };
+		30D358841DDF03C60038648F /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Base.lproj; path = LastArcher/Base.lproj; sourceTree = "<group>"; };
+		30D358851DDF03C60038648F /* HealthIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HealthIndicator.swift; path = LastArcher/HealthIndicator.swift; sourceTree = "<group>"; };
+		30D358861DDF03C60038648F /* LongBow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = LongBow.sks; path = LastArcher/LongBow.sks; sourceTree = "<group>"; };
+		30D358871DDF03C60038648F /* ShortBow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ShortBow.sks; path = LastArcher/ShortBow.sks; sourceTree = "<group>"; };
+		30D358881DDF03C60038648F /* SpawnPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpawnPoint.swift; path = LastArcher/SpawnPoint.swift; sourceTree = "<group>"; };
+		30D358891DDF03C60038648F /* StandartBow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = StandartBow.sks; path = LastArcher/StandartBow.sks; sourceTree = "<group>"; };
+		30D3588A1DDF03C60038648F /* Story1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Story1.sks; path = LastArcher/Story1.sks; sourceTree = "<group>"; };
+		30D3588B1DDF03C60038648F /* Tiles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Tiles.sks; path = LastArcher/Tiles.sks; sourceTree = "<group>"; };
+		30D3589A1DDF03DD0038648F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = LastArcher/Assets.xcassets; sourceTree = "<group>"; };
+		30D3589B1DDF03DD0038648F /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Base.lproj; path = LastArcher/Base.lproj; sourceTree = "<group>"; };
+		30D3589E1DDF04250038648F /* Story2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Story2.sks; sourceTree = "<group>"; };
 		6DF63D241DBBDC06008A68F2 /* Archer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Archer.swift; sourceTree = "<group>"; };
 		7119C57B1DBFF17E00E779B4 /* ExplosionCreature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplosionCreature.swift; sourceTree = "<group>"; };
 		7119C57D1DBFF17E00E779B4 /* MeleeFighter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeleeFighter.swift; sourceTree = "<group>"; };
@@ -191,6 +253,20 @@
 		C8B7E5DF1DBAD52100FBDFF5 = {
 			isa = PBXGroup;
 			children = (
+				30D3589A1DDF03DD0038648F /* Assets.xcassets */,
+				30D3589B1DDF03DD0038648F /* Base.lproj */,
+				30D358811DDF03C60038648F /* Archer.sks */,
+				30D358821DDF03C60038648F /* Assets.xcassets */,
+				30D358831DDF03C60038648F /* Bar.swift */,
+				30D358841DDF03C60038648F /* Base.lproj */,
+				30D358851DDF03C60038648F /* HealthIndicator.swift */,
+				30D358861DDF03C60038648F /* LongBow.sks */,
+				30D358871DDF03C60038648F /* ShortBow.sks */,
+				30D358881DDF03C60038648F /* SpawnPoint.swift */,
+				30D358891DDF03C60038648F /* StandartBow.sks */,
+				30D3588A1DDF03C60038648F /* Story1.sks */,
+				30D3589E1DDF04250038648F /* Story2.sks */,
+				30D3588B1DDF03C60038648F /* Tiles.sks */,
 				C8B7E5EA1DBAD52100FBDFF5 /* LastArcher */,
 				C8B7E5E91DBAD52100FBDFF5 /* Products */,
 			);
@@ -285,10 +361,55 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30D358971DDF03D20038648F /* Bar.swift in Resources */,
+				30D3589D1DDF03DD0038648F /* Base.lproj in Resources */,
+				30D358981DDF03D20038648F /* HealthIndicator.swift in Resources */,
+				30D358991DDF03D20038648F /* SpawnPoint.swift in Resources */,
+				30D358621DDF03BD0038648F /* CollisionHandler.swift in Resources */,
+				30D358631DDF03BD0038648F /* GeneralCollisionHandler.swift in Resources */,
+				30D358641DDF03BD0038648F /* Monster.swift in Resources */,
+				30D358651DDF03BD0038648F /* MonsterShellHandler.swift in Resources */,
+				30D358661DDF03BD0038648F /* Joystick.swift in Resources */,
+				30D358671DDF03BD0038648F /* CustomNotifications.swift in Resources */,
+				30D358681DDF03BD0038648F /* Statistics.swift in Resources */,
+				30D358691DDF03BD0038648F /* AnalogJoystick.swift in Resources */,
+				30D3586A1DDF03BD0038648F /* CGVector+Awesome.swift in Resources */,
+				30D358921DDF03C60038648F /* ShortBow.sks in Resources */,
+				30D3586B1DDF03BD0038648F /* WeaponConfiguration.swift in Resources */,
+				30D3588F1DDF03C60038648F /* Base.lproj in Resources */,
+				30D3586C1DDF03BD0038648F /* StandartBow.swift in Resources */,
+				30D3586D1DDF03BD0038648F /* LongBow.swift in Resources */,
+				30D3586E1DDF03BD0038648F /* ShortBow.swift in Resources */,
+				30D3586F1DDF03BD0038648F /* BasicBow.swift in Resources */,
+				30D358701DDF03BD0038648F /* Weapon.swift in Resources */,
+				30D358711DDF03BD0038648F /* ExplosionCreature.swift in Resources */,
+				30D358721DDF03BD0038648F /* MeleeFighter.swift in Resources */,
+				30D358731DDF03BD0038648F /* Archer.swift in Resources */,
+				30D358741DDF03BD0038648F /* ShortBowArrow.swift in Resources */,
+				30D358751DDF03BD0038648F /* ShellConfiguration.swift in Resources */,
+				30D358761DDF03BD0038648F /* StandartBowArrow.swift in Resources */,
+				30D358771DDF03BD0038648F /* LongBowArrow.swift in Resources */,
+				30D3588D1DDF03C60038648F /* Assets.xcassets in Resources */,
+				30D358781DDF03BD0038648F /* BasicArrow.swift in Resources */,
+				30D358791DDF03BD0038648F /* ShellType.swift in Resources */,
+				30D358911DDF03C60038648F /* LongBow.sks in Resources */,
+				30D3589F1DDF04250038648F /* Story2.sks in Resources */,
+				30D3587A1DDF03BD0038648F /* AppDelegate.swift in Resources */,
+				30D358961DDF03C60038648F /* Tiles.sks in Resources */,
+				30D3587B1DDF03BD0038648F /* GameScene.swift in Resources */,
+				30D3587C1DDF03BD0038648F /* GameViewController.swift in Resources */,
+				30D3587D1DDF03BD0038648F /* MenuViewController.swift in Resources */,
+				30D3587E1DDF03BD0038648F /* Info.plist in Resources */,
+				30D3588C1DDF03C60038648F /* Archer.sks in Resources */,
+				30D3587F1DDF03BD0038648F /* PhysicsCategories.swift in Resources */,
+				30D358801DDF03BD0038648F /* SkinSelectViewController.swift in Resources */,
 				C8B7E5F71DBAD52100FBDFF5 /* Main.storyboard in Resources */,
 				714F5C351DBCBFA600BFB3BB /* Level1.sks in Resources */,
+				30D358951DDF03C60038648F /* Story1.sks in Resources */,
 				C8B7E5F91DBAD52100FBDFF5 /* Assets.xcassets in Resources */,
+				30D358941DDF03C60038648F /* StandartBow.sks in Resources */,
 				C8B7E5FC1DBAD52100FBDFF5 /* LaunchScreen.storyboard in Resources */,
+				30D3589C1DDF03DD0038648F /* Assets.xcassets in Resources */,
 				C8B7E5F01DBAD52100FBDFF5 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,11 +424,13 @@
 				C86E56BF1DC119FA008EEDC8 /* Monster.swift in Sources */,
 				C86E56BE1DC119FA008EEDC8 /* GeneralCollisionHandler.swift in Sources */,
 				713292891DBBED2D003AC6E5 /* LongBowArrow.swift in Sources */,
+				30D358901DDF03C60038648F /* HealthIndicator.swift in Sources */,
 				714F5C3B1DBCC78100BFB3BB /* BasicBow.swift in Sources */,
 				7119C5801DBFF17E00E779B4 /* ExplosionCreature.swift in Sources */,
 				C82991291DCBA8AB00EBCBC2 /* CustomNotifications.swift in Sources */,
 				C829912C1DCBAACC00EBCBC2 /* SkinSelectViewController.swift in Sources */,
 				7132927F1DBBC358003AC6E5 /* CGVector+Awesome.swift in Sources */,
+				30D3588E1DDF03C60038648F /* Bar.swift in Sources */,
 				714F5C451DBCE13B00BFB3BB /* ShortBow.swift in Sources */,
 				713292811DBBD999003AC6E5 /* PhysicsCategories.swift in Sources */,
 				713292871DBBED1C003AC6E5 /* StandartBowArrow.swift in Sources */,
@@ -319,6 +442,7 @@
 				7132927C1DBBB338003AC6E5 /* BasicArrow.swift in Sources */,
 				714F5C391DBCC3B200BFB3BB /* WeaponConfiguration.swift in Sources */,
 				714F5C3D1DBCCF5A00BFB3BB /* ShellType.swift in Sources */,
+				30D358931DDF03C60038648F /* SpawnPoint.swift in Sources */,
 				C8B7E5F21DBAD52100FBDFF5 /* GameScene.swift in Sources */,
 				7119C5831DBFF17E00E779B4 /* MenuViewController.swift in Sources */,
 				C86E56C01DC119FA008EEDC8 /* MonsterShellHandler.swift in Sources */,

@@ -26,7 +26,7 @@ class SkinSelectViewController: UIViewController {
     
     var skin = -1;
     var weapon = -1;
-    var level = "Story1";
+    var level = "Story2";
     
     override func viewDidLoad() {
         super.viewDidLoad()
