@@ -36,11 +36,11 @@ class Joystick{
         self.chargeBar = mainScene.chargeBar
         
         moveAnalogStick.position = CGPoint(
-            x: mainScene.frame.minX * 0.65,
+            x: mainScene.frame.minX * 0.6,
             y: mainScene.frame.minY * 0.5)
         
         shootAnalogStick.position = CGPoint(
-            x: mainScene.frame.maxX * 0.65,
+            x: mainScene.frame.maxX * 0.6,
             y: mainScene.frame.minY * 0.5)
         
         camera.addChild(moveAnalogStick)
@@ -48,6 +48,9 @@ class Joystick{
         
         moveAnalogStick.stick.color = .gray
         shootAnalogStick.stick.color = .gray
+        
+        moveAnalogStick.zPosition = 100
+        shootAnalogStick.zPosition = 100
         
         shootAnalogStick.startHandler = shootStartHandler
         shootAnalogStick.trackingHandler = shootTrackingHandler

@@ -13,7 +13,7 @@ class MeleeFighter: SKSpriteNode, Monster {
     var meleePosition: CGPoint
     let ATTACK_RANGE: CGFloat = 120.0
     let DAMAGE = 1.0
-    let MOVE_SPEED: CGFloat = 4.0
+    let MOVE_SPEED: CGFloat = 3.0
     let MOVE_DURATION:TimeInterval = TimeInterval(0.2)
     let TIME_BETWEEN_ATTACKS:TimeInterval = TimeInterval(0.3)
     
@@ -153,13 +153,14 @@ class MeleeFighter: SKSpriteNode, Monster {
             hitted()
         }
     }
-    
+        
     func hitted(){
         isMove = false
         isDead = true
         self.removeAllActions()
         self.run(SKAction.sequence([damageAnimation!,
                                     SKAction.run{self.isDead = false}]))
+        NotificationCenter.default.post(CustomNotifications.MonsterHit)
     }
     
     func destroy(){
@@ -167,6 +168,7 @@ class MeleeFighter: SKSpriteNode, Monster {
         self.removeAllActions()
         self.disablePhysics()
         self.run(deathAnimation!)
+        NotificationCenter.default.post(CustomNotifications.MonsterHit)
         NotificationCenter.default.post(CustomNotifications.MonsterDied)
     }
 

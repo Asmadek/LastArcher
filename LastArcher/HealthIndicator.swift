@@ -14,13 +14,14 @@ class HealthIndicator{
     
     init(){
         let nodeImageNames = ["hearth_right","hearth_left"]
-        let X = GameScene.mainScene!.frame.minX*0.95
+        let X = GameScene.mainScene!.frame.minX*0.75
         let Y = GameScene.mainScene!.frame.maxY*0.75
         for i in 1...MAX_HEALTH {
             self.indicatorNodes.append(SKSpriteNode(imageNamed: nodeImageNames[i%2]))
             self.indicatorNodes.last!.setScale(0.15)
             let offset = self.indicatorNodes.last!.size.width*CGFloat(1.0*Double((i-1)/2 + 1))
             self.indicatorNodes.last!.position = CGPoint(x: X + offset, y:Y)
+            self.indicatorNodes.last!.zPosition = 100
             GameScene.mainScene!.camera!.addChild(self.indicatorNodes.last!)
         }
     }

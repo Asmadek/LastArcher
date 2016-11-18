@@ -17,7 +17,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var shoots: UILabel!
     
     var skin: Int!
-    var weapon: Int!
+    var weapon: Int = -1
     var level: String!
     
     override func viewDidLoad() {
@@ -42,7 +42,7 @@ class GameViewController: UIViewController {
             
             /* Set the scale mode to scale to fit the window */
             scene.scaleMode = .aspectFill
-            
+            scene.weaponId = weapon
             scene.scoreLabel = scores
             scene.shootsLabel = shoots
             scene.accuracyLabel = accuracy

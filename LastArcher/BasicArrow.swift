@@ -38,25 +38,9 @@ class BasicArrow: SKSpriteNode, ShellType {
         self.physicsBody?.categoryBitMask = PhysicsCategory.Shell
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = true
-        self.physicsBody?.collisionBitMask = PhysicsCategory.Monster
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.Monster
+        self.physicsBody?.collisionBitMask = PhysicsCategory.Monster | PhysicsCategory.Mage
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Monster | PhysicsCategory.Mage
     }
-    
-    /*func shoot(position : CGPoint,direction : CGVector,chargeTime: TimeInterval){
-        if (direction.length() < 0.1){
-            destroy()
-        }
-        self.initPhysicsBody()
-        self.move(toParent: GameScene.mainScene!)
-
-        let move_vector = direction.normalize().multiply(scalar: configuration.moveSpeed)
-        self.position = position
-        self.zRotation = direction.angleSpriteKit()
-        self.damageMultiplier = configuration.minDamageMultiplier + TimeInterval.minimum(chargeTime, configuration.maxChargeDuration)/configuration.maxChargeDuration*(configuration.maxDamageMultiplier-configuration.minDamageMultiplier)
-        let moveAction = SKAction.sequence([SKAction.move(by: move_vector, duration: configuration.lifeTime),
-                                            SKAction.run({self.destroy()})])
-        self.run(moveAction)
-    }*/
     
    func shoot(direction : CGVector, chargeTime: TimeInterval){
         self.initPhysicsBody()

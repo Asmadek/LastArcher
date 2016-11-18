@@ -9,6 +9,8 @@ import SpriteKit
 
 struct CustomNotifications {
     static let MonsterDied = Notification(name: Notification.Name(rawValue: "MonsterDied"))
+    static let MageDied = Notification(name: Notification.Name(rawValue: "MageDied"))
+    static let MonsterHit = Notification(name: Notification.Name(rawValue: "MonsterHit"))
     static let ArcherShot = Notification(name: Notification.Name(rawValue: "ArcherShot"))
     static let StatisticsRefreshed = Notification(name: Notification.Name(rawValue: "StatisticsRefreshed"))
 }

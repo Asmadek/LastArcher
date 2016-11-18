@@ -13,6 +13,8 @@ class GeneralCollisionHandler: CollisionHandler {
     
     init(){
         handlers.append(MonsterShellHandler())
+        handlers.append(MageShellHandler())
+        handlers.append(WaterBoltHandler())
     }
     
     func canHandle(nodeOne:SKNode, nodeTwo:SKNode) -> Bool{
