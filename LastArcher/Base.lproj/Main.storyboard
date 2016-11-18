@@ -80,6 +80,20 @@
                                     <segue destination="BV1-FR-VrT" kind="show" id="NMr-cZ-0VK"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04d-rG-Swi">
+                                <rect key="frame" x="258" y="270" width="151" height="30"/>
+                                <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
+                                <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="151" id="ExP-LH-VSk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <size key="titleShadowOffset" width="8" height="8"/>
+                                <state key="normal" title="Exit">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -90,9 +104,12 @@
                             <constraint firstItem="0W3-co-p4w" firstAttribute="leading" secondItem="PQI-TR-Pw2" secondAttribute="leadingMargin" constant="200" id="HAl-Qp-4W5"/>
                             <constraint firstItem="Ui4-9y-sQ3" firstAttribute="leading" secondItem="PQI-TR-Pw2" secondAttribute="leadingMargin" id="MGv-MN-xFc"/>
                             <constraint firstItem="n62-2n-uJO" firstAttribute="leading" secondItem="PQI-TR-Pw2" secondAttribute="leadingMargin" constant="200" id="MJw-bW-YfA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="04d-rG-Swi" secondAttribute="trailing" constant="200" id="PVe-qE-frq"/>
+                            <constraint firstItem="04d-rG-Swi" firstAttribute="leading" secondItem="PQI-TR-Pw2" secondAttribute="leadingMargin" constant="200" id="WdO-vX-JrA"/>
                             <constraint firstItem="eKC-D4-LeN" firstAttribute="leading" secondItem="PQI-TR-Pw2" secondAttribute="leadingMargin" constant="200" id="am6-hf-ShH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="n62-2n-uJO" secondAttribute="trailing" constant="200" id="fcG-K4-mVl"/>
                             <constraint firstItem="0W3-co-p4w" firstAttribute="top" secondItem="Ui4-9y-sQ3" secondAttribute="bottom" constant="8" id="jnE-GA-2sI"/>
+                            <constraint firstItem="04d-rG-Swi" firstAttribute="top" secondItem="n62-2n-uJO" secondAttribute="bottom" constant="8" id="kDy-6a-DZV"/>
                             <constraint firstItem="Ui4-9y-sQ3" firstAttribute="top" secondItem="jEp-QQ-e8Q" secondAttribute="bottom" constant="8" id="nbf-EE-QSa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eKC-D4-LeN" secondAttribute="trailing" constant="200" id="qC6-hk-bGt"/>
                             <constraint firstItem="n62-2n-uJO" firstAttribute="top" secondItem="eKC-D4-LeN" secondAttribute="bottom" constant="8" id="rbp-Yh-iLs"/>
@@ -100,6 +117,9 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="667" height="365"/>
+                    <connections>
+                        <outlet property="exitBtn" destination="04d-rG-Swi" id="3PC-MC-YRH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kxr-fN-dDF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -331,29 +351,47 @@
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haA-Ky-xcc">
+                                <rect key="frame" x="607" y="7" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="aOi-VJ-koh"/>
+                                    <constraint firstAttribute="width" constant="40" id="vaF-k1-l6x"/>
+                                    <constraint firstAttribute="width" secondItem="haA-Ky-xcc" secondAttribute="height" multiplier="1:1" id="wFC-XN-jwY"/>
+                                </constraints>
+                                <state key="normal" image="menu-button-of-three-horizontal-lines_318-72515"/>
+                                <connections>
+                                    <segue destination="zVw-Z1-ZaR" kind="show" id="KrQ-oU-Spb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="haA-Ky-xcc" firstAttribute="trailing" secondItem="3se-qz-xqx" secondAttribute="trailingMargin" id="Eg2-HH-CQH"/>
+                            <constraint firstItem="haA-Ky-xcc" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="topMargin" constant="7" id="Xyb-ob-MA3"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="accuracy" destination="zZF-qS-KcJ" id="Y4z-O6-tDe"/>
+                        <outlet property="menuBtn" destination="haA-Ky-xcc" id="5mW-md-9Vc"/>
                         <outlet property="scores" destination="T7e-jo-ZR9" id="N92-rx-6fx"/>
                         <outlet property="shoots" destination="0dz-m8-GpM" id="xPG-hd-POY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1811" y="55"/>
+            <point key="canvasLocation" x="1980" y="36"/>
         </scene>
     </scenes>
     <resources>
         <image name="20131104115557-Question_mark_alternate-1024x780-1" width="88" height="88"/>
         <image name="LastArcher" width="900" height="168"/>
         <image name="long_bow_attack_1" width="471" height="628"/>
+        <image name="menu-button-of-three-horizontal-lines_318-72515" width="338" height="338"/>
         <image name="short_bow_attack_1" width="486" height="524"/>
         <image name="standart_bow_attack_1" width="459" height="606"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="E3Q-an-JnK"/>
+        <segue reference="NMr-cZ-0VK"/>
     </inferredMetricsTieBreakers>
 </document>

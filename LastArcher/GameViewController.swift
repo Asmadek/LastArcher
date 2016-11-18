@@ -16,8 +16,9 @@ class GameViewController: UIViewController {
     @IBOutlet weak var accuracy: UILabel!
     @IBOutlet weak var shoots: UILabel!
     
+    @IBOutlet weak var menuBtn: UIButton!
     var skin: Int!
-    var weapon: Int = -1
+    var weapon: Int!
     var level: String!
     
     override func viewDidLoad() {
@@ -40,9 +41,12 @@ class GameViewController: UIViewController {
             /* Sprite Kit applies additional optimizations to improve rendering performance */
             skView.ignoresSiblingOrder = false
             
+            if weapon == nil {
+                weapon = 0
+            }
             /* Set the scale mode to scale to fit the window */
             scene.scaleMode = .aspectFill
-            scene.weaponId = weapon
+            scene.setWeapon(weapon: weapon)
             scene.scoreLabel = scores
             scene.shootsLabel = shoots
             scene.accuracyLabel = accuracy

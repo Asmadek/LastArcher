@@ -12,9 +12,14 @@ import SpriteKit
 import GameplayKit
 
 class MenuViewController: UIViewController {
+    @IBOutlet weak var exitBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        exitBtn.addTarget(self, action: #selector(MenuViewController.exitBtnClicked), for: .touchUpInside)
+    }
+    
+    func exitBtnClicked() {
+        exit(0)
     }
     
     override var shouldAutorotate: Bool {

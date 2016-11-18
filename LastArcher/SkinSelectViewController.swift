@@ -41,6 +41,9 @@ class SkinSelectViewController: UIViewController {
 
         shortBowBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SkinSelectViewController.shortBowBtnClicked)))
         shortBowBtn.isUserInteractionEnabled = true
+
+        setWeaponBorders()
+        updateDescription()
 //
 //        greenSkinBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SkinSelectViewController.greenSkinBtnClicked)))
 //        greenSkinBtn.isUserInteractionEnabled = true
@@ -60,16 +63,20 @@ class SkinSelectViewController: UIViewController {
     func standartBowBtnClicked() {
         self.weapon = 0;
         setWeaponBorders()
+        updateDescription()
+        
     }
     
     func longBowBtnClicked() {
         self.weapon = 1;
         setWeaponBorders()
+        updateDescription()
     }
     
     func shortBowBtnClicked() {
         self.weapon = 2;
         setWeaponBorders()
+        updateDescription()
     }
     
     func setWeaponBorders() {
@@ -127,14 +134,31 @@ class SkinSelectViewController: UIViewController {
         if (segue.identifier == "startGame") {
             let svc = segue.destination as! GameViewController;
             
-            svc.skin = skin
-            svc.weapon = weapon
-            svc.level = level
+            svc.skin = self.skin
+            svc.weapon = self.weapon
+            svc.level = self.level
         }
     }
     
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func updateDescription() {
+        var weapon = "Standart bow"
+        var story = "Standart armors, standart speed"
+        if (self.weapon == 1) {
+            weapon = "Long bow"
+            story = "Heavy armors, low speed"
+        } else if (self.weapon == 2) {
+            weapon = "Short bow"
+            story = "Light armors, fast speed"
+        }
+        
+        let text = "Weapon: " + weapon + "\n" +
+                "Story: " + story
+        
+        playerDescription.text = text
     }
     
 }

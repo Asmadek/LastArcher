@@ -80,18 +80,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func sceneDidLoad() {
         GameScene.mainScene = self
         archer = Archer.createArcher(scene: self, position: positionArcher)
-        var weaponConfiguration: WeaponConfiguration;
         
-        switch weaponId {
-        case 1:
-            weaponConfiguration = LongBow()
-        case 2:
-            weaponConfiguration = ShortBow()
-        default:
-            weaponConfiguration = StandartBow()
-        }
-        let weapon = BasicBow.createWeapon(configuration: weaponConfiguration);
-        archer.setWeapon(weapon: weapon)
         initilizeCamera()
         initilizeControlComponents()
         initilizeSpawners()
@@ -99,7 +88,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         chargeBar.zPosition = -10
         self.addChild(chargeBar)
-        
         
         self.lastUpdateTime = 0
      
@@ -187,6 +175,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if(collisionHandler.canHandle(nodeOne: nodeOne!, nodeTwo: nodeTwo!)){
             collisionHandler.handle(nodeOne: nodeOne!, nodeTwo: nodeTwo!)
         }
+    }
+    
+    func setWeapon(weapon: Int) {
+        self.weaponId = weapon
+        
+        var weaponConfiguration: WeaponConfiguration;
+        switch self.weaponId {
+        case 1:
+            weaponConfiguration = LongBow()
+        case 2:
+            weaponConfiguration = ShortBow()
+        default:
+            weaponConfiguration = StandartBow()
+        }
+        let weapon = BasicBow.createWeapon(configuration: weaponConfiguration);
+        archer.setWeapon(weapon: weapon)
     }
     
     class func level(levelName: String) -> GameScene? {
