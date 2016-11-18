@@ -68,7 +68,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func initilizeSpawners(){
-        SpawnPoint.createSpawnPoint(at: CGPoint(x:200,y:200))
+        //SpawnPoint.createSpawnPoint(at: CGPoint(x:200,y:200))
+    }
+    
+    func initilizeMage(){
+        let mage = FirstMage()
+        self.addChild(mage)
+        mage.position = CGPoint(x:200,y:-400)
     }
 
     override func sceneDidLoad() {
@@ -89,6 +95,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         initilizeCamera()
         initilizeControlComponents()
         initilizeSpawners()
+        initilizeMage()
 
         chargeBar.zPosition = -10
         self.addChild(chargeBar)
@@ -100,7 +107,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func refreshStatistics(notification: Notification){
-        scoreLabel?.text? = String(statistics.currentScore)
+        scoreLabel?.text? = String(statistics.frags)
         shootsLabel?.text? = String(statistics.currentShoots)
         accuracyLabel?.text? = String(statistics.accuracy)
     }
@@ -152,10 +159,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             x: archer.position.x,
             y: archer.position.y + 100
         )
+        
         enumerateChildNodes(withName: "monster"){node,_ in
-            let monster = node as! MeleeFighter
+            let monster = node as! Monster
             monster.attack()
         }
+        
+        enumerateChildNodes(withName: "mage"){node,_ in
+            let monster = node as! Monster
+            monster.attack()
+        }
+
         
         self.lastUpdateTime = currentTime
     }

@@ -13,7 +13,7 @@ class Archer: SKSpriteNode {
     var isBowstring: Bool = false
     var health: Double = 6.0
     var maxHealth: Int = 6
-    let ARCHER_SPEED:CGFloat = 5.5
+    let ARCHER_SPEED:CGFloat = 4.5
     let MIN_PULL_FORCE:CGFloat = 0.2
     
     init(){
@@ -93,6 +93,8 @@ class Archer: SKSpriteNode {
         if (health < 0.001){
             self.destroy()
         }
+        self.run(SKAction.sequence([SKAction.scale(to: 1.2, duration: 0.2),
+                                    SKAction.scale(to: 1.0, duration: 0.2)]))
         self.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),SKAction.run {
             self.removeAllInfluence()
             }]))

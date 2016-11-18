@@ -22,6 +22,7 @@ class SpawnPoint: SKSpriteNode {
         super.init(texture: texture, color: UIColor.clear, size: CGSize.zero)
         GameScene.mainScene!.addChild(self)
         self.position = position
+        self.name = "spawn"
         spawnCreatures = SKAction.run {
                 self.createMelee(maxCountEnemies: 1)
             }

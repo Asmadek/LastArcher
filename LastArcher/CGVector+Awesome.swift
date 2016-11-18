@@ -93,4 +93,8 @@ extension CGVector {
     func isPerpendicularTo(vector: CGVector) -> Bool {
         return dotProduct(vector: vector) == 0
     }
+    
+    func toPoint() -> CGPoint{
+        return CGPoint(x: self.dx,y: self.dy)
+    }
 }
