@@ -30,6 +30,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let statistics = Statistics()
     
     var joystick: Joystick? = nil
+    var healthIndicator:HealthIndicator? = nil
     
     private var lastUpdateTime : TimeInterval = 0
     private var label : SKLabelNode?
@@ -38,6 +39,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var scoreLabel: UILabel? = nil
     var shootsLabel: UILabel? = nil
     var accuracyLabel: UILabel? = nil
+    
+    var skinId: Int = 0
+    var weaponId: Int = 0
+
     
     func randomPosition () -> CGPoint
     {
@@ -54,19 +59,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let playerConstraint = SKConstraint.distance(SKRange(constantValue: 0), to: archer)
         self.camera!.constraints = [playerConstraint]
-    
-
     }
     
     func initilizeControlComponents(){
         self.joystick = Joystick()
+        self.healthIndicator = HealthIndicator()
+        self.healthIndicator!.refreshIndicator(currentHealth: archer.health)
     }
 
     override func sceneDidLoad() {
         GameScene.mainScene = self
         archer = Archer.createArcher(scene: self, position: positionArcher)
-
+        var weaponConfiguration: WeaponConfiguration;
         
+        switch weaponId {
+        case 1:
+            weaponConfiguration = LongBow()
+        case 2:
+            weaponConfiguration = ShortBow()
+        default:
+            weaponConfiguration = StandartBow()
+        }
+        let weapon = BasicBow.createWeapon(configuration: weaponConfiguration);
+        archer.setWeapon(weapon: weapon)
         initilizeCamera()
         initilizeControlComponents()
 

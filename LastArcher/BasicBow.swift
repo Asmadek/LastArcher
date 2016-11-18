@@ -66,4 +66,8 @@ class BasicBow: Weapon {
                 configuration.moveAnimation])
         )
     }
+    
+    func remove() {
+        self.configuration.sprite.removeFromParent()
+    }
 }
