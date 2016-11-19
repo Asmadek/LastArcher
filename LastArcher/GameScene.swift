@@ -16,7 +16,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var graphs = [String : GKGraph]()
     
     //TODO: remove archer spawn by coordinates
-    let positionArcher = CGPoint(x:-10, y:1200)
+    let positionArcher = CGPoint(x:-10, y:-1800)
     var archer: Archer = Archer()
     
     let chargeBar: Bar = Bar(barWidth: 100,
