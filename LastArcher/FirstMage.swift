@@ -135,18 +135,18 @@ class FirstMage: SKSpriteNode, Monster {
         let attackNumber = arc4random_uniform(4)
         switch attackNumber {
         case 0:
-            lightningMark()
+            waterAttack()
         case 1:
             //TODO: replace by new your attack here
-            lightningMark()
+            elementalAttack()
         case 2:
             //TODO: replace by new your attack here
             lightningMark()
         case 3:
             //TODO: replace by new your attack here
-            lightningMark()
+            waterAttack()
         default:
-            lightningMark()
+            waterAttack()
         }
     }
     
@@ -162,6 +162,19 @@ class FirstMage: SKSpriteNode, Monster {
             WaterBolt(direction:direction,position: boltPosition.toPoint())
         }
     }
+    
+    private func elementalAttack(){
+        let spawnPoints = [SpawnPoint.createSpawnPoint(at: CGPoint(x: self.position.x - 100,
+                                                                   y: self.position.y - 100)),
+                           SpawnPoint.createSpawnPoint(at: CGPoint(x: self.position.x - 100,
+                                                                   y: self.position.y + 100))]
+        
+        for spawnPoint in spawnPoints {
+            spawnPoint.createMelee(maxCountEnemies: 1)
+        }
+
+    }
+
     
     private func lightningBolt() {
         
