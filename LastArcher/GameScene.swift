@@ -68,7 +68,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func initilizeSpawners(){
-        //SpawnPoint.createSpawnPoint(at: CGPoint(x:200,y:200))
+        SpawnPoint.createSpawnPoint(at: CGPoint(x:-271,y:-1408))
+        SpawnPoint.createSpawnPoint(at: CGPoint(x:295,y:-365))
+        SpawnPoint.createSpawnPoint(at: CGPoint(x:-32,y:733))
     }
     
     func initilizeMage(){
