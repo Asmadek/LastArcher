@@ -35,6 +35,7 @@
 		C811592F1DDF58A20083C7C7 /* WaterBolt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C811592A1DDF58A20083C7C7 /* WaterBolt.swift */; };
 		C81159301DDF58A20083C7C7 /* WaterBoltHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C811592B1DDF58A20083C7C7 /* WaterBoltHandler.swift */; };
 		C81159321DDF58C40083C7C7 /* Story2.sks in Resources */ = {isa = PBXBuildFile; fileRef = C81159311DDF58C40083C7C7 /* Story2.sks */; };
+		C81159341DDFA9CF0083C7C7 /* StartBattleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81159331DDFA9CF0083C7C7 /* StartBattleHandler.swift */; };
 		C82991281DCBA8AB00EBCBC2 /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82991251DCBA8AB00EBCBC2 /* Joystick.swift */; };
 		C82991291DCBA8AB00EBCBC2 /* CustomNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82991261DCBA8AB00EBCBC2 /* CustomNotifications.swift */; };
 		C829912A1DCBA8AB00EBCBC2 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82991271DCBA8AB00EBCBC2 /* Statistics.swift */; };
@@ -89,6 +90,7 @@
 		C811592A1DDF58A20083C7C7 /* WaterBolt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterBolt.swift; sourceTree = "<group>"; };
 		C811592B1DDF58A20083C7C7 /* WaterBoltHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterBoltHandler.swift; sourceTree = "<group>"; };
 		C81159311DDF58C40083C7C7 /* Story2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Story2.sks; sourceTree = "<group>"; };
+		C81159331DDFA9CF0083C7C7 /* StartBattleHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartBattleHandler.swift; sourceTree = "<group>"; };
 		C82991251DCBA8AB00EBCBC2 /* Joystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
 		C82991261DCBA8AB00EBCBC2 /* CustomNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNotifications.swift; sourceTree = "<group>"; };
 		C82991271DCBA8AB00EBCBC2 /* Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				C86E56BA1DC119FA008EEDC8 /* GeneralCollisionHandler.swift */,
 				C86E56BB1DC119FA008EEDC8 /* Monster.swift */,
 				C86E56BC1DC119FA008EEDC8 /* MonsterShellHandler.swift */,
+				C81159331DDFA9CF0083C7C7 /* StartBattleHandler.swift */,
 			);
 			name = CollisionHandler;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				714F5C3D1DBCCF5A00BFB3BB /* ShellType.swift in Sources */,
 				C8FB3E901DDEF0A500AF6DD6 /* SpawnPoint.swift in Sources */,
 				C8B7E5F21DBAD52100FBDFF5 /* GameScene.swift in Sources */,
+				C81159341DDFA9CF0083C7C7 /* StartBattleHandler.swift in Sources */,
 				7119C5831DBFF17E00E779B4 /* MenuViewController.swift in Sources */,
 				C86E56C01DC119FA008EEDC8 /* MonsterShellHandler.swift in Sources */,
 				C811592E1DDF58A20083C7C7 /* MageShellHandler.swift in Sources */,
