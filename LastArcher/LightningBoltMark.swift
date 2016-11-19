@@ -46,7 +46,7 @@ class LightningBoltMark : SKSpriteNode {
         self.run(SKAction.sequence([animation,
                                     SKAction.removeFromParent()
             ]))
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(2000), execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1500), execute: {
             var lightningBoltStrike = LightningBolt(position: position)
 //            self.run(lightningBoltStrike.animation)
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(800), execute: {

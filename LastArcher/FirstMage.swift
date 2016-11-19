@@ -165,9 +165,7 @@ class FirstMage: SKSpriteNode, Monster {
     
     private func elementalAttack(){
         let spawnPoints = [SpawnPoint.createSpawnPoint(at: CGPoint(x: self.position.x - 100,
-                                                                   y: self.position.y - 100)),
-                           SpawnPoint.createSpawnPoint(at: CGPoint(x: self.position.x - 100,
-                                                                   y: self.position.y + 100))]
+                                                                   y: self.position.y - 100))]
         
         for spawnPoint in spawnPoints {
             spawnPoint.createMelee(maxCountEnemies: 1)

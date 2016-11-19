@@ -13,7 +13,7 @@ class MeleeFighter: SKSpriteNode, Monster {
     var meleePosition: CGPoint
     let ATTACK_RANGE: CGFloat = 120.0
     let DAMAGE = 1.0
-    let MOVE_SPEED: CGFloat = 3.0
+    let MOVE_SPEED: CGFloat = 2.0
     let MOVE_DURATION:TimeInterval = TimeInterval(0.2)
     let TIME_BETWEEN_ATTACKS:TimeInterval = TimeInterval(0.3)
     
@@ -25,7 +25,7 @@ class MeleeFighter: SKSpriteNode, Monster {
     var spawnPoint: SpawnPoint? = nil
     var isMove:Bool = true
     var isDead:Bool = false
-    var health:Double = 1.0
+    var health:Double = 0.5
     
     init(target:Archer, position: CGPoint){
         let texture = SKTexture(imageNamed: "earth_elemental_walk_1")
