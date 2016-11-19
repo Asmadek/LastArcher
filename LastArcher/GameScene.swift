@@ -106,6 +106,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             runes.isHidden = false
             runes.physicsBody?.categoryBitMask = 128
             runes.size = CGSize(width: 850, height: 63 )
+            runes.zPosition = -11
 
 //            let path = Bundle.main.path(forResource: "runes_light", ofType: "sks")
 //            var runesParticle = NSKeyedUnarchiver.unarchiveObject(withFile: path!) as! SKEmitterNode
