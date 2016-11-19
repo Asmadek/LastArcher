@@ -135,18 +135,18 @@ class FirstMage: SKSpriteNode, Monster {
         let attackNumber = arc4random_uniform(4)
         switch attackNumber {
         case 0:
-            waterAttack()
+            lightningMark()
         case 1:
             //TODO: replace by new your attack here
-            waterAttack()
+            lightningMark()
         case 2:
             //TODO: replace by new your attack here
-            waterAttack()
+            lightningMark()
         case 3:
             //TODO: replace by new your attack here
-            waterAttack()
+            lightningMark()
         default:
-            waterAttack()
+            lightningMark()
         }
     }
     
@@ -161,6 +161,19 @@ class FirstMage: SKSpriteNode, Monster {
                 .sum(vector: direction.multiply(scalar: 100.0 - 100.0 * CGFloat(i*i)))
             WaterBolt(direction:direction,position: boltPosition.toPoint())
         }
+    }
+    
+    private func lightningBolt() {
+        
+    }
+    
+    private func lightningMark() {
+        let targetPosition = target.position
+        LightningBoltMark(position: targetPosition)
+    }
+    
+    private func lightningStrike() {
+        
     }
     
     func recieveDamage(damage: Double){
