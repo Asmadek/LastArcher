@@ -37,13 +37,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var spinnyNode : SKShapeNode?
     
     var finalBattle = false
+    var isEnd = false
     
     var scoreLabel: UILabel? = nil
     var shootsLabel: UILabel? = nil
     var accuracyLabel: UILabel? = nil
+    var resultTextView: UITextView? = nil
     
     var skinId: Int = 0
     var weaponId: Int = 0
+    var controller: GameViewController?
 
     
     func randomPosition () -> CGPoint
@@ -87,12 +90,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             spawnPoint.removeFromParent()
         }
         
-        enumerateChildNodes(withName: "monster"){node,_ in
+        enumerateChildNodes(withName: "monster") {node,_ in
             let monster = node as! SKSpriteNode
             monster.removeFromParent()
         }
+    }
+    
+    func resetScene(){
+        self.isEnd = false
+        self.finalBattle = false
+        
+        enumerateChildNodes(withName: "runes") { node, _ in
+            let runes = node as! SKSpriteNode
+            runes.isHidden = true
+            runes.physicsBody?.categoryBitMask = 0
+        }
+
+        removeSpawns()
+        
+        enumerateChildNodes(withName: "mage") { node, _ in
+            let mage = node as! SKSpriteNode
+            mage.removeFromParent()
+        }
+        enumerateChildNodes(withName: "shell") { node, _ in
+            let shell = node as! SKSpriteNode
+            shell.removeFromParent()
+        }
 
     }
+
     
     func fixCamera(){
         self.camera?.constraints = []
@@ -138,11 +164,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         GameScene.mainScene = self
         archer = Archer.createArcher(scene: self, position: positionArcher)
         
-        enumerateChildNodes(withName: "runes") { node, _ in
-            let runes = node as! SKSpriteNode
-            runes.isHidden = true
-            runes.physicsBody?.categoryBitMask = 0
-        }
+        resetScene()
 
         initilizeCamera()
         initilizeControlComponents()
@@ -185,6 +207,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+        
+        if (self.isEnd) {
+            self.goToMenu()
+        }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -254,6 +280,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         let weapon = BasicBow.createWeapon(configuration: weaponConfiguration);
         archer.setWeapon(weapon: weapon)
+    }
+    
+    func winGame() {
+        self.resultTextView?.text = "You win!"
+        self.resultTextView?.isHidden = false
+        self.joystick?.moveAnalogStick.isHidden = true
+        self.joystick?.shootAnalogStick.isHidden = true
+        self.isEnd = true
+    }
+    
+    func looseGame() {
+        self.resultTextView?.text = "You loose!"
+        self.resultTextView?.isHidden = false
+        self.joystick?.moveAnalogStick.isHidden = true
+        self.joystick?.shootAnalogStick.isHidden = true
+        self.isEnd = true
+    }
+    
+    func goToMenu() {
+        self.resultTextView?.isHidden = true
+        self.joystick?.moveAnalogStick.isHidden = false
+        self.joystick?.shootAnalogStick.isHidden = false
+        self.isEnd = false
+        self.controller?.goToMenu()
     }
     
     class func level(levelName: String) -> GameScene? {

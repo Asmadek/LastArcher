@@ -107,5 +107,6 @@ class Archer: SKSpriteNode {
     
     func destroy(){
         removeFromParent()
+        GameScene.mainScene?.looseGame()
     }
 }

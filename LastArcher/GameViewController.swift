@@ -16,7 +16,9 @@ class GameViewController: UIViewController {
     @IBOutlet weak var accuracy: UILabel!
     @IBOutlet weak var shoots: UILabel!
     
+    @IBOutlet weak var resultTextView: UITextView!
     @IBOutlet weak var menuBtn: UIButton!
+    
     var skin: Int!
     var weapon: Int!
     var level: String!
@@ -50,6 +52,8 @@ class GameViewController: UIViewController {
             scene.scoreLabel = scores
             scene.shootsLabel = shoots
             scene.accuracyLabel = accuracy
+            scene.resultTextView = resultTextView
+            scene.controller = self
             
             skView.presentScene(scene)
             
@@ -75,5 +79,10 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func goToMenu() {
+        let menuController = self.storyboard?.instantiateViewController(withIdentifier: "menuViewController") as! MenuViewController
+        self.present(menuController, animated: true, completion: nil)
     }
 }

@@ -207,6 +207,8 @@ class FirstMage: SKSpriteNode, Monster {
         //self.run(deathAnimation!)
         NotificationCenter.default.post(CustomNotifications.MonsterHit)
         NotificationCenter.default.post(CustomNotifications.MageDied)
+        
+        GameScene.mainScene?.winGame()
     }
     
     

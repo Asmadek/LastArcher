@@ -14,7 +14,7 @@
         <!--Menu View Controller-->
         <scene sceneID="vch-vs-eHt">
             <objects>
-                <viewController id="zVw-Z1-ZaR" userLabel="Menu View Controller" customClass="MenuViewController" customModule="LastArcher" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="menuViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zVw-Z1-ZaR" userLabel="Menu View Controller" customClass="MenuViewController" customModule="LastArcher" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jEp-QQ-e8Q"/>
                         <viewControllerLayoutGuide type="bottom" id="XIB-rT-jZx"/>
@@ -391,17 +391,30 @@
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" editable="NO" text="You win!" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shh-FM-Uvg" userLabel="game_result">
+                                <rect key="frame" x="213" y="106" width="240" height="90"/>
+                                <accessibility key="accessibilityConfiguration" identifier="game_result" label="game_result">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <color key="textColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="haA-Ky-xcc" firstAttribute="trailing" secondItem="3se-qz-xqx" secondAttribute="trailingMargin" id="Eg2-HH-CQH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="shh-FM-Uvg" secondAttribute="trailing" constant="194" id="O3H-QE-NTp"/>
                             <constraint firstItem="haA-Ky-xcc" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="topMargin" constant="7" id="Xyb-ob-MA3"/>
+                            <constraint firstItem="shh-FM-Uvg" firstAttribute="top" secondItem="8aa-yV-Osq" secondAttribute="bottom" constant="86" id="mHq-SN-tdc"/>
+                            <constraint firstItem="qHh-Mt-9TT" firstAttribute="top" secondItem="shh-FM-Uvg" secondAttribute="bottom" constant="169" id="nII-dJ-KeY"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="accuracy" destination="zZF-qS-KcJ" id="Y4z-O6-tDe"/>
                         <outlet property="menuBtn" destination="haA-Ky-xcc" id="5mW-md-9Vc"/>
+                        <outlet property="resultTextView" destination="shh-FM-Uvg" id="n5D-tO-P5f"/>
                         <outlet property="scores" destination="T7e-jo-ZR9" id="N92-rx-6fx"/>
                         <outlet property="shoots" destination="0dz-m8-GpM" id="xPG-hd-POY"/>
                     </connections>
@@ -421,6 +434,6 @@
         <image name="wallhaven-446297" width="1920" height="1080"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="E3Q-an-JnK"/>
+        <segue reference="NMr-cZ-0VK"/>
     </inferredMetricsTieBreakers>
 </document>
