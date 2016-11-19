@@ -105,8 +105,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let runes = node as! SKSpriteNode
             runes.isHidden = false
             runes.physicsBody?.categoryBitMask = 128
-            runes.size = CGSize(width: 850, height: 63 )
-
+            
 //            let path = Bundle.main.path(forResource: "runes_light", ofType: "sks")
 //            var runesParticle = NSKeyedUnarchiver.unarchiveObject(withFile: path!) as! SKEmitterNode
 //            runesParticle.zPosition = -1
@@ -114,7 +113,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //            runesParticle.position = CGPoint(x: 0, y: 0)
 //            runesParticle.name = "runes_light"
 //            runesParticle.targetNode = runes
-
+//
 //            runes.addChild(runesParticle)
         }
     }
