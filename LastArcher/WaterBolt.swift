@@ -49,7 +49,7 @@ class WaterBolt : SKSpriteNode {
         GameScene.mainScene!.addChild(self)
         self.position = position
         self.name = "water_bolt"
-        self.zPosition = -2
+        self.zPosition = 10
         self.setScale(2.0)
         
         self.run(SKAction.repeatForever(animation))

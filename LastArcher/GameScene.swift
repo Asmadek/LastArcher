@@ -16,7 +16,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var graphs = [String : GKGraph]()
     
     //TODO: remove archer spawn by coordinates
-    let positionArcher = CGPoint(x:-10, y:1800)
+    let positionArcher = CGPoint(x:-10, y:1200)
     var archer: Archer = Archer()
     
     let chargeBar: Bar = Bar(barWidth: 100,
@@ -77,8 +77,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func initilizeMage(){
         let mage = FirstMage()
+        mage.position = CGPoint(x:-10, y:2000)
         self.addChild(mage)
-        mage.position = CGPoint(x:200,y:-400)
     }
     
     func removeSpawns(){
@@ -99,6 +99,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.camera?.setScale(1.5)
         self.joystick?.disableScale()
     }
+    
+    func showRunes(){
+        enumerateChildNodes(withName: "runes") { node, _ in
+            let runes = node as! SKSpriteNode
+            runes.isHidden = false
+            runes.physicsBody?.categoryBitMask = 128
+            runes.size = CGSize(width: 850, height: 63 )
+
+//            let path = Bundle.main.path(forResource: "runes_light", ofType: "sks")
+//            var runesParticle = NSKeyedUnarchiver.unarchiveObject(withFile: path!) as! SKEmitterNode
+//            runesParticle.zPosition = -1
+//
+//            runesParticle.position = CGPoint(x: 0, y: 0)
+//            runesParticle.name = "runes_light"
+//            runesParticle.targetNode = runes
+
+//            runes.addChild(runesParticle)
+        }
+    }
+
 
     
     func startFinalBattle() {
@@ -106,6 +126,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             removeSpawns()
             initilizeMage()
             fixCamera()
+            showRunes()
             
             finalBattle = true
         }
@@ -116,6 +137,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         GameScene.mainScene = self
         archer = Archer.createArcher(scene: self, position: positionArcher)
         
+        enumerateChildNodes(withName: "runes") { node, _ in
+            let runes = node as! SKSpriteNode
+            runes.isHidden = true
+            runes.physicsBody?.categoryBitMask = 0
+        }
+
         initilizeCamera()
         initilizeControlComponents()
         initilizeSpawners()
@@ -157,8 +184,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-        startFinalBattle()
-
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {

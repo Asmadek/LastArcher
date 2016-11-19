@@ -30,8 +30,8 @@ class Archer: SKSpriteNode {
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = true
         self.physicsBody?.allowsRotation = false
-        self.physicsBody?.collisionBitMask = PhysicsCategory.Misc | PhysicsCategory.Monster
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.Misc | PhysicsCategory.Monster
+        self.physicsBody?.collisionBitMask = PhysicsCategory.Misc | PhysicsCategory.Monster | PhysicsCategory.Runes
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Misc | PhysicsCategory.Monster | PhysicsCategory.Runes
     }
     
     required init?(coder aDecoder: NSCoder) {

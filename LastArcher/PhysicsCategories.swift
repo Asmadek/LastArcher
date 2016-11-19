@@ -14,4 +14,5 @@ struct PhysicsCategory {
     static let Misc: UInt32 = 0x1 << 4
     static let Mage: UInt32 = 0x1 << 5
     static let MageAttack: UInt32 = 0x1 << 6
+    static let Runes: UInt32 = 0x1 << 7
 }
