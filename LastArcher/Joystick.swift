@@ -63,6 +63,7 @@ class Joystick{
             archer.pullBowstring()
             chargeBar.zPosition = 111
             self.startChargeTime = NSDate.timeIntervalSinceReferenceDate
+//            if (archer.weap)
         }
     }
     
@@ -99,9 +100,6 @@ class Joystick{
             }
             pupsik = (CGFloat((NSDate.timeIntervalSinceReferenceDate - self.startChargeTime) / archer.weapon!.configuration.shellConfiguration.maxChargeDuration))
             
-            print(NSDate.timeIntervalSinceReferenceDate - self.startChargeTime)
-            print(archer.weapon!.configuration.shellConfiguration.maxChargeDuration)
-            print(pupsik)
             chargeBar.updateBarPercent(progress: pupsik)
         }
     }

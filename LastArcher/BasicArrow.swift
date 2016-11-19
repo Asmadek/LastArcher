@@ -48,7 +48,6 @@ class BasicArrow: SKSpriteNode, ShellType {
     
         let move_vector = direction.normalize().multiply(scalar: configuration.moveSpeed)
         self.zRotation = move_vector.angleSpriteKit()
-        
         self.damageMultiplier = configuration.minDamageMultiplier + TimeInterval.minimum(chargeTime, configuration.maxChargeDuration)/configuration.maxChargeDuration*(configuration.maxDamageMultiplier-configuration.minDamageMultiplier)
         let moveAction = SKAction.sequence([SKAction.move(by: move_vector, duration: configuration.lifeTime),
                                             SKAction.run({self.destroy()})])

@@ -108,7 +108,7 @@ class FirstMage: SKSpriteNode, Monster {
         self.run(
             SKAction.repeatForever(
                 SKAction.sequence([
-                    SKAction.repeat(self.standartAnimation!, count: 5),
+                    SKAction.repeat(self.standartAnimation!, count: 4),
                     self.attackAnimation!,
                     SKAction.run {self.specialAttack()}
                 ])
@@ -141,7 +141,7 @@ class FirstMage: SKSpriteNode, Monster {
         case 2:
             lightningMark()
         default:
-            waterAttack()
+            lightningMark()
         }
     }
     

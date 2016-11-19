@@ -9,7 +9,7 @@
 import SpriteKit
 
 class ShortBow: WeaponConfiguration {
-    var reloadTime = TimeInterval(0.3)
+    var reloadTime = TimeInterval(0.2)
     var shellConfiguration = ShortBowArrow() as ShellConfiguration
     
     var sprite: SKNode

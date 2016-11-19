@@ -9,7 +9,7 @@
 import SpriteKit
 
 class LongBow: WeaponConfiguration {
-    var reloadTime = TimeInterval(0.7)
+    var reloadTime = TimeInterval(0.5)
     var shellConfiguration = LongBowArrow() as ShellConfiguration
     
     var sprite: SKNode

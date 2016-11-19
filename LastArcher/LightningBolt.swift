@@ -33,7 +33,7 @@ class LightningBolt : SKSpriteNode {
         self.position = position
         self.name = "lightning_bolt_strike"
         self.zPosition = 100
-        self.setScale(2)
+        self.setScale(3)
         
         self.run(SKAction.sequence([animation, animation.reversed()]))
         
