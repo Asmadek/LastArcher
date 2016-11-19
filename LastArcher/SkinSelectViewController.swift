@@ -146,17 +146,17 @@ class SkinSelectViewController: UIViewController {
     
     func updateDescription() {
         var weapon = "Standart bow"
-        var story = "Standart armors, standart speed"
+        var story = "  - Have instant 50% of Damage, charges for 1s upto 100% of Damage \n    - No special effects"
         if (self.weapon == 1) {
             weapon = "Long bow"
-            story = "Heavy armors, low speed"
+            story = "  - Have instant 30% of Damage, charges for 2s upto 200% of Damage \n    - No special effects"
         } else if (self.weapon == 2) {
             weapon = "Short bow"
-            story = "Light armors, fast speed"
+            story = "  - Have instant 75% of Damage, no charging bonuses \n    - No special effects"
         }
         
-        let text = "Weapon: " + weapon + "\n" +
-                "Story: " + story
+        let text = " Weapon: \n   " + weapon + "\n" +
+                " Information: \n  " + story
         
         playerDescription.text = text
     }
