@@ -138,7 +138,7 @@ class FirstMage: SKSpriteNode, Monster {
             waterAttack()
         case 1:
             //TODO: replace by new your attack here
-            waterAttack()
+            elementalAttack()
         case 2:
             //TODO: replace by new your attack here
             waterAttack()
@@ -162,6 +162,19 @@ class FirstMage: SKSpriteNode, Monster {
             WaterBolt(direction:direction,position: boltPosition.toPoint())
         }
     }
+    
+    private func elementalAttack(){
+        let spawnPoints = [SpawnPoint.createSpawnPoint(at: CGPoint(x: self.position.x - 100,
+                                                                   y: self.position.y - 100)),
+                           SpawnPoint.createSpawnPoint(at: CGPoint(x: self.position.x - 100,
+                                                                   y: self.position.y + 100))]
+        
+        for spawnPoint in spawnPoints {
+            spawnPoint.createMelee(maxCountEnemies: 1)
+        }
+
+    }
+
     
     func recieveDamage(damage: Double){
         health -= damage

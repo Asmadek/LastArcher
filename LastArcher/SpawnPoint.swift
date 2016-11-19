@@ -13,8 +13,8 @@ class SpawnPoint: SKSpriteNode {
     private var spawnCreatures: SKAction? = nil
     var creaturesCount: Int = 0
     
-    static func createSpawnPoint(at: CGPoint) {
-       SpawnPoint(position: at)
+    static func createSpawnPoint(at: CGPoint) -> SpawnPoint {
+       return SpawnPoint(position: at)
     }
     
     init (position: CGPoint) {
