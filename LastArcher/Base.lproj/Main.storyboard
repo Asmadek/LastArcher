@@ -169,8 +169,7 @@
                                             <accessibilityTraits key="traits" button="YES" image="YES"/>
                                         </accessibility>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="Jqb-hT-9Pe" secondAttribute="height" multiplier="95:88" id="9pz-RZ-MJi"/>
-                                            <constraint firstAttribute="width" constant="95" id="nZP-a3-E7y"/>
+                                            <constraint firstAttribute="width" secondItem="Jqb-hT-9Pe" secondAttribute="height" multiplier="95:88" id="dO3-Wb-C0B"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="weaponId">
@@ -185,8 +184,7 @@
                                             <accessibilityTraits key="traits" button="YES" image="YES"/>
                                         </accessibility>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="v57-cZ-3e3" secondAttribute="height" multiplier="1:1" id="87S-qK-S1j"/>
-                                            <constraint firstAttribute="width" constant="88" id="Wgt-s2-qbA"/>
+                                            <constraint firstAttribute="width" secondItem="v57-cZ-3e3" secondAttribute="height" multiplier="1:1" id="Mrm-bg-C1F"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
@@ -201,8 +199,7 @@
                                             <accessibilityTraits key="traits" button="YES" image="YES"/>
                                         </accessibility>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="88" id="32h-9K-dsb"/>
-                                            <constraint firstAttribute="width" secondItem="h1m-xU-Qrx" secondAttribute="height" multiplier="1:1" id="gQl-bi-VDp"/>
+                                            <constraint firstAttribute="width" secondItem="h1m-xU-Qrx" secondAttribute="height" multiplier="1:1" id="eHe-SX-nNS"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
@@ -217,8 +214,7 @@
                                             <accessibilityTraits key="traits" button="YES" image="YES"/>
                                         </accessibility>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="88" id="J4l-eo-xv7"/>
-                                            <constraint firstAttribute="width" secondItem="dGx-ms-oMl" secondAttribute="height" multiplier="1:1" id="Vmm-aK-5Ra"/>
+                                            <constraint firstAttribute="width" secondItem="dGx-ms-oMl" secondAttribute="height" multiplier="1:1" id="ni1-TA-h5Q"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
@@ -233,8 +229,7 @@
                                             <accessibilityTraits key="traits" button="YES" image="YES"/>
                                         </accessibility>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="88" id="8MC-cB-Lwz"/>
-                                            <constraint firstAttribute="width" secondItem="Hy5-kv-fTE" secondAttribute="height" multiplier="1:1" id="PKy-pO-rv8"/>
+                                            <constraint firstAttribute="width" secondItem="Hy5-kv-fTE" secondAttribute="height" multiplier="1:1" id="pCS-iU-S6K"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
@@ -245,31 +240,31 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="h1m-xU-Qrx" firstAttribute="leading" secondItem="v57-cZ-3e3" secondAttribute="trailing" constant="23" id="1rm-hX-aqJ"/>
                                     <constraint firstItem="qNt-dt-YNk" firstAttribute="leading" secondItem="nzB-6a-fce" secondAttribute="leading" constant="8" id="3Lg-2H-P3X"/>
-                                    <constraint firstItem="qNt-dt-YNk" firstAttribute="top" secondItem="Hy5-kv-fTE" secondAttribute="bottom" constant="8" id="3bR-K2-Nlw"/>
-                                    <constraint firstItem="Hy5-kv-fTE" firstAttribute="top" secondItem="NHs-gc-HXd" secondAttribute="bottom" constant="14" id="5yH-Y4-2oI"/>
                                     <constraint firstItem="qMU-ng-8KR" firstAttribute="top" secondItem="qNt-dt-YNk" secondAttribute="bottom" constant="8" id="6zR-9c-mGC"/>
                                     <constraint firstAttribute="trailing" secondItem="NHs-gc-HXd" secondAttribute="trailing" id="Abd-cX-OpN"/>
-                                    <constraint firstItem="v57-cZ-3e3" firstAttribute="leading" secondItem="nzB-6a-fce" secondAttribute="leading" constant="8" id="DUp-aA-K6h"/>
-                                    <constraint firstItem="Jqb-hT-9Pe" firstAttribute="top" secondItem="NHs-gc-HXd" secondAttribute="bottom" constant="14" id="DiW-50-Enk"/>
+                                    <constraint firstItem="qNt-dt-YNk" firstAttribute="top" secondItem="dGx-ms-oMl" secondAttribute="bottom" constant="8" id="DWP-lo-izP"/>
                                     <constraint firstItem="NHs-gc-HXd" firstAttribute="leading" secondItem="nzB-6a-fce" secondAttribute="leading" constant="8" id="FFL-NS-b5B"/>
-                                    <constraint firstItem="qNt-dt-YNk" firstAttribute="top" secondItem="dGx-ms-oMl" secondAttribute="bottom" constant="8" id="Hcs-kg-bYD"/>
-                                    <constraint firstItem="dGx-ms-oMl" firstAttribute="top" secondItem="NHs-gc-HXd" secondAttribute="bottom" constant="14" id="Hqi-dh-Qd5"/>
-                                    <constraint firstItem="qNt-dt-YNk" firstAttribute="top" secondItem="v57-cZ-3e3" secondAttribute="bottom" constant="8" id="J95-yZ-Gx8"/>
+                                    <constraint firstItem="h1m-xU-Qrx" firstAttribute="leading" secondItem="v57-cZ-3e3" secondAttribute="trailing" constant="23" id="HmC-WE-x3Y"/>
                                     <constraint firstItem="qMU-ng-8KR" firstAttribute="leading" secondItem="nzB-6a-fce" secondAttribute="leading" constant="90" id="JUb-9g-2OT"/>
                                     <constraint firstAttribute="trailing" secondItem="qMU-ng-8KR" secondAttribute="trailing" constant="91" id="L25-91-uEn"/>
-                                    <constraint firstAttribute="trailing" secondItem="dGx-ms-oMl" secondAttribute="trailing" constant="8" id="LrB-cP-Nfn"/>
-                                    <constraint firstItem="Jqb-hT-9Pe" firstAttribute="leading" secondItem="h1m-xU-Qrx" secondAttribute="trailing" constant="20" id="PAy-EG-k8B"/>
+                                    <constraint firstItem="qNt-dt-YNk" firstAttribute="top" secondItem="Hy5-kv-fTE" secondAttribute="bottom" constant="8" id="OsE-Eq-qlP"/>
                                     <constraint firstAttribute="trailing" secondItem="qNt-dt-YNk" secondAttribute="trailing" constant="8" id="SZ2-xj-scm"/>
-                                    <constraint firstItem="qNt-dt-YNk" firstAttribute="top" secondItem="Jqb-hT-9Pe" secondAttribute="bottom" constant="8" id="Zd8-hS-kmw"/>
+                                    <constraint firstItem="Hy5-kv-fTE" firstAttribute="leading" secondItem="Jqb-hT-9Pe" secondAttribute="trailing" constant="18" id="T79-vz-gZG"/>
+                                    <constraint firstAttribute="trailing" secondItem="dGx-ms-oMl" secondAttribute="trailing" constant="8" id="VKC-Mj-AZh"/>
+                                    <constraint firstItem="v57-cZ-3e3" firstAttribute="leading" secondItem="nzB-6a-fce" secondAttribute="leading" constant="8" id="XWH-xT-Rct"/>
                                     <constraint firstAttribute="bottom" secondItem="qMU-ng-8KR" secondAttribute="bottom" constant="7" id="dte-sK-2aq"/>
-                                    <constraint firstItem="qNt-dt-YNk" firstAttribute="top" secondItem="h1m-xU-Qrx" secondAttribute="bottom" constant="8" id="hAW-6E-BA6"/>
+                                    <constraint firstItem="qNt-dt-YNk" firstAttribute="top" secondItem="h1m-xU-Qrx" secondAttribute="bottom" constant="8" id="eKx-NV-Zgb"/>
+                                    <constraint firstItem="qNt-dt-YNk" firstAttribute="top" secondItem="v57-cZ-3e3" secondAttribute="bottom" constant="8" id="fF4-ho-KsO"/>
+                                    <constraint firstItem="qNt-dt-YNk" firstAttribute="top" secondItem="Jqb-hT-9Pe" secondAttribute="bottom" constant="8" id="fNe-Q2-13V"/>
                                     <constraint firstItem="NHs-gc-HXd" firstAttribute="top" secondItem="nzB-6a-fce" secondAttribute="top" constant="8" id="iiM-Eg-ZjX"/>
-                                    <constraint firstItem="dGx-ms-oMl" firstAttribute="leading" secondItem="Hy5-kv-fTE" secondAttribute="trailing" constant="17" id="kO3-Xx-6fB"/>
-                                    <constraint firstItem="h1m-xU-Qrx" firstAttribute="top" secondItem="NHs-gc-HXd" secondAttribute="bottom" constant="14" id="lQH-KZ-lGC"/>
-                                    <constraint firstItem="v57-cZ-3e3" firstAttribute="top" secondItem="NHs-gc-HXd" secondAttribute="bottom" constant="14" id="oEq-jY-6Px"/>
-                                    <constraint firstItem="Hy5-kv-fTE" firstAttribute="leading" secondItem="Jqb-hT-9Pe" secondAttribute="trailing" constant="18" id="snj-sG-oFE"/>
+                                    <constraint firstItem="dGx-ms-oMl" firstAttribute="leading" secondItem="Hy5-kv-fTE" secondAttribute="trailing" constant="17" id="mYT-fZ-qyE"/>
+                                    <constraint firstItem="Jqb-hT-9Pe" firstAttribute="leading" secondItem="h1m-xU-Qrx" secondAttribute="trailing" constant="20" id="snN-4q-CNe"/>
+                                    <constraint firstItem="h1m-xU-Qrx" firstAttribute="top" secondItem="NHs-gc-HXd" secondAttribute="bottom" constant="14" id="tQH-ah-ryD"/>
+                                    <constraint firstItem="Jqb-hT-9Pe" firstAttribute="top" secondItem="NHs-gc-HXd" secondAttribute="bottom" constant="14" id="tb2-Tr-74C"/>
+                                    <constraint firstItem="Hy5-kv-fTE" firstAttribute="top" secondItem="NHs-gc-HXd" secondAttribute="bottom" constant="14" id="uR9-vL-Y3q"/>
+                                    <constraint firstItem="v57-cZ-3e3" firstAttribute="top" secondItem="NHs-gc-HXd" secondAttribute="bottom" constant="14" id="vl3-ZH-zuX"/>
+                                    <constraint firstItem="dGx-ms-oMl" firstAttribute="top" secondItem="NHs-gc-HXd" secondAttribute="bottom" constant="14" id="yr8-tA-7Bh"/>
                                 </constraints>
                             </view>
                         </subviews>

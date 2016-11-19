@@ -16,7 +16,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var graphs = [String : GKGraph]()
     
     //TODO: remove archer spawn by coordinates
-    let positionArcher = CGPoint(x:-10, y:-400)
+    let positionArcher = CGPoint(x:-10, y:1800)
     var archer: Archer = Archer()
     
     let chargeBar: Bar = Bar(barWidth: 100,
@@ -35,6 +35,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var lastUpdateTime : TimeInterval = 0
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
+    
+    var finalBattle = false
     
     var scoreLabel: UILabel? = nil
     var shootsLabel: UILabel? = nil
@@ -78,6 +80,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(mage)
         mage.position = CGPoint(x:200,y:-400)
     }
+    
+    func removeSpawns(){
+        enumerateChildNodes(withName: "spawn") { node, _ in
+            let spawnPoint = node as! SKSpriteNode
+            spawnPoint.removeFromParent()
+        }
+        
+        enumerateChildNodes(withName: "monster"){node,_ in
+            let monster = node as! SKSpriteNode
+            monster.removeFromParent()
+        }
+
+    }
+    
+    func fixCamera(){
+        self.camera?.constraints = []
+        self.camera?.setScale(1.5)
+        self.joystick?.disableScale()
+    }
+
+    
+    func startFinalBattle() {
+        if (!finalBattle) {
+            removeSpawns()
+            initilizeMage()
+            fixCamera()
+            
+            finalBattle = true
+        }
+    }
+
 
     override func sceneDidLoad() {
         GameScene.mainScene = self
@@ -86,8 +119,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         initilizeCamera()
         initilizeControlComponents()
         initilizeSpawners()
-        initilizeMage()
 
+        
         chargeBar.zPosition = -10
         self.addChild(chargeBar)
         
@@ -124,6 +157,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+        startFinalBattle()
+
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {

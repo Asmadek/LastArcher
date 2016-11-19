@@ -11,8 +11,8 @@ import SpriteKit
 class Joystick{
     let moveAnalogStick =  🕹(diameter: 150)
     let shootAnalogStick = AnalogJoystick(diameter: 150)
-    let cameraZoomOutAction = SKAction.scale(to: 1.5, duration: 0.5)
-    let cameraZoomInAction = SKAction.scale(to: 1, duration: 0.5)
+    var cameraZoomOutAction = SKAction.scale(to: 1.5, duration: 0.5)
+    var cameraZoomInAction = SKAction.scale(to: 1, duration: 0.5)
  //   let chargeBowStringAction = SKAction.moveBy(x: <#T##CGFloat#>, y: <#T##CGFloat#>, duration: <#T##TimeInterval#>)
     
     var chargeTime = TimeInterval(0.0)
@@ -105,4 +105,11 @@ class Joystick{
             chargeBar.updateBarPercent(progress: pupsik)
         }
     }
+    
+    func disableScale() {
+        self.cameraZoomOutAction = SKAction.scale(to: 1.5, duration: 0)
+        self.cameraZoomInAction = SKAction.scale(to: 1.5, duration: 0)
+
+    }
+
 }

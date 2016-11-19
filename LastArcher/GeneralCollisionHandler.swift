@@ -16,6 +16,7 @@ class GeneralCollisionHandler: CollisionHandler {
         handlers.append(MageShellHandler())
         handlers.append(WaterBoltHandler())
         handlers.append(LightningBoltHandler())
+        handlers.append(StartBattleHandler())
     }
     
     func canHandle(nodeOne:SKNode, nodeTwo:SKNode) -> Bool{
