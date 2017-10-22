@@ -16,7 +16,7 @@ class FirstMage: SKSpriteNode, Monster {
     var deathAnimation: SKAction? = nil
     
     var isDead:Bool = false
-    var health: Double = 6.0
+    var health: Double = 5.0
     var target: Archer
 
     let castAnimation: SKAction = SKAction.animate(with: [
@@ -86,7 +86,7 @@ class FirstMage: SKSpriteNode, Monster {
             , count: 2),
             SKAction.run {hiddenNode.run(self.castAnimation)},
             SKAction.setTexture(SKTexture(imageNamed: "mage_base_1")),
-            SKAction.wait(forDuration: 0.25)])
+            SKAction.wait(forDuration: 0.3)])
             
         
         self.damageAnimation = SKAction.sequence([SKAction.setTexture(SKTexture(imageNamed:"mage_base_1")),
@@ -142,6 +142,7 @@ class FirstMage: SKSpriteNode, Monster {
             lightningMark()
         default:
             lightningMark()
+            elementalAttack()
         }
     }
     
